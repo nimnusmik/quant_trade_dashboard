@@ -1,0 +1,34 @@
+[
+  {
+    "id": "sample-1",
+    "symbol": "BTCUSDT",
+    "side": "long",
+    "status": "closed",
+    "entryTime": "2026-06-14T09:00:00Z",
+    "exitTime": "2026-06-14T13:00:00Z",
+    "entryPrice": 100000,
+    "exitPrice": 101500,
+    "quantity": 0.01,
+    "realizedPnl": 15,
+    "realizedPnlPct": 1.5,
+    "strategy": "trend_following",
+    "timeframe": "1h",
+    "entryReason": "confirmed breakout",
+    "exitReason": "take profit",
+    "source": "sample"
+  },
+  {
+    "id": "sample-2",
+    "symbol": "XRPUSDT",
+    "side": "short",
+    "status": "open",
+    "entryTime": "2026-06-14T10:00:00Z",
+    "entryPrice": 2.5,
+    "quantity": 100,
+    "unrealizedPnl": 3.2,
+    "unrealizedPnlPct": 1.28,
+    "strategy": "risk_off_short",
+    "timeframe": "1h",
+    "source": "sample"
+  }
+]
