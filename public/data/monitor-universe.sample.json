@@ -1,0 +1,42 @@
+{
+  "source": "sample",
+  "updatedAt": "2026-06-15T00:00:00Z",
+  "symbols": ["BTCUSDT", "ETHUSDT", "XRPUSDT"],
+  "intervals": ["1m", "5m", "1h"],
+  "strategies": [
+    {
+      "key": "S1_EMA_Cross",
+      "label": "EMA 크로스 추세추종",
+      "intervals": ["1m", "5m", "1h"],
+      "symbols": ["BTCUSDT", "ETHUSDT", "XRPUSDT"],
+      "paramsByInterval": {
+        "1h": {
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "rsi_period": 14,
+          "tp_pct": 0.05,
+          "sl_pct": 0.002,
+          "max_hold": 96,
+          "cooldown": 5
+        }
+      }
+    },
+    {
+      "key": "S8_Relative_Strength_Rotation",
+      "label": "BTC 대비 상대강도 로테이션",
+      "intervals": ["1h"],
+      "symbols": ["BTCUSDT", "ETHUSDT", "XRPUSDT"],
+      "paramsByInterval": {
+        "1h": {
+          "ema_fast": 9,
+          "ema_slow": 21,
+          "rs_window": 24,
+          "rel_long_threshold": 0.01,
+          "rel_short_threshold": -0.005,
+          "tp_pct": 0.02,
+          "sl_pct": 0.005
+        }
+      }
+    }
+  ]
+}

@@ -8,6 +8,7 @@ A Next.js dashboard for monitoring paper-trading performance.
 - Sample trade data in `public/data/trades.json`
 - Overview dashboard with realized PnL, win rate, open positions, average PnL, and an equity curve chart
 - Trades, Symbols, and Risk pages
+- Monitor page showing all runtime watchlist symbols, active strategies, signal intervals, and representative TP/SL params
 - Symbol charts with Binance candles plus entry, take-profit, and stop-loss level markers
 - Interactive trade filters for status, side, symbol, strategy, timeframe, and free-text search
 - Tested metric, filter, and symbol-chart helper calculations with Vitest
@@ -16,6 +17,7 @@ A Next.js dashboard for monitoring paper-trading performance.
 
 ```text
 raw paper_trades.csv -> scripts/export_trades_json.py -> public/data/trades.json -> Next.js dashboard
+quant_trading monitor config -> scripts/export_monitor_universe.py -> public/data/monitor-universe.json -> Next.js dashboard
 Binance public klines -> /symbols chart panels
 ```
 
@@ -54,6 +56,7 @@ Then run:
 
 ```bash
 python3 scripts/export_trades_json.py
+python3 scripts/export_monitor_universe.py
 ```
 
 Default source path:
@@ -68,6 +71,18 @@ Default output path:
 public/data/trades.json
 ```
 
+Default monitor-universe source path:
+
+```text
+/Users/sunminkim/Desktop/projects/quant_trading
+```
+
+Default monitor-universe output path:
+
+```text
+public/data/monitor-universe.json
+```
+
 ## Metric rules
 
 - Realized PnL uses closed trades only.
@@ -77,3 +92,4 @@ public/data/trades.json
 - Equity curve is ordered by `exitTime` and accumulates realized PnL.
 - Symbol chart panels prioritize open-position symbols. If there are no open positions, they show all traded symbols.
 - TP/SL markers come from the ledger `tp` and `sl` columns exported as `takeProfit` and `stopLoss`.
+- Monitor coverage is calculated from the exported runtime universe: watched symbols × strategy-specific active intervals.

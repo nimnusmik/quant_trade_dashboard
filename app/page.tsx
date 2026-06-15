@@ -9,11 +9,14 @@ import {
   getClosedTrades,
   getOpenTrades,
 } from "@/lib/metrics";
+import { calculateMonitorCoverage, loadMonitorUniverse } from "@/lib/monitorUniverse";
 import { loadDashboardTrades } from "@/lib/trades";
 
 export default async function Home() {
   const trades = await loadDashboardTrades();
+  const universe = await loadMonitorUniverse();
   const summary = calculateSummaryMetrics(trades);
+  const coverage = calculateMonitorCoverage(universe);
   const equityCurve = calculateEquityCurve(trades);
   const openTrades = getOpenTrades(trades);
   const recentClosedTrades = getClosedTrades(trades).slice(-5).toReversed();
@@ -36,6 +39,13 @@ export default async function Home() {
           <MetricCard label="Win Rate" value={formatPercent(summary.winRate)} helper={`${summary.closedTrades} closed trades`} />
           <MetricCard label="Open Positions" value={String(summary.openTrades)} helper="Unrealized PnL excluded" />
           <MetricCard label="Avg PnL" value={formatCurrency(summary.averagePnl)} helper="Per closed trade" />
+        </section>
+
+        <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <MetricCard label="Monitored Symbols" value={String(coverage.symbolCount)} helper="Current signal watchlist" />
+          <MetricCard label="Running Strategies" value={String(coverage.strategyCount)} helper="Active strategy registry" />
+          <MetricCard label="Signal Intervals" value={universe.intervals.join(", ")} helper="Scheduled checks" />
+          <MetricCard label="Signal Checks" value={String(coverage.combinationCount)} helper="Symbol × strategy × interval" />
         </section>
 
         <section className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">

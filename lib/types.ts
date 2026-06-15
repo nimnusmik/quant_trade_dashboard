@@ -79,3 +79,28 @@ export type SymbolChartModel = {
   candles: PricePoint[];
   markers: TradeMarker[];
 };
+
+export type StrategyParams = Record<string, string | number | boolean | null>;
+
+export type MonitorStrategy = {
+  key: string;
+  label: string;
+  intervals: string[];
+  symbols: string[];
+  paramsByInterval: Record<string, StrategyParams>;
+};
+
+export type MonitorUniverse = {
+  source: string;
+  updatedAt: string;
+  symbols: string[];
+  intervals: string[];
+  strategies: MonitorStrategy[];
+};
+
+export type MonitorCoverage = {
+  symbolCount: number;
+  strategyCount: number;
+  intervalCount: number;
+  combinationCount: number;
+};
