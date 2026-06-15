@@ -2,19 +2,19 @@ import type { MonitorStrategy, MonitorUniverse } from "@/lib/types";
 import { calculateMonitorCoverage } from "@/lib/monitorUniverse";
 
 const PARAM_LABELS: Record<string, string> = {
-  ema_fast: "EMA fast",
-  ema_slow: "EMA slow",
+  ema_fast: "EMA 단기",
+  ema_slow: "EMA 장기",
   rsi_period: "RSI",
   tp_pct: "TP",
   sl_pct: "SL",
-  max_hold: "Max hold",
-  cooldown: "Cooldown",
-  vwap_tol: "VWAP tol",
-  vol_mult: "Vol ×",
-  retest_bars: "Retest bars",
-  rs_window: "RS window",
-  rel_long_threshold: "RS long",
-  rel_short_threshold: "RS short",
+  max_hold: "최대 보유",
+  cooldown: "쿨다운",
+  vwap_tol: "VWAP 허용폭",
+  vol_mult: "거래량 배수",
+  retest_bars: "리테스트 봉수",
+  rs_window: "상대강도 기간",
+  rel_long_threshold: "상대강도 롱",
+  rel_short_threshold: "상대강도 숏",
 };
 
 function formatParamValue(key: string, value: string | number | boolean | null): string {
@@ -22,7 +22,7 @@ function formatParamValue(key: string, value: string | number | boolean | null):
     return "—";
   }
   if (typeof value === "boolean") {
-    return value ? "on" : "off";
+    return value ? "켜짐" : "꺼짐";
   }
   if (typeof value === "number" && (key.endsWith("_pct") || key.includes("threshold") || key.includes("tol"))) {
     return `${(value * 100).toFixed(2)}%`;
@@ -46,7 +46,7 @@ function StrategyCard({ strategy }: { strategy: MonitorStrategy }) {
           <p className="text-xs uppercase tracking-wide text-cyan-300">{strategy.key}</p>
           <h3 className="mt-1 text-lg font-semibold text-white">{strategy.label}</h3>
           <p className="mt-2 text-sm text-slate-500">
-            {strategy.symbols.length} symbols × {strategy.intervals.length} intervals = {strategyTotalCombinations(strategy)} checks
+            {strategy.symbols.length}개 종목 × {strategy.intervals.length}개 주기 = {strategyTotalCombinations(strategy)}회 체크
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -80,7 +80,7 @@ function StrategyCard({ strategy }: { strategy: MonitorStrategy }) {
             ))}
           </dl>
         ) : (
-          <p className="mt-2 text-sm text-slate-400">No optimized params found for this active interval.</p>
+          <p className="mt-2 text-sm text-slate-400">이 활성 주기에 맞는 최적화 파라미터가 없습니다.</p>
         )}
       </div>
     </article>
@@ -93,31 +93,31 @@ export function MonitorUniversePanel({ universe }: { universe: MonitorUniverse }
   return (
     <div className="space-y-8">
       <section>
-        <p className="text-sm text-cyan-300">Monitor Universe</p>
+        <p className="text-sm text-cyan-300">감시 범위</p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">
-          Running strategies and symbols
+          가동 중인 전략과 종목
         </h2>
         <p className="mt-2 max-w-3xl text-slate-400">
           실시간 모니터가 훑는 전체 범위입니다. 종목, 타임프레임, 전략, 대표 TP/SL 파라미터를 한 화면에서 확인합니다.
         </p>
-        <p className="mt-2 text-xs text-slate-600">Source: {universe.source} · Updated: {universe.updatedAt}</p>
+        <p className="mt-2 text-xs text-slate-600">출처: {universe.source} · 업데이트: {universe.updatedAt}</p>
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
-          <p className="text-sm text-slate-500">Symbols</p>
+          <p className="text-sm text-slate-500">종목</p>
           <p className="mt-2 text-3xl font-semibold text-white">{coverage.symbolCount}</p>
         </div>
         <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
-          <p className="text-sm text-slate-500">Strategies</p>
+          <p className="text-sm text-slate-500">전략</p>
           <p className="mt-2 text-3xl font-semibold text-white">{coverage.strategyCount}</p>
         </div>
         <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
-          <p className="text-sm text-slate-500">Intervals</p>
+          <p className="text-sm text-slate-500">주기</p>
           <p className="mt-2 text-3xl font-semibold text-white">{coverage.intervalCount}</p>
         </div>
         <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
-          <p className="text-sm text-slate-500">Signal Checks</p>
+          <p className="text-sm text-slate-500">신호 체크</p>
           <p className="mt-2 text-3xl font-semibold text-cyan-200">{coverage.combinationCount}</p>
         </div>
       </section>
@@ -125,8 +125,8 @@ export function MonitorUniversePanel({ universe }: { universe: MonitorUniverse }
       <section className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-white">All monitored symbols</h3>
-            <p className="text-sm text-slate-500">Price check and signal monitor watchlist</p>
+            <h3 className="text-lg font-semibold text-white">전체 감시 종목</h3>
+            <p className="text-sm text-slate-500">가격 확인과 신호 모니터가 보는 종목 목록</p>
           </div>
           <div className="flex flex-wrap gap-2">
             {universe.intervals.map((interval) => (
@@ -147,8 +147,8 @@ export function MonitorUniversePanel({ universe }: { universe: MonitorUniverse }
 
       <section className="space-y-4">
         <div>
-          <h3 className="text-lg font-semibold text-white">All running strategies</h3>
-          <p className="text-sm text-slate-500">Each card shows its active intervals, covered symbols, and representative optimized params.</p>
+          <h3 className="text-lg font-semibold text-white">전체 가동 전략</h3>
+          <p className="text-sm text-slate-500">각 카드에서 활성 주기, 적용 종목, 대표 최적화 파라미터를 확인합니다.</p>
         </div>
         <div className="grid gap-4 xl:grid-cols-2">
           {universe.strategies.map((strategy) => (

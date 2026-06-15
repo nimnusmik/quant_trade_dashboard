@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Quant Trade Dashboard",
+  title: "퀀트 트레이딩 대시보드",
   description: "Paper trading dashboard for realized PnL, positions, symbols, and risk.",
 };
 

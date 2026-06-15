@@ -18,7 +18,7 @@ export function calculateStrategyLeaderboard(trades: Trade[]): StrategyPerforman
       continue;
     }
 
-    const strategy = trade.strategy ?? "Unknown";
+    const strategy = trade.strategy ?? "알 수 없음";
     const current = byStrategy.get(strategy) ?? createMutableStrategy(strategy);
 
     current.trades += 1;
@@ -80,7 +80,7 @@ export function calculateStrategySymbolMatrix(trades: Trade[]): StrategySymbolPe
       continue;
     }
 
-    const strategy = trade.strategy ?? "Unknown";
+    const strategy = trade.strategy ?? "알 수 없음";
     const key = `${strategy}::${trade.symbol}`;
     const current = byPair.get(key) ?? {
       strategy,
@@ -154,10 +154,10 @@ function toStrategyPerformanceWithoutDiagnosis(strategy: MutableStrategyPerforma
     bestSymbols: symbolStats.filter((symbol) => symbol.totalRealizedPnl > 0).slice(0, 3),
     worstSymbols: [...symbolStats].reverse().filter((symbol) => symbol.totalRealizedPnl < 0).slice(0, 3),
     diagnosis: {
-      verdict: "Pending",
+      verdict: "대기",
       worksBecause: [],
       failsBecause: [],
-      suggestedAction: "Wait for more evidence.",
+      suggestedAction: "판단할 거래가 더 쌓일 때까지 기다립니다.",
     },
   };
 }
@@ -197,12 +197,12 @@ function diagnoseStrategy(strategy: StrategyPerformance, rankIndex: number): Str
   const dominantSide = strategy.sides.short > strategy.sides.long ? "short" : "long";
 
   const worksBecause = [
-    `${strategy.totalRealizedPnl >= 0 ? "Positive" : "Negative"} PnL ${strategy.totalRealizedPnl.toFixed(2)} USDT with ${strategy.trades} closed trades.`,
-    `Profit factor ${formatNumber(strategy.profitFactor)} and win rate ${(strategy.winRate * 100).toFixed(1)}% show whether wins are large enough to offset losses.`,
+    `${strategy.totalRealizedPnl >= 0 ? "플러스" : "마이너스"} 손익 ${strategy.totalRealizedPnl.toFixed(2)} USDT, 종료 거래 ${strategy.trades}건 기준입니다.`,
+    `Profit Factor ${formatNumber(strategy.profitFactor)}, 승률 ${(strategy.winRate * 100).toFixed(1)}%라서 이긴 거래가 손실을 충분히 상쇄하는지 확인할 수 있습니다.`,
   ];
 
   if (best) {
-    worksBecause.push(`Best contribution came from ${best}.`);
+    worksBecause.push(`가장 크게 기여한 종목은 ${best}입니다.`);
   }
   const strategyLens = getStrategyLens(strategy.strategy, dominantSide);
   if (strategyLens.works) {
@@ -211,19 +211,19 @@ function diagnoseStrategy(strategy: StrategyPerformance, rankIndex: number): Str
 
   const failsBecause = [];
   if (strategy.winRate < 0.3) {
-    failsBecause.push("Low win rate means many signals are being stopped out before the winners can carry the strategy.");
+    failsBecause.push("승률이 낮아서, 이기는 거래가 전략을 끌고 가기 전에 많은 신호가 먼저 손절됩니다.");
   }
   if (strategy.profitFactor < 1) {
-    failsBecause.push("Profit factor below 1.00 means losses are larger than wins overall.");
+    failsBecause.push("Profit Factor가 1.00 아래라서 전체적으로 수익보다 손실이 더 큽니다.");
   }
   if (worst) {
-    failsBecause.push(`Worst drag came from ${worst}.`);
+    failsBecause.push(`가장 크게 손실을 낸 종목은 ${worst}입니다.`);
   }
   if (strategyLens.fails) {
     failsBecause.push(strategyLens.fails);
   }
   if (failsBecause.length === 0) {
-    failsBecause.push("Main risk is sample stability: keep checking whether the same edge persists on new trades.");
+    failsBecause.push("주요 리스크는 표본 안정성입니다. 새 거래에서도 같은 우위가 유지되는지 계속 확인해야 합니다.");
   }
 
   return {
@@ -236,18 +236,18 @@ function diagnoseStrategy(strategy: StrategyPerformance, rankIndex: number): Str
 
 function getVerdict(strategy: StrategyPerformance, rankIndex: number): string {
   if (rankIndex === 0 && strategy.totalRealizedPnl > 0) {
-    return "Leading";
+    return "선두";
   }
   if (strategy.totalRealizedPnl > 0 && strategy.profitFactor >= 1.2) {
-    return "Working";
+    return "작동 중";
   }
   if (strategy.totalRealizedPnl > 0) {
-    return "Marginally positive";
+    return "소폭 우위";
   }
   if (strategy.profitFactor < 0.7 || strategy.totalRealizedPnl < -5) {
-    return "Dragging";
+    return "손실 주범";
   }
-  return "Weak / needs filtering";
+  return "약함 / 필터 필요";
 }
 
 function getPairVerdict(pair: StrategySymbolPerformance): StrategySymbolPerformance["verdict"] {
@@ -265,58 +265,58 @@ function getPairVerdict(pair: StrategySymbolPerformance): StrategySymbolPerforma
 
 function getSuggestedAction(strategy: StrategyPerformance, rankIndex: number): string {
   if (rankIndex === 0 && strategy.totalRealizedPnl > 0) {
-    return "keep as the current champion, but narrow it to its strongest symbols and continue monitoring fresh trades.";
+    return "현재 1위 전략으로 유지하되, 강한 종목 위주로 좁히고 새 거래에서도 우위가 유지되는지 계속 확인합니다.";
   }
   if (strategy.totalRealizedPnl > 0) {
-    return "keep running, but promote only the symbols that are contributing positive PnL.";
+    return "계속 돌리되, 플러스 손익에 기여하는 종목만 우선 승격합니다.";
   }
   if (strategy.totalRealizedPnl < -5) {
-    return "move to watch-only or cut weak symbol pairs until a recent-window validation improves.";
+    return "최근 구간 검증이 좋아질 때까지 watch-only로 내리거나 약한 전략-종목 조합을 제외합니다.";
   }
-  return "keep as watchlist evidence only; require more trades before broad enablement.";
+  return "넓게 켜기보다는 관찰용 증거로만 두고, 거래 수가 더 쌓인 뒤 판단합니다.";
 }
 
 function getStrategyLens(strategy: string, dominantSide: TradeSide): { works?: string; fails?: string } {
   if (strategy.includes("Relative_Strength")) {
     return {
-      works: `Relative-strength rotation is benefiting from cross-asset dispersion, especially when ${dominantSide} signals align with the broader regime.`,
-      fails: "It can still fail on sudden reversals because relative strength often lags when the whole alt basket snaps back together.",
+      works: `상대강도 로테이션은 종목 간 힘 차이가 벌어지는 장에서 유리합니다. 특히 ${dominantSide === "short" ? "숏" : "롱"} 신호가 전체 장세와 맞을 때 성과가 좋아집니다.`,
+      fails: "다만 알트 전체가 동시에 반등하거나 급락하면 상대강도 신호가 늦게 반응해서 실패할 수 있습니다.",
     };
   }
   if (strategy.includes("VWAP")) {
     return {
-      works: "VWAP bounce can work in mean-reverting sessions where price repeatedly respects fair value.",
-      fails: "It struggles in one-directional trend or risk-off dumps because bounces do not hold and stops cluster quickly.",
+      works: "VWAP 바운스는 가격이 공정가치 근처를 반복적으로 지키는 평균회귀 장에서 잘 작동합니다.",
+      fails: "한 방향 추세나 risk-off 급락장에서는 반등이 유지되지 않아 손절이 빠르게 모일 수 있습니다.",
     };
   }
   if (strategy.includes("EMA_Cross") || strategy.includes("Triple_EMA")) {
     return {
-      works: "EMA trend logic works when moves persist after crossover confirmation.",
-      fails: "It tends to whipsaw in choppy ranges because confirmation arrives after part of the move has already happened.",
+      works: "EMA 추세 로직은 교차 확인 이후에도 움직임이 계속 이어질 때 잘 작동합니다.",
+      fails: "횡보장에서는 확인 신호가 늦게 나와 잦은 속임수 진입이 생기기 쉽습니다.",
     };
   }
   if (strategy.includes("RSI")) {
     return {
-      works: "RSI extreme logic can catch stretched markets when exhaustion actually reverses.",
-      fails: "It can be early in strong trends: oversold can stay oversold and overbought can keep grinding higher.",
+      works: "RSI 극단값 전략은 과열/과매도 이후 실제 반전이 나올 때 잘 맞습니다.",
+      fails: "강한 추세에서는 너무 빨리 들어갈 수 있습니다. 과매도는 더 과매도로, 과매수는 더 상승으로 이어질 수 있습니다.",
     };
   }
   if (strategy.includes("BB_Squeeze")) {
     return {
-      works: "Bollinger squeeze works when volatility expansion follows the breakout direction.",
-      fails: "False breakouts are the main weakness; it needs confirmation that expansion is not immediately fading.",
+      works: "볼린저 스퀴즈는 변동성 확장이 돌파 방향으로 이어질 때 잘 작동합니다.",
+      fails: "가짜 돌파가 핵심 약점입니다. 변동성 확장이 바로 식지 않는지 확인이 필요합니다.",
     };
   }
   if (strategy.includes("MACD")) {
     return {
-      works: "MACD plus volume works when momentum and participation expand together.",
-      fails: "It weakens when volume spikes are exhaustion moves instead of continuation signals.",
+      works: "MACD+거래량 전략은 모멘텀과 참여가 같이 커질 때 잘 작동합니다.",
+      fails: "거래량 급증이 지속 신호가 아니라 마지막 소진 움직임이면 약해집니다.",
     };
   }
   if (strategy.includes("Retest")) {
     return {
-      works: "Retest breakout logic works when broken levels turn into support/resistance after the first move.",
-      fails: "It fails when retests become full reversals rather than continuation entries.",
+      works: "리테스트 돌파 로직은 깨진 가격대가 이후 지지/저항으로 바뀔 때 잘 작동합니다.",
+      fails: "리테스트가 지속 진입이 아니라 완전한 반전으로 바뀌면 실패합니다.",
     };
   }
   return {};

@@ -5,7 +5,7 @@ export function EquityList({ points }: { points: EquityPoint[] }) {
   if (points.length === 0) {
     return (
       <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5 text-slate-400">
-        No closed trades yet.
+        아직 종료된 거래가 없습니다.
       </div>
     );
   }
@@ -13,8 +13,8 @@ export function EquityList({ points }: { points: EquityPoint[] }) {
   return (
     <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-white">Equity Curve</h2>
-        <p className="text-sm text-slate-500">Closed trades only</p>
+        <h2 className="text-lg font-semibold text-white">누적 손익 곡선</h2>
+        <p className="text-sm text-slate-500">종료 거래 기준</p>
       </div>
       <div className="space-y-3">
         {points.map((point) => (

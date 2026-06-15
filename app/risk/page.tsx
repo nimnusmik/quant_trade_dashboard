@@ -18,19 +18,19 @@ export default async function RiskPage() {
     <AppShell>
       <div className="space-y-8">
         <div>
-          <p className="text-sm text-cyan-300">Risk</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">Risk snapshot</h2>
-          <p className="mt-2 text-slate-400">Early risk metrics from closed paper trades.</p>
+          <p className="text-sm text-cyan-300">리스크</p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">리스크 스냅샷</h2>
+          <p className="mt-2 text-slate-400">종료된 페이퍼 거래 기준 초기 리스크 지표입니다.</p>
         </div>
 
         <section className="grid gap-4 md:grid-cols-3">
-          <MetricCard label="Max Drawdown" value={formatCurrency(maxDrawdown)} helper="Peak-to-trough realized equity" />
-          <MetricCard label="Worst Trade" value={formatCurrency(worstTrade?.realizedPnl ?? 0)} helper={worstTrade?.symbol ?? "No closed trades"} />
-          <MetricCard label="Best Trade" value={formatCurrency(bestTrade?.realizedPnl ?? 0)} helper={bestTrade?.symbol ?? "No closed trades"} />
+          <MetricCard label="최대 낙폭" value={formatCurrency(maxDrawdown)} helper="실현 자산 고점 대비 저점 낙폭" />
+          <MetricCard label="최악 거래" value={formatCurrency(worstTrade?.realizedPnl ?? 0)} helper={worstTrade?.symbol ?? "종료 거래 없음"} />
+          <MetricCard label="최고 거래" value={formatCurrency(bestTrade?.realizedPnl ?? 0)} helper={bestTrade?.symbol ?? "종료 거래 없음"} />
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-lg font-semibold text-white">Closed trades by PnL</h3>
+          <h3 className="text-lg font-semibold text-white">손익순 종료 거래</h3>
           <div className="overflow-x-auto">
             <TradesTable trades={sortedByPnl} />
           </div>

@@ -74,10 +74,10 @@ describe("strategy performance", () => {
         bestSymbols: [{ symbol: "BTCUSDT", totalRealizedPnl: 5 }],
         worstSymbols: [{ symbol: "ETHUSDT", totalRealizedPnl: -1 }],
         diagnosis: {
-          verdict: "Leading",
-          worksBecause: expect.arrayContaining([expect.stringContaining("PnL")]),
+          verdict: "선두",
+          worksBecause: expect.arrayContaining([expect.stringContaining("손익")]),
           failsBecause: expect.arrayContaining([expect.stringContaining("ETHUSDT")]),
-          suggestedAction: expect.stringContaining("keep"),
+          suggestedAction: expect.stringContaining("유지"),
         },
       },
       {

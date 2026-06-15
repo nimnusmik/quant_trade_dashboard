@@ -26,7 +26,7 @@ export function EquityChart({ points }: { points: EquityPoint[] }) {
   if (points.length === 0) {
     return (
       <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5 text-slate-400">
-        No closed trades yet.
+        아직 종료된 거래가 없습니다.
       </div>
     );
   }
@@ -38,12 +38,12 @@ export function EquityChart({ points }: { points: EquityPoint[] }) {
     <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
       <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-white">Equity Curve</h2>
-          <p className="text-sm text-slate-500">Closed trades only · {points.length} exits</p>
+          <h2 className="text-lg font-semibold text-white">누적 손익 곡선</h2>
+          <p className="text-sm text-slate-500">종료 거래 기준 · {points.length} exits</p>
         </div>
         {latest ? (
           <div className="text-left sm:text-right">
-            <p className="text-xs uppercase tracking-wide text-slate-500">Latest equity</p>
+            <p className="text-xs uppercase tracking-wide text-slate-500">최근 누적손익</p>
             <p className="text-xl font-semibold text-cyan-200">{formatCurrency(latest.equity)}</p>
           </div>
         ) : null}

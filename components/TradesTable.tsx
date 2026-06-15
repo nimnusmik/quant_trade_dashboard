@@ -7,13 +7,13 @@ export function TradesTable({ trades }: { trades: Trade[] }) {
       <table className="w-full min-w-[760px] text-left text-sm">
         <thead className="bg-slate-900 text-xs uppercase tracking-wide text-slate-500">
           <tr>
-            <th className="px-4 py-3">Time</th>
-            <th className="px-4 py-3">Symbol</th>
-            <th className="px-4 py-3">Side</th>
-            <th className="px-4 py-3">Status</th>
-            <th className="px-4 py-3 text-right">Entry</th>
-            <th className="px-4 py-3 text-right">Exit</th>
-            <th className="px-4 py-3 text-right">PnL</th>
+            <th className="px-4 py-3">시간</th>
+            <th className="px-4 py-3">종목</th>
+            <th className="px-4 py-3">방향</th>
+            <th className="px-4 py-3">상태</th>
+            <th className="px-4 py-3 text-right">진입</th>
+            <th className="px-4 py-3 text-right">청산</th>
+            <th className="px-4 py-3 text-right">손익</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-slate-800">
@@ -27,8 +27,8 @@ export function TradesTable({ trades }: { trades: Trade[] }) {
                   {formatDateTime(trade.exitTime ?? trade.entryTime)}
                 </td>
                 <td className="px-4 py-3 font-medium text-white">{trade.symbol}</td>
-                <td className="px-4 py-3 capitalize">{trade.side}</td>
-                <td className="px-4 py-3 capitalize">{trade.status}</td>
+                <td className="px-4 py-3">{trade.side === "long" ? "롱" : "숏"}</td>
+                <td className="px-4 py-3">{trade.status === "open" ? "오픈" : "종료"}</td>
                 <td className="px-4 py-3 text-right">{formatCurrency(trade.entryPrice)}</td>
                 <td className="px-4 py-3 text-right">
                   {trade.exitPrice === undefined ? "—" : formatCurrency(trade.exitPrice)}
