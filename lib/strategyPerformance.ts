@@ -1,4 +1,4 @@
-import type { StrategyPerformance, SymbolPerformance, Trade, TradeSide } from "@/lib/types";
+import type { StrategyPerformance, StrategySymbolPerformance, SymbolPerformance, Trade, TradeSide } from "@/lib/types";
 
 const DEFAULT_SIDE_COUNTS: Record<TradeSide, number> = { long: 0, short: 0 };
 
@@ -70,6 +70,58 @@ export function calculateSymbolLeaderboard(trades: Trade[]): SymbolPerformance[]
   }
 
   return rankSymbols(Array.from(bySymbol.values()));
+}
+
+export function calculateStrategySymbolMatrix(trades: Trade[]): StrategySymbolPerformance[] {
+  const byPair = new Map<string, StrategySymbolPerformance>();
+
+  for (const trade of trades) {
+    if (trade.status !== "closed" || trade.realizedPnl === undefined) {
+      continue;
+    }
+
+    const strategy = trade.strategy ?? "Unknown";
+    const key = `${strategy}::${trade.symbol}`;
+    const current = byPair.get(key) ?? {
+      strategy,
+      symbol: trade.symbol,
+      trades: 0,
+      wins: 0,
+      losses: 0,
+      winRate: 0,
+      totalRealizedPnl: 0,
+      averagePnl: 0,
+      profitFactor: 0,
+      grossWin: 0,
+      grossLoss: 0,
+      sides: { ...DEFAULT_SIDE_COUNTS },
+      verdict: "Mixed",
+    };
+
+    current.trades += 1;
+    current.totalRealizedPnl += trade.realizedPnl;
+    current.sides[trade.side] += 1;
+    if (trade.realizedPnl > 0) {
+      current.wins += 1;
+      current.grossWin += trade.realizedPnl;
+    } else {
+      current.losses += 1;
+      current.grossLoss += Math.abs(trade.realizedPnl);
+    }
+
+    current.winRate = current.trades > 0 ? current.wins / current.trades : 0;
+    current.averagePnl = current.trades > 0 ? current.totalRealizedPnl / current.trades : 0;
+    current.profitFactor = calculateProfitFactor(current.grossWin, current.grossLoss);
+    current.verdict = getPairVerdict(current);
+    byPair.set(key, current);
+  }
+
+  return Array.from(byPair.values()).sort((a, b) => (
+    b.totalRealizedPnl - a.totalRealizedPnl ||
+    b.profitFactor - a.profitFactor ||
+    a.strategy.localeCompare(b.strategy) ||
+    a.symbol.localeCompare(b.symbol)
+  ));
 }
 
 function createMutableStrategy(strategy: string): MutableStrategyPerformance {
@@ -196,6 +248,19 @@ function getVerdict(strategy: StrategyPerformance, rankIndex: number): string {
     return "Dragging";
   }
   return "Weak / needs filtering";
+}
+
+function getPairVerdict(pair: StrategySymbolPerformance): StrategySymbolPerformance["verdict"] {
+  if (pair.totalRealizedPnl > 0 && pair.profitFactor >= 1.5 && pair.winRate >= 0.4) {
+    return "Strong";
+  }
+  if (pair.totalRealizedPnl > 0) {
+    return "Promising";
+  }
+  if (pair.totalRealizedPnl < 0 && pair.profitFactor < 1) {
+    return "Weak";
+  }
+  return "Mixed";
 }
 
 function getSuggestedAction(strategy: StrategyPerformance, rankIndex: number): string {

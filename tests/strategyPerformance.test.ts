@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   calculateStrategyLeaderboard,
+  calculateStrategySymbolMatrix,
   calculateSymbolLeaderboard,
   getBestStrategy,
 } from "@/lib/strategyPerformance";
@@ -97,6 +98,36 @@ describe("strategy performance", () => {
     expect(calculateSymbolLeaderboard(trades)).toMatchObject([
       { symbol: "BTCUSDT", trades: 2, wins: 1, totalRealizedPnl: 3 },
       { symbol: "ETHUSDT", trades: 1, wins: 0, totalRealizedPnl: -1 },
+    ]);
+  });
+
+  it("ranks strategy-symbol combinations", () => {
+    expect(calculateStrategySymbolMatrix(trades)).toMatchObject([
+      {
+        strategy: "S8_Relative_Strength_Rotation",
+        symbol: "BTCUSDT",
+        trades: 1,
+        wins: 1,
+        winRate: 1,
+        totalRealizedPnl: 5,
+        verdict: "Strong",
+      },
+      {
+        strategy: "S8_Relative_Strength_Rotation",
+        symbol: "ETHUSDT",
+        trades: 1,
+        wins: 0,
+        totalRealizedPnl: -1,
+        verdict: "Weak",
+      },
+      {
+        strategy: "S2_VWAP_Bounce",
+        symbol: "BTCUSDT",
+        trades: 1,
+        wins: 0,
+        totalRealizedPnl: -2,
+        verdict: "Weak",
+      },
     ]);
   });
 });

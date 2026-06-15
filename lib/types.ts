@@ -137,3 +137,13 @@ export type SymbolPerformance = {
   totalRealizedPnl: number;
   averagePnl: number;
 };
+
+export type StrategySymbolPerformance = SymbolPerformance & {
+  strategy: string;
+  losses: number;
+  profitFactor: number;
+  grossWin: number;
+  grossLoss: number;
+  sides: Record<TradeSide, number>;
+  verdict: "Strong" | "Promising" | "Mixed" | "Weak";
+};

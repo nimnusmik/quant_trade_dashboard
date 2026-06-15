@@ -1,5 +1,5 @@
 import { formatCurrency, formatPercent } from "@/lib/format";
-import type { StrategyPerformance, SymbolPerformance } from "@/lib/types";
+import type { StrategyPerformance, StrategySymbolPerformance, SymbolPerformance } from "@/lib/types";
 
 function formatProfitFactor(value: number): string {
   if (!Number.isFinite(value)) {
@@ -107,12 +107,130 @@ function SymbolPill({ symbol }: { symbol: SymbolPerformance }) {
   );
 }
 
+function verdictColor(verdict: StrategySymbolPerformance["verdict"]): string {
+  if (verdict === "Strong") {
+    return "border-emerald-500/30 bg-emerald-500/10 text-emerald-200";
+  }
+  if (verdict === "Promising") {
+    return "border-cyan-500/30 bg-cyan-500/10 text-cyan-200";
+  }
+  if (verdict === "Weak") {
+    return "border-rose-500/30 bg-rose-500/10 text-rose-200";
+  }
+  return "border-slate-700 bg-slate-950 text-slate-200";
+}
+
+function StrategySymbolMatrix({ pairs }: { pairs: StrategySymbolPerformance[] }) {
+  const strongPairs = pairs.filter((pair) => pair.verdict === "Strong" || pair.verdict === "Promising");
+  const weakPairs = [...pairs].reverse().filter((pair) => pair.verdict === "Weak");
+
+  return (
+    <section className="space-y-4">
+      <div>
+        <h3 className="text-lg font-semibold text-white">Strategy × Symbol fit</h3>
+        <p className="text-sm text-slate-500">
+          전략 전체 평균이 아니라, 어떤 전략이 어떤 종목에서 실제로 통했는지 조합별로 봅니다.
+        </p>
+      </div>
+
+      <div className="grid gap-4 xl:grid-cols-2">
+        <div className="rounded-2xl border border-emerald-500/20 bg-slate-900 p-5">
+          <h4 className="font-semibold text-emerald-200">잘 통한 조합</h4>
+          <div className="mt-4 space-y-3">
+            {strongPairs.slice(0, 12).map((pair) => (
+              <div key={`${pair.strategy}-${pair.symbol}`} className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="font-semibold text-white">{pair.strategy}</p>
+                    <p className="text-sm text-cyan-200">{pair.symbol}</p>
+                  </div>
+                  <span className={`rounded-full border px-2.5 py-1 text-xs ${verdictColor(pair.verdict)}`}>
+                    {pair.verdict}
+                  </span>
+                </div>
+                <p className={`mt-2 text-sm font-semibold ${pnlColor(pair.totalRealizedPnl)}`}>
+                  {formatCurrency(pair.totalRealizedPnl)} · {pair.trades} trades · {formatPercent(pair.winRate)} win · PF {formatProfitFactor(pair.profitFactor)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-rose-500/20 bg-slate-900 p-5">
+          <h4 className="font-semibold text-rose-200">안 맞는 조합</h4>
+          <div className="mt-4 space-y-3">
+            {weakPairs.slice(0, 12).map((pair) => (
+              <div key={`${pair.strategy}-${pair.symbol}`} className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="font-semibold text-white">{pair.strategy}</p>
+                    <p className="text-sm text-cyan-200">{pair.symbol}</p>
+                  </div>
+                  <span className={`rounded-full border px-2.5 py-1 text-xs ${verdictColor(pair.verdict)}`}>
+                    {pair.verdict}
+                  </span>
+                </div>
+                <p className={`mt-2 text-sm font-semibold ${pnlColor(pair.totalRealizedPnl)}`}>
+                  {formatCurrency(pair.totalRealizedPnl)} · {pair.trades} trades · {formatPercent(pair.winRate)} win · PF {formatProfitFactor(pair.profitFactor)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+        <div className="border-b border-slate-800 px-5 py-4">
+          <h4 className="font-semibold text-white">All combinations</h4>
+          <p className="text-sm text-slate-500">Sorted by realized PnL. Use this to decide strategy-symbol allowlists.</p>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left">
+            <thead className="text-xs uppercase tracking-wide text-slate-500">
+              <tr>
+                <th className="px-4 py-3">Strategy</th>
+                <th className="px-4 py-3">Symbol</th>
+                <th className="px-4 py-3">Verdict</th>
+                <th className="px-4 py-3">Trades</th>
+                <th className="px-4 py-3">Win</th>
+                <th className="px-4 py-3">PnL</th>
+                <th className="px-4 py-3">Avg</th>
+                <th className="px-4 py-3">PF</th>
+                <th className="px-4 py-3">Side</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pairs.map((pair) => (
+                <tr key={`${pair.strategy}-${pair.symbol}`} className="border-t border-slate-800">
+                  <td className="px-4 py-3 text-sm font-semibold text-white">{pair.strategy}</td>
+                  <td className="px-4 py-3 text-sm text-cyan-200">{pair.symbol}</td>
+                  <td className="px-4 py-3 text-sm">
+                    <span className={`rounded-full border px-2.5 py-1 text-xs ${verdictColor(pair.verdict)}`}>{pair.verdict}</span>
+                  </td>
+                  <td className="px-4 py-3 text-sm text-slate-300">{pair.trades}</td>
+                  <td className="px-4 py-3 text-sm text-slate-300">{formatPercent(pair.winRate)}</td>
+                  <td className={`px-4 py-3 text-sm font-semibold ${pnlColor(pair.totalRealizedPnl)}`}>{formatCurrency(pair.totalRealizedPnl)}</td>
+                  <td className={`px-4 py-3 text-sm ${pnlColor(pair.averagePnl)}`}>{formatCurrency(pair.averagePnl)}</td>
+                  <td className="px-4 py-3 text-sm text-slate-300">{formatProfitFactor(pair.profitFactor)}</td>
+                  <td className="px-4 py-3 text-xs text-slate-500">{pair.sides.long}L / {pair.sides.short}S</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function StrategyCompetitionPanel({
   strategies,
   symbols,
+  pairs,
 }: {
   strategies: StrategyPerformance[];
   symbols: SymbolPerformance[];
+  pairs: StrategySymbolPerformance[];
 }) {
   const best = strategies[0];
   const worst = strategies.at(-1);
@@ -194,6 +312,8 @@ export function StrategyCompetitionPanel({
           ))}
         </div>
       </section>
+
+      <StrategySymbolMatrix pairs={pairs} />
 
       <section className="space-y-4">
         <div>
