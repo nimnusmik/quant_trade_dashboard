@@ -147,3 +147,67 @@ export type StrategySymbolPerformance = SymbolPerformance & {
   sides: Record<TradeSide, number>;
   verdict: "Strong" | "Promising" | "Mixed" | "Weak";
 };
+
+export type LeagueSide = "long" | "short" | string;
+
+export type PaperLeagueTeam = {
+  rank: number;
+  teamKey: string;
+  strategy: string;
+  symbol: string;
+  timeframe: string;
+  side: LeagueSide;
+  trades: number;
+  winRate: number;
+  totalPnlPct: number;
+  averagePnlPct: number;
+  profitFactor: number;
+  score: number;
+};
+
+export type StrictCandidate = {
+  timeframe: string;
+  strategy: string;
+  symbol: string;
+  label: string;
+  verdict: string;
+  fullTrades: number;
+  fullReturnPct: number;
+  fullProfitFactor: number;
+  holdoutTrades: number;
+  holdoutReturnPct: number;
+  holdoutProfitFactor: number;
+  recentTrades: number;
+  recentReturnPct: number;
+  recentProfitFactor: number;
+  minReturnPct: number;
+  minProfitFactor: number;
+};
+
+export type StrategyLeagueData = {
+  source: {
+    paperLeagueCsv?: string;
+    strictCandidatesCsv?: string;
+  };
+  updatedAt: string;
+  paperLeague: PaperLeagueTeam[];
+  strictCandidates: StrictCandidate[];
+};
+
+export type LeagueVerdict = "유지 후보" | "더 관찰" | "Watch-only" | "제외 후보";
+
+export type DiagnosedPaperLeagueTeam = PaperLeagueTeam & {
+  verdict: LeagueVerdict;
+  reasons: string[];
+  action: string;
+  sampleWarning?: string;
+};
+
+export type TimeframeLeagueSummary = {
+  timeframe: string;
+  teams: number;
+  totalTrades: number;
+  totalPnlPct: number;
+  averageScore: number;
+  bestTeam?: DiagnosedPaperLeagueTeam;
+};

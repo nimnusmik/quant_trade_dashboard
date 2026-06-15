@@ -9,6 +9,7 @@ A Next.js dashboard for monitoring paper-trading performance.
 - Overview dashboard with realized PnL, win rate, open positions, average PnL, and an equity curve chart
 - Trades, Symbols, and Risk pages
 - Monitor page showing all runtime watchlist symbols, active strategies, signal intervals, and representative TP/SL params
+- League page showing the live paper league at `strategy × symbol × timeframe × side` granularity plus separate S1~S100 STRICT backtest candidates
 - Symbol charts with Binance candles plus entry, take-profit, and stop-loss level markers
 - Interactive trade filters for status, side, symbol, strategy, timeframe, and free-text search
 - Tested metric, filter, and symbol-chart helper calculations with Vitest
@@ -18,6 +19,7 @@ A Next.js dashboard for monitoring paper-trading performance.
 ```text
 raw paper_trades.csv -> scripts/export_trades_json.py -> public/data/trades.json -> Next.js dashboard
 quant_trading monitor config -> scripts/export_monitor_universe.py -> public/data/monitor-universe.json -> Next.js dashboard
+quant_trading reports/*.csv -> scripts/export_strategy_league_json.py -> public/data/strategy-league.json -> Next.js dashboard
 Binance public klines -> /symbols chart panels
 ```
 
@@ -57,6 +59,7 @@ Then run:
 ```bash
 python3 scripts/export_trades_json.py
 python3 scripts/export_monitor_universe.py
+python3 scripts/export_strategy_league_json.py
 ```
 
 Default source path:
@@ -83,6 +86,19 @@ Default monitor-universe output path:
 public/data/monitor-universe.json
 ```
 
+Default league sources:
+
+```text
+/Users/sunminkim/Desktop/projects/quant_trading/reports/paper_strategy_timeframe_leaderboard.csv
+/Users/sunminkim/Desktop/projects/quant_trading/reports/s1_to_s100_xrp_multitimeframe_strict.csv
+```
+
+Default league output path:
+
+```text
+public/data/strategy-league.json
+```
+
 ## Metric rules
 
 - Realized PnL uses closed trades only.
@@ -93,3 +109,6 @@ public/data/monitor-universe.json
 - Symbol chart panels prioritize open-position symbols. If there are no open positions, they show all traded symbols.
 - TP/SL markers come from the ledger `tp` and `sl` columns exported as `takeProfit` and `stopLoss`.
 - Monitor coverage is calculated from the exported runtime universe: watched symbols × strategy-specific active intervals.
+- Paper strategy league ranking is evaluated as `strategy × symbol × timeframe × side`, not strategy-only averages.
+- S1~S100 STRICT candidates are shown as backtest candidates and must be judged separately from live paper league evidence.
+- Low-sample paper teams are explicitly warned because 1-trade winners should not outrank stable 30-trade teams without context.

@@ -9,6 +9,7 @@
     "lint": "eslint",
     "export:trades": "python3 scripts/export_trades_json.py",
     "export:monitor": "python3 scripts/export_monitor_universe.py",
+    "export:league": "python3 scripts/export_strategy_league_json.py",
     "test": "vitest run",
     "test:watch": "vitest"
   },

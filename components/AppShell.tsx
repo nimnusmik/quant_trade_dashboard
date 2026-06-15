@@ -4,6 +4,7 @@ const navItems = [
   { href: "/", label: "개요" },
   { href: "/monitor", label: "감시 현황" },
   { href: "/strategies", label: "전략 분석" },
+  { href: "/league", label: "실전 리그" },
   { href: "/trades", label: "거래 내역" },
   { href: "/symbols", label: "종목 차트" },
   { href: "/risk", label: "리스크" },
