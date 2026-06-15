@@ -6,9 +6,10 @@ A Next.js dashboard for monitoring paper-trading performance.
 
 - Normalized trade data contract in `docs/data-contract.md`
 - Sample trade data in `public/data/trades.json`
-- Overview dashboard with realized PnL, win rate, open positions, average PnL, and equity list
+- Overview dashboard with realized PnL, win rate, open positions, average PnL, and an equity curve chart
 - Trades, Symbols, and Risk pages
-- Tested metric calculations with Vitest
+- Interactive trade filters for status, side, symbol, strategy, timeframe, and free-text search
+- Tested metric and filter calculations with Vitest
 
 ## Data flow
 

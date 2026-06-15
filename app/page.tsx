@@ -1,5 +1,5 @@
 import { AppShell } from "@/components/AppShell";
-import { EquityList } from "@/components/EquityList";
+import { EquityChart } from "@/components/EquityChart";
 import { MetricCard } from "@/components/MetricCard";
 import { TradesTable } from "@/components/TradesTable";
 import { formatCurrency, formatPercent } from "@/lib/format";
@@ -39,7 +39,7 @@ export default async function Home() {
         </section>
 
         <section className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
-          <EquityList points={equityCurve} />
+          <EquityChart points={equityCurve} />
           <div className="space-y-4">
             <div>
               <h2 className="text-lg font-semibold text-white">Open Positions</h2>
