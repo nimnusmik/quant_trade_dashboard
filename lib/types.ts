@@ -104,3 +104,28 @@ export type MonitorCoverage = {
   intervalCount: number;
   combinationCount: number;
 };
+
+export type StrategyPerformance = {
+  strategy: string;
+  trades: number;
+  wins: number;
+  losses: number;
+  winRate: number;
+  totalRealizedPnl: number;
+  averagePnl: number;
+  profitFactor: number;
+  grossWin: number;
+  grossLoss: number;
+  symbols: string[];
+  sides: Record<TradeSide, number>;
+  lastExitTime?: string;
+};
+
+export type SymbolPerformance = {
+  symbol: string;
+  trades: number;
+  wins: number;
+  winRate: number;
+  totalRealizedPnl: number;
+  averagePnl: number;
+};
