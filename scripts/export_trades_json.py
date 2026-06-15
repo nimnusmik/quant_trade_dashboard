@@ -75,6 +75,14 @@ def build_trade(trade_id: str, rows: List[Dict[str, str]]) -> Dict[str, object]:
     if timeframe:
         output["timeframe"] = timeframe
 
+    take_profit = parse_float(first_present(entry.get("tp"), exit_row.get("tp") if exit_row else None))
+    if take_profit is not None:
+        output["takeProfit"] = take_profit
+
+    stop_loss = parse_float(first_present(entry.get("sl"), exit_row.get("sl") if exit_row else None))
+    if stop_loss is not None:
+        output["stopLoss"] = stop_loss
+
     if exit_row:
         output["exitTime"] = exit_row["timestamp"]
         exit_price = parse_float(exit_row.get("exit_price"))

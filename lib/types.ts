@@ -18,6 +18,8 @@ export type Trade = {
   realizedPnlPct?: number;
   unrealizedPnl?: number;
   unrealizedPnlPct?: number;
+  takeProfit?: number;
+  stopLoss?: number;
   fee?: number;
   strategy?: string;
   timeframe?: string;
@@ -49,4 +51,31 @@ export type EquityPoint = {
   timestamp: string;
   equity: number;
   pnl: number;
+};
+
+export type PricePoint = {
+  timestamp: string;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+};
+
+export type TradeMarker = {
+  id: string;
+  side: TradeSide;
+  status: TradeStatus;
+  entryPrice: number;
+  exitPrice?: number;
+  takeProfit?: number;
+  stopLoss?: number;
+  strategy?: string;
+  timeframe?: string;
+};
+
+export type SymbolChartModel = {
+  symbol: string;
+  interval: string;
+  candles: PricePoint[];
+  markers: TradeMarker[];
 };

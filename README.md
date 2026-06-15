@@ -8,13 +8,15 @@ A Next.js dashboard for monitoring paper-trading performance.
 - Sample trade data in `public/data/trades.json`
 - Overview dashboard with realized PnL, win rate, open positions, average PnL, and an equity curve chart
 - Trades, Symbols, and Risk pages
+- Symbol charts with Binance candles plus entry, take-profit, and stop-loss level markers
 - Interactive trade filters for status, side, symbol, strategy, timeframe, and free-text search
-- Tested metric and filter calculations with Vitest
+- Tested metric, filter, and symbol-chart helper calculations with Vitest
 
 ## Data flow
 
 ```text
 raw paper_trades.csv -> scripts/export_trades_json.py -> public/data/trades.json -> Next.js dashboard
+Binance public klines -> /symbols chart panels
 ```
 
 The dashboard should read normalized JSON only. Source-specific ledger parsing belongs in the export script, not in React components.
@@ -73,3 +75,5 @@ public/data/trades.json
 - Win rate counts `realizedPnl > 0` as a win.
 - Breakeven and losing closed trades are not wins.
 - Equity curve is ordered by `exitTime` and accumulates realized PnL.
+- Symbol chart panels prioritize open-position symbols. If there are no open positions, they show all traded symbols.
+- TP/SL markers come from the ledger `tp` and `sl` columns exported as `takeProfit` and `stopLoss`.

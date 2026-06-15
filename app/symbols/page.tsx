@@ -1,11 +1,14 @@
 import { AppShell } from "@/components/AppShell";
+import { SymbolCharts } from "@/components/SymbolCharts";
 import { formatCurrency, formatPercent } from "@/lib/format";
 import { calculateSymbolStats } from "@/lib/metrics";
+import { buildSymbolChartModels } from "@/lib/symbolCharts";
 import { loadDashboardTrades } from "@/lib/trades";
 
 export default async function SymbolsPage() {
   const trades = await loadDashboardTrades();
   const stats = calculateSymbolStats(trades);
+  const charts = await buildSymbolChartModels(trades);
 
   return (
     <AppShell>
@@ -13,8 +16,11 @@ export default async function SymbolsPage() {
         <div>
           <p className="text-sm text-cyan-300">Symbols</p>
           <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">Symbol performance</h2>
-          <p className="mt-2 text-slate-400">Closed-trade realized performance grouped by symbol.</p>
+          <p className="mt-2 text-slate-400">
+            Active symbol charts show current price action with entry, take-profit, and stop-loss levels.
+          </p>
         </div>
+        <SymbolCharts charts={charts} />
         <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
           <table className="w-full min-w-[720px] text-left text-sm">
             <thead className="bg-slate-900 text-xs uppercase tracking-wide text-slate-500">
