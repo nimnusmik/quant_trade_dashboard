@@ -119,6 +119,14 @@ export type StrategyPerformance = {
   symbols: string[];
   sides: Record<TradeSide, number>;
   lastExitTime?: string;
+  bestSymbols: SymbolPerformance[];
+  worstSymbols: SymbolPerformance[];
+  diagnosis: {
+    verdict: string;
+    worksBecause: string[];
+    failsBecause: string[];
+    suggestedAction: string;
+  };
 };
 
 export type SymbolPerformance = {

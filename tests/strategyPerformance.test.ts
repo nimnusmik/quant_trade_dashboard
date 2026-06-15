@@ -70,6 +70,14 @@ describe("strategy performance", () => {
         averagePnl: 2,
         profitFactor: 5,
         symbols: ["BTCUSDT", "ETHUSDT"],
+        bestSymbols: [{ symbol: "BTCUSDT", totalRealizedPnl: 5 }],
+        worstSymbols: [{ symbol: "ETHUSDT", totalRealizedPnl: -1 }],
+        diagnosis: {
+          verdict: "Leading",
+          worksBecause: expect.arrayContaining([expect.stringContaining("PnL")]),
+          failsBecause: expect.arrayContaining([expect.stringContaining("ETHUSDT")]),
+          suggestedAction: expect.stringContaining("keep"),
+        },
       },
       {
         strategy: "S2_VWAP_Bounce",

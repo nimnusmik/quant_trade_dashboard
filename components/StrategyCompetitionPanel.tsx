@@ -37,8 +37,57 @@ function StrategyRow({ strategy, rank }: { strategy: StrategyPerformance; rank: 
         {formatCurrency(strategy.averagePnl)}
       </td>
       <td className="px-4 py-4 align-top text-sm text-slate-300">{formatProfitFactor(strategy.profitFactor)}</td>
+      <td className="px-4 py-4 align-top text-sm text-slate-300">
+        <span className="rounded-full border border-slate-700 bg-slate-950 px-2.5 py-1 text-xs text-slate-200">
+          {strategy.diagnosis.verdict}
+        </span>
+        <p className="mt-2 max-w-xs text-xs leading-5 text-slate-500">{strategy.diagnosis.suggestedAction}</p>
+      </td>
       <td className="px-4 py-4 align-top text-xs text-slate-500">{strategy.lastExitTime ?? "—"}</td>
     </tr>
+  );
+}
+
+function StrategyDiagnosisCard({ strategy }: { strategy: StrategyPerformance }) {
+  return (
+    <article className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <p className="text-xs uppercase tracking-wide text-cyan-300">{strategy.diagnosis.verdict}</p>
+          <h3 className="mt-1 text-lg font-semibold text-white">{strategy.strategy}</h3>
+          <p className="mt-1 text-xs text-slate-500">
+            {strategy.trades} trades · {formatPercent(strategy.winRate)} win · PF {formatProfitFactor(strategy.profitFactor)}
+          </p>
+        </div>
+        <div className={`text-lg font-semibold ${pnlColor(strategy.totalRealizedPnl)}`}>
+          {formatCurrency(strategy.totalRealizedPnl)}
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4">
+          <p className="text-sm font-semibold text-emerald-200">왜 잘 먹혔나</p>
+          <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
+            {strategy.diagnosis.worksBecause.map((reason) => (
+              <li key={reason}>• {reason}</li>
+            ))}
+          </ul>
+        </div>
+        <div className="rounded-xl border border-rose-500/20 bg-rose-500/5 p-4">
+          <p className="text-sm font-semibold text-rose-200">왜 안 먹혔나 / 리스크</p>
+          <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
+            {strategy.diagnosis.failsBecause.map((reason) => (
+              <li key={reason}>• {reason}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950/70 p-4">
+        <p className="text-xs uppercase tracking-wide text-slate-500">Action</p>
+        <p className="mt-2 text-sm leading-6 text-slate-300">{strategy.diagnosis.suggestedAction}</p>
+      </div>
+    </article>
   );
 }
 
@@ -78,7 +127,7 @@ export function StrategyCompetitionPanel({
           Which strategy is winning?
         </h2>
         <p className="mt-2 max-w-3xl text-slate-400">
-          종료된 paper trade 기준으로 전략별 PnL, 승률, 평균 손익, Profit Factor를 비교합니다.
+          종료된 paper trade 기준으로 전략별 PnL, 승률, 평균 손익, Profit Factor와 왜 먹혔는지/왜 안 먹혔는지를 같이 비교합니다.
         </p>
       </section>
 
@@ -119,6 +168,7 @@ export function StrategyCompetitionPanel({
                 <th className="px-4 py-3">PnL</th>
                 <th className="px-4 py-3">Avg</th>
                 <th className="px-4 py-3">PF</th>
+                <th className="px-4 py-3">Diagnosis</th>
                 <th className="px-4 py-3">Last exit</th>
               </tr>
             </thead>
@@ -128,6 +178,20 @@ export function StrategyCompetitionPanel({
               ))}
             </tbody>
           </table>
+        </div>
+      </section>
+
+      <section className="space-y-4">
+        <div>
+          <h3 className="text-lg font-semibold text-white">Why each strategy is working or failing</h3>
+          <p className="text-sm text-slate-500">
+            Rule-based diagnosis from realized PnL, win rate, profit factor, side bias, and the best/worst contributing symbols.
+          </p>
+        </div>
+        <div className="grid gap-4 xl:grid-cols-2">
+          {strategies.map((strategy) => (
+            <StrategyDiagnosisCard key={strategy.strategy} strategy={strategy} />
+          ))}
         </div>
       </section>
 
