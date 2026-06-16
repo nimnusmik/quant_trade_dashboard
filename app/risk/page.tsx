@@ -5,6 +5,8 @@ import { formatCurrency } from "@/lib/format";
 import { calculateEquityCurve, calculateMaxDrawdown, getClosedTrades } from "@/lib/metrics";
 import { loadDashboardTrades } from "@/lib/trades";
 
+export const dynamic = "force-dynamic";
+
 export default async function RiskPage() {
   const trades = await loadDashboardTrades();
   const closedTrades = getClosedTrades(trades);

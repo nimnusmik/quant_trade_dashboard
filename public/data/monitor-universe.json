@@ -1,6 +1,6 @@
 {
   "source": "/Users/sunminkim/Desktop/projects/quant_trading",
-  "updatedAt": "2026-06-16T07:35:52+00:00",
+  "updatedAt": "2026-06-16T15:00:52+00:00",
   "symbols": [
     "BNBUSDT",
     "BTCUSDT",
@@ -29,7 +29,12 @@
       "symbols": [
         "BNBUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S12_Trend_04",
@@ -42,7 +47,14 @@
         "ONDOUSDT",
         "SOLUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "ONDOUSDT",
+          "SOLUSDT"
+        ]
+      }
     },
     {
       "key": "S14_Trend_06",
@@ -55,7 +67,15 @@
         "BNBUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "15m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S15_Trend_07",
@@ -69,7 +89,16 @@
         "SOLUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BTCUSDT",
+          "SOLUSDT"
+        ]
+      }
     },
     {
       "key": "S16_Trend_08",
@@ -85,7 +114,17 @@
         "SUIUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "ETHUSDT",
+          "LINKUSDT",
+          "NEARUSDT",
+          "ONDOUSDT",
+          "SUIUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S17_Trend_09",
@@ -96,7 +135,12 @@
       "symbols": [
         "BNBUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S18_Trend_10",
@@ -108,7 +152,13 @@
         "DOGEUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S19_Trend_11",
@@ -120,7 +170,13 @@
         "BNBUSDT",
         "SOLUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "SOLUSDT"
+        ]
+      }
     },
     {
       "key": "S1_EMA_Cross",
@@ -162,6 +218,11 @@
           "tp_pct": 0.03,
           "vwap_tol": null
         }
+      },
+      "symbolsByInterval": {
+        "1h": [
+          "XRPUSDT"
+        ]
       }
     },
     {
@@ -173,7 +234,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S21_Pullback_01",
@@ -184,7 +250,12 @@
       "symbols": [
         "DOGEUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT"
+        ]
+      }
     },
     {
       "key": "S22_Pullback_02",
@@ -199,7 +270,19 @@
         "LINKUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "5m": [
+          "XRPUSDT"
+        ],
+        "15m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BNBUSDT",
+          "LINKUSDT"
+        ]
+      }
     },
     {
       "key": "S23_Pullback_03",
@@ -212,7 +295,14 @@
         "LINKUSDT",
         "SUIUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT",
+          "LINKUSDT",
+          "SUIUSDT"
+        ]
+      }
     },
     {
       "key": "S24_Pullback_04",
@@ -227,7 +317,17 @@
         "SUIUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "15m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BTCUSDT",
+          "SOLUSDT",
+          "SUIUSDT"
+        ]
+      }
     },
     {
       "key": "S25_Pullback_05",
@@ -239,7 +339,13 @@
         "BNBUSDT",
         "ETHUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "ETHUSDT"
+        ]
+      }
     },
     {
       "key": "S26_Pullback_06",
@@ -252,7 +358,15 @@
         "BNBUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "15m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S27_Pullback_07",
@@ -269,7 +383,18 @@
         "SOLUSDT",
         "SUIUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "ONDOUSDT",
+          "SOLUSDT",
+          "SUIUSDT"
+        ]
+      }
     },
     {
       "key": "S28_Pullback_08",
@@ -283,7 +408,16 @@
         "ETHUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "DOGEUSDT",
+          "ETHUSDT"
+        ]
+      }
     },
     {
       "key": "S29_Pullback_09",
@@ -295,7 +429,13 @@
         "DOGEUSDT",
         "SOLUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT",
+          "SOLUSDT"
+        ]
+      }
     },
     {
       "key": "S2_VWAP_Bounce",
@@ -343,6 +483,19 @@
           "tp_pct": 0.02,
           "vwap_tol": null
         }
+      },
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ONDOUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
       }
     },
     {
@@ -357,7 +510,15 @@
         "ONDOUSDT",
         "SUIUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "ETHUSDT",
+          "ONDOUSDT",
+          "SUIUSDT"
+        ]
+      }
     },
     {
       "key": "S31_Pullback_11",
@@ -368,7 +529,12 @@
       "symbols": [
         "BNBUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S32_Pullback_12",
@@ -382,7 +548,15 @@
         "SUIUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S33_Volatility_01",
@@ -397,7 +571,16 @@
         "ONDOUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BTCUSDT",
+          "LINKUSDT",
+          "NEARUSDT",
+          "ONDOUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S34_Volatility_02",
@@ -411,7 +594,15 @@
         "SUIUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "BTCUSDT",
+          "SUIUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S36_Volatility_04",
@@ -422,7 +613,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S38_Volatility_06",
@@ -433,7 +629,12 @@
       "symbols": [
         "BNBUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S39_Volatility_07",
@@ -444,7 +645,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S3_RSI_Extreme",
@@ -492,6 +698,17 @@
           "tp_pct": 0.012,
           "vwap_tol": 0.008
         }
+      },
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "DOGEUSDT",
+          "LINKUSDT",
+          "ONDOUSDT",
+          "SOLUSDT",
+          "SUIUSDT",
+          "XRPUSDT"
+        ]
       }
     },
     {
@@ -505,7 +722,15 @@
         "ONDOUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "15m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "ONDOUSDT"
+        ]
+      }
     },
     {
       "key": "S41_Volatility_09",
@@ -518,7 +743,14 @@
         "DOGEUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "DOGEUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S42_Volatility_10",
@@ -529,7 +761,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S43_Volatility_11",
@@ -540,7 +777,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S44_Volatility_12",
@@ -554,7 +796,18 @@
         "BNBUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "15m": [
+          "XRPUSDT"
+        ],
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S45_MeanReversion_01",
@@ -566,7 +819,15 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "5m": [
+          "XRPUSDT"
+        ],
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S47_MeanReversion_03",
@@ -581,7 +842,16 @@
         "SUIUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BTCUSDT",
+          "DOGEUSDT",
+          "LINKUSDT",
+          "SUIUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S48_MeanReversion_04",
@@ -592,7 +862,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "15m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S49_MeanReversion_05",
@@ -606,7 +881,16 @@
         "ETHUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "DOGEUSDT",
+          "ETHUSDT"
+        ]
+      }
     },
     {
       "key": "S4_Triple_EMA",
@@ -648,6 +932,11 @@
           "tp_pct": 0.05,
           "vwap_tol": null
         }
+      },
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT"
+        ]
       }
     },
     {
@@ -663,7 +952,16 @@
         "SOLUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S51_MeanReversion_07",
@@ -680,7 +978,20 @@
         "ONDOUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "ONDOUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S52_MeanReversion_08",
@@ -693,7 +1004,14 @@
         "DOGEUSDT",
         "ONDOUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ONDOUSDT"
+        ]
+      }
     },
     {
       "key": "S53_MeanReversion_09",
@@ -705,7 +1023,15 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S54_MeanReversion_10",
@@ -722,7 +1048,20 @@
         "SOLUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BTCUSDT",
+          "ETHUSDT",
+          "LINKUSDT",
+          "ONDOUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S59_RelativeStrength_03",
@@ -733,7 +1072,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S5_BB_Squeeze",
@@ -775,6 +1119,11 @@
           "tp_pct": 0.05,
           "vwap_tol": null
         }
+      },
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
       }
     },
     {
@@ -788,7 +1137,14 @@
         "ONDOUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT",
+          "ONDOUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S62_RelativeStrength_06",
@@ -799,7 +1155,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S64_RelativeStrength_08",
@@ -811,7 +1172,13 @@
         "LINKUSDT",
         "ONDOUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "LINKUSDT",
+          "ONDOUSDT"
+        ]
+      }
     },
     {
       "key": "S65_RelativeStrength_09",
@@ -824,7 +1191,14 @@
         "DOGEUSDT",
         "SOLUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "DOGEUSDT",
+          "SOLUSDT"
+        ]
+      }
     },
     {
       "key": "S66_RelativeStrength_10",
@@ -836,7 +1210,13 @@
         "BNBUSDT",
         "DOGEUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "DOGEUSDT"
+        ]
+      }
     },
     {
       "key": "S67_RelativeStrength_11",
@@ -848,7 +1228,13 @@
         "BNBUSDT",
         "SUIUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "SUIUSDT"
+        ]
+      }
     },
     {
       "key": "S6_MACD_Volume",
@@ -894,6 +1280,15 @@
           "tp_pct": 0.012,
           "vwap_tol": null
         }
+      },
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT",
+          "LINKUSDT",
+          "ONDOUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
       }
     },
     {
@@ -908,7 +1303,16 @@
         "SUIUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "15m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BNBUSDT",
+          "SUIUSDT"
+        ]
+      }
     },
     {
       "key": "S71_VolumeCandle_03",
@@ -919,7 +1323,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S72_VolumeCandle_04",
@@ -931,7 +1340,13 @@
         "ONDOUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "ONDOUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S73_VolumeCandle_05",
@@ -946,7 +1361,18 @@
         "SOLUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BNBUSDT",
+          "ETHUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S75_VolumeCandle_07",
@@ -957,7 +1383,12 @@
       "symbols": [
         "SOLUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "SOLUSDT"
+        ]
+      }
     },
     {
       "key": "S76_VolumeCandle_08",
@@ -968,7 +1399,12 @@
       "symbols": [
         "ONDOUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "ONDOUSDT"
+        ]
+      }
     },
     {
       "key": "S77_VolumeCandle_09",
@@ -979,7 +1415,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S78_VolumeCandle_10",
@@ -992,7 +1433,14 @@
         "SOLUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "ONDOUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S79_VolumeCandle_11",
@@ -1006,7 +1454,18 @@
         "BNBUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "15m": [
+          "XRPUSDT"
+        ],
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S7_Retest_Breakout",
@@ -1035,6 +1494,16 @@
           "vol_mult": 1.0,
           "vwap_tol": 0.01
         }
+      },
+      "symbolsByInterval": {
+        "1h": [
+          "BTCUSDT",
+          "DOGEUSDT",
+          "ETHUSDT",
+          "NEARUSDT",
+          "SUIUSDT",
+          "XRPUSDT"
+        ]
       }
     },
     {
@@ -1051,7 +1520,18 @@
         "SOLUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ],
+        "1h": [
+          "BTCUSDT",
+          "ETHUSDT",
+          "ONDOUSDT",
+          "SOLUSDT"
+        ]
+      }
     },
     {
       "key": "S82_Regime_02",
@@ -1063,7 +1543,13 @@
         "BNBUSDT",
         "DOGEUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "DOGEUSDT"
+        ]
+      }
     },
     {
       "key": "S83_Regime_03",
@@ -1077,7 +1563,15 @@
         "NEARUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BTCUSDT",
+          "DOGEUSDT",
+          "NEARUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S84_Regime_04",
@@ -1090,7 +1584,14 @@
         "ONDOUSDT",
         "SUIUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BTCUSDT",
+          "ONDOUSDT",
+          "SUIUSDT"
+        ]
+      }
     },
     {
       "key": "S85_Regime_05",
@@ -1101,7 +1602,12 @@
       "symbols": [
         "ONDOUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "ONDOUSDT"
+        ]
+      }
     },
     {
       "key": "S86_Regime_06",
@@ -1112,7 +1618,12 @@
       "symbols": [
         "DOGEUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT"
+        ]
+      }
     },
     {
       "key": "S87_Regime_07",
@@ -1123,7 +1634,12 @@
       "symbols": [
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "30m": [
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S88_Regime_08",
@@ -1134,7 +1650,12 @@
       "symbols": [
         "LINKUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "LINKUSDT"
+        ]
+      }
     },
     {
       "key": "S8_Relative_Strength_Rotation",
@@ -1160,6 +1681,11 @@
           "tp_pct": 0.02,
           "vol_mult": 1.0
         }
+      },
+      "symbolsByInterval": {
+        "1h": [
+          "XRPUSDT"
+        ]
       }
     },
     {
@@ -1171,7 +1697,12 @@
       "symbols": [
         "ETHUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "ETHUSDT"
+        ]
+      }
     },
     {
       "key": "S92_Defensive_02",
@@ -1183,7 +1714,13 @@
         "BNBUSDT",
         "BTCUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "BTCUSDT"
+        ]
+      }
     },
     {
       "key": "S94_Defensive_04",
@@ -1196,7 +1733,14 @@
         "ONDOUSDT",
         "SOLUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BTCUSDT",
+          "ONDOUSDT",
+          "SOLUSDT"
+        ]
+      }
     },
     {
       "key": "S95_Defensive_05",
@@ -1207,7 +1751,12 @@
       "symbols": [
         "BNBUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT"
+        ]
+      }
     },
     {
       "key": "S96_Defensive_06",
@@ -1220,7 +1769,14 @@
         "SOLUSDT",
         "SUIUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "ONDOUSDT",
+          "SOLUSDT",
+          "SUIUSDT"
+        ]
+      }
     },
     {
       "key": "S98_Defensive_08",
@@ -1235,7 +1791,16 @@
         "SOLUSDT",
         "XRPUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "BNBUSDT",
+          "BTCUSDT",
+          "DOGEUSDT",
+          "SOLUSDT",
+          "XRPUSDT"
+        ]
+      }
     },
     {
       "key": "S99_Defensive_09",
@@ -1248,7 +1813,1086 @@
         "ONDOUSDT",
         "SUIUSDT"
       ],
-      "paramsByInterval": {}
+      "paramsByInterval": {},
+      "symbolsByInterval": {
+        "1h": [
+          "DOGEUSDT",
+          "ONDOUSDT",
+          "SUIUSDT"
+        ]
+      }
+    }
+  ],
+  "combinations": [
+    {
+      "strategy": "S14_Trend_06",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S22_Pullback_02",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S24_Pullback_04",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S26_Pullback_06",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S40_Volatility_08",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S44_Volatility_12",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S48_MeanReversion_04",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S70_VolumeCandle_02",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S79_VolumeCandle_11",
+      "symbol": "XRPUSDT",
+      "timeframe": "15m"
+    },
+    {
+      "strategy": "S10_Trend_02",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S12_Trend_04",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S12_Trend_04",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S12_Trend_04",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S14_Trend_06",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S15_Trend_07",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S15_Trend_07",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S16_Trend_08",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S16_Trend_08",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S16_Trend_08",
+      "symbol": "NEARUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S16_Trend_08",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S16_Trend_08",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S16_Trend_08",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S17_Trend_09",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S18_Trend_10",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S18_Trend_10",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S19_Trend_11",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S19_Trend_11",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S1_EMA_Cross",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S21_Pullback_01",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S22_Pullback_02",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S22_Pullback_02",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S23_Pullback_03",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S23_Pullback_03",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S23_Pullback_03",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S24_Pullback_04",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S24_Pullback_04",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S24_Pullback_04",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S25_Pullback_05",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S25_Pullback_05",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S26_Pullback_06",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S27_Pullback_07",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S27_Pullback_07",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S27_Pullback_07",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S27_Pullback_07",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S27_Pullback_07",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S27_Pullback_07",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S27_Pullback_07",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S28_Pullback_08",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S28_Pullback_08",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S29_Pullback_09",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S29_Pullback_09",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S2_VWAP_Bounce",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S2_VWAP_Bounce",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S2_VWAP_Bounce",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S2_VWAP_Bounce",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S2_VWAP_Bounce",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S2_VWAP_Bounce",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S30_Pullback_10",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S30_Pullback_10",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S30_Pullback_10",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S30_Pullback_10",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S31_Pullback_11",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S32_Pullback_12",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S32_Pullback_12",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S32_Pullback_12",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S32_Pullback_12",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S33_Volatility_01",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S33_Volatility_01",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S33_Volatility_01",
+      "symbol": "NEARUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S33_Volatility_01",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S33_Volatility_01",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S34_Volatility_02",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S34_Volatility_02",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S34_Volatility_02",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S34_Volatility_02",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S38_Volatility_06",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S3_RSI_Extreme",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S3_RSI_Extreme",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S3_RSI_Extreme",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S3_RSI_Extreme",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S3_RSI_Extreme",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S3_RSI_Extreme",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S3_RSI_Extreme",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S40_Volatility_08",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S41_Volatility_09",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S41_Volatility_09",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S41_Volatility_09",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S44_Volatility_12",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S47_MeanReversion_03",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S47_MeanReversion_03",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S47_MeanReversion_03",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S47_MeanReversion_03",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S47_MeanReversion_03",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S49_MeanReversion_05",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S49_MeanReversion_05",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S4_Triple_EMA",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S50_MeanReversion_06",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S50_MeanReversion_06",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S50_MeanReversion_06",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S50_MeanReversion_06",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S50_MeanReversion_06",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S51_MeanReversion_07",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S51_MeanReversion_07",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S51_MeanReversion_07",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S51_MeanReversion_07",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S51_MeanReversion_07",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S51_MeanReversion_07",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S52_MeanReversion_08",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S52_MeanReversion_08",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S52_MeanReversion_08",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S53_MeanReversion_09",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S54_MeanReversion_10",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S54_MeanReversion_10",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S54_MeanReversion_10",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S54_MeanReversion_10",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S54_MeanReversion_10",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S54_MeanReversion_10",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S59_RelativeStrength_03",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S60_RelativeStrength_04",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S60_RelativeStrength_04",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S60_RelativeStrength_04",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S62_RelativeStrength_06",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S64_RelativeStrength_08",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S64_RelativeStrength_08",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S65_RelativeStrength_09",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S65_RelativeStrength_09",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S65_RelativeStrength_09",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S66_RelativeStrength_10",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S66_RelativeStrength_10",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S67_RelativeStrength_11",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S67_RelativeStrength_11",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S6_MACD_Volume",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S6_MACD_Volume",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S6_MACD_Volume",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S6_MACD_Volume",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S6_MACD_Volume",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S70_VolumeCandle_02",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S70_VolumeCandle_02",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S72_VolumeCandle_04",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S72_VolumeCandle_04",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S73_VolumeCandle_05",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S73_VolumeCandle_05",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S73_VolumeCandle_05",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S73_VolumeCandle_05",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S75_VolumeCandle_07",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S76_VolumeCandle_08",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S78_VolumeCandle_10",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S78_VolumeCandle_10",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S78_VolumeCandle_10",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S79_VolumeCandle_11",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S7_Retest_Breakout",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S7_Retest_Breakout",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S7_Retest_Breakout",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S7_Retest_Breakout",
+      "symbol": "NEARUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S7_Retest_Breakout",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S7_Retest_Breakout",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S80_VolumeCandle_12",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S80_VolumeCandle_12",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S80_VolumeCandle_12",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S80_VolumeCandle_12",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S82_Regime_02",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S82_Regime_02",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S83_Regime_03",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S83_Regime_03",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S83_Regime_03",
+      "symbol": "NEARUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S83_Regime_03",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S84_Regime_04",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S84_Regime_04",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S84_Regime_04",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S85_Regime_05",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S86_Regime_06",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S88_Regime_08",
+      "symbol": "LINKUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S8_Relative_Strength_Rotation",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S90_Regime_10",
+      "symbol": "ETHUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S92_Defensive_02",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S92_Defensive_02",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S94_Defensive_04",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S94_Defensive_04",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S94_Defensive_04",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S95_Defensive_05",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S96_Defensive_06",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S96_Defensive_06",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S96_Defensive_06",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S98_Defensive_08",
+      "symbol": "BNBUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S98_Defensive_08",
+      "symbol": "BTCUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S98_Defensive_08",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S98_Defensive_08",
+      "symbol": "SOLUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S98_Defensive_08",
+      "symbol": "XRPUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S99_Defensive_09",
+      "symbol": "DOGEUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S99_Defensive_09",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S99_Defensive_09",
+      "symbol": "SUIUSDT",
+      "timeframe": "1h"
+    },
+    {
+      "strategy": "S15_Trend_07",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S20_Trend_12",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S28_Pullback_08",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S2_VWAP_Bounce",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S36_Volatility_04",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S39_Volatility_07",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S42_Volatility_10",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S43_Volatility_11",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S44_Volatility_12",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S45_MeanReversion_01",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S49_MeanReversion_05",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S51_MeanReversion_07",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S53_MeanReversion_09",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S54_MeanReversion_10",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S5_BB_Squeeze",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S71_VolumeCandle_03",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S73_VolumeCandle_05",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S77_VolumeCandle_09",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S79_VolumeCandle_11",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S80_VolumeCandle_12",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S87_Regime_07",
+      "symbol": "XRPUSDT",
+      "timeframe": "30m"
+    },
+    {
+      "strategy": "S22_Pullback_02",
+      "symbol": "XRPUSDT",
+      "timeframe": "5m"
+    },
+    {
+      "strategy": "S45_MeanReversion_01",
+      "symbol": "XRPUSDT",
+      "timeframe": "5m"
     }
   ]
 }

@@ -5,6 +5,8 @@ import { calculateSymbolStats } from "@/lib/metrics";
 import { buildSymbolChartModels } from "@/lib/symbolCharts";
 import { loadDashboardTrades } from "@/lib/trades";
 
+export const dynamic = "force-dynamic";
+
 export default async function SymbolsPage() {
   const trades = await loadDashboardTrades();
   const stats = calculateSymbolStats(trades);

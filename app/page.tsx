@@ -14,6 +14,8 @@ import { calculateMonitorCoverage, loadMonitorUniverse } from "@/lib/monitorUniv
 import { buildOverviewSymbolChartModels } from "@/lib/symbolCharts";
 import { loadDashboardTrades } from "@/lib/trades";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const trades = await loadDashboardTrades();
   const universe = await loadMonitorUniverse();

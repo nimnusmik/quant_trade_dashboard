@@ -94,7 +94,14 @@ export type MonitorStrategy = {
   label: string;
   intervals: string[];
   symbols: string[];
+  symbolsByInterval?: Record<string, string[]>;
   paramsByInterval: Record<string, StrategyParams>;
+};
+
+export type MonitorCombination = {
+  strategy: string;
+  symbol: string;
+  timeframe: string;
 };
 
 export type MonitorUniverse = {
@@ -103,6 +110,7 @@ export type MonitorUniverse = {
   symbols: string[];
   intervals: string[];
   strategies: MonitorStrategy[];
+  combinations?: MonitorCombination[];
 };
 
 export type MonitorCoverage = {

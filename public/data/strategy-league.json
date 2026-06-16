@@ -3,7 +3,7 @@
     "paperLeagueCsv": "/Users/sunminkim/Desktop/projects/quant_trading/reports/paper_strategy_timeframe_leaderboard.csv",
     "strictCandidatesCsv": "/Users/sunminkim/Desktop/projects/quant_trading/reports/s1_to_s100_multisymbol_multitimeframe_strict.csv"
   },
-  "updatedAt": "2026-06-16T07:35:52.061389+00:00",
+  "updatedAt": "2026-06-16T15:00:52.450407+00:00",
   "paperLeague": [
     {
       "rank": 1,
@@ -371,20 +371,6 @@
     },
     {
       "rank": 27,
-      "teamKey": "S85_Regime_05@1h:ONDOUSDT:long",
-      "strategy": "S85_Regime_05",
-      "symbol": "ONDOUSDT",
-      "timeframe": "1h",
-      "side": "long",
-      "trades": 5,
-      "winRate": 0.6,
-      "totalPnlPct": 1.163,
-      "averagePnlPct": 0.2326,
-      "profitFactor": 1.4182,
-      "score": 2.0542
-    },
-    {
-      "rank": 28,
       "teamKey": "S43_Volatility_11@30m:XRPUSDT:long",
       "strategy": "S43_Volatility_11",
       "symbol": "XRPUSDT",
@@ -398,7 +384,7 @@
       "score": 1.9586
     },
     {
-      "rank": 29,
+      "rank": 28,
       "teamKey": "S70_VolumeCandle_02@15m:XRPUSDT:long",
       "strategy": "S70_VolumeCandle_02",
       "symbol": "XRPUSDT",
@@ -412,7 +398,7 @@
       "score": 1.9074
     },
     {
-      "rank": 30,
+      "rank": 29,
       "teamKey": "S6_MACD_Volume@1h:BTCUSDT:short",
       "strategy": "S6_MACD_Volume",
       "symbol": "BTCUSDT",
@@ -426,7 +412,7 @@
       "score": 1.8501
     },
     {
-      "rank": 31,
+      "rank": 30,
       "teamKey": "S14_Trend_06@15m:XRPUSDT:long",
       "strategy": "S14_Trend_06",
       "symbol": "XRPUSDT",
@@ -440,7 +426,7 @@
       "score": 1.6486
     },
     {
-      "rank": 32,
+      "rank": 31,
       "teamKey": "S8_Relative_Strength_Rotation@1h:BNBUSDT:short",
       "strategy": "S8_Relative_Strength_Rotation",
       "symbol": "BNBUSDT",
@@ -454,7 +440,7 @@
       "score": 1.6245
     },
     {
-      "rank": 33,
+      "rank": 32,
       "teamKey": "S40_Volatility_08@15m:XRPUSDT:long",
       "strategy": "S40_Volatility_08",
       "symbol": "XRPUSDT",
@@ -468,7 +454,7 @@
       "score": 1.4988
     },
     {
-      "rank": 34,
+      "rank": 33,
       "teamKey": "S7_Retest_Breakout@1h:BNBUSDT:short",
       "strategy": "S7_Retest_Breakout",
       "symbol": "BNBUSDT",
@@ -482,7 +468,7 @@
       "score": 1.454
     },
     {
-      "rank": 35,
+      "rank": 34,
       "teamKey": "S2_VWAP_Bounce@1h:NEARUSDT:short",
       "strategy": "S2_VWAP_Bounce",
       "symbol": "NEARUSDT",
@@ -496,7 +482,7 @@
       "score": 1.4439
     },
     {
-      "rank": 36,
+      "rank": 35,
       "teamKey": "S7_Retest_Breakout@1h:NEARUSDT:short",
       "strategy": "S7_Retest_Breakout",
       "symbol": "NEARUSDT",
@@ -510,7 +496,7 @@
       "score": 1.4433
     },
     {
-      "rank": 37,
+      "rank": 36,
       "teamKey": "S7_Retest_Breakout@1h:BTCUSDT:short",
       "strategy": "S7_Retest_Breakout",
       "symbol": "BTCUSDT",
@@ -524,7 +510,7 @@
       "score": 1.4423
     },
     {
-      "rank": 38,
+      "rank": 37,
       "teamKey": "S8_Relative_Strength_Rotation@1h:DOGEUSDT:long",
       "strategy": "S8_Relative_Strength_Rotation",
       "symbol": "DOGEUSDT",
@@ -538,7 +524,7 @@
       "score": 1.4389
     },
     {
-      "rank": 39,
+      "rank": 38,
       "teamKey": "S2_VWAP_Bounce@30m:XRPUSDT:long",
       "strategy": "S2_VWAP_Bounce",
       "symbol": "XRPUSDT",
@@ -552,7 +538,7 @@
       "score": 1.414
     },
     {
-      "rank": 40,
+      "rank": 39,
       "teamKey": "S8_Relative_Strength_Rotation@1h:XRPUSDT:short",
       "strategy": "S8_Relative_Strength_Rotation",
       "symbol": "XRPUSDT",
@@ -566,7 +552,7 @@
       "score": 1.3945
     },
     {
-      "rank": 41,
+      "rank": 40,
       "teamKey": "S8_Relative_Strength_Rotation@1h:XRPUSDT:long",
       "strategy": "S8_Relative_Strength_Rotation",
       "symbol": "XRPUSDT",
@@ -580,7 +566,7 @@
       "score": 1.322
     },
     {
-      "rank": 42,
+      "rank": 41,
       "teamKey": "S2_VWAP_Bounce@1h:BNBUSDT:short",
       "strategy": "S2_VWAP_Bounce",
       "symbol": "BNBUSDT",
@@ -594,7 +580,7 @@
       "score": 1.2347
     },
     {
-      "rank": 43,
+      "rank": 42,
       "teamKey": "S16_Trend_08@1h:SUIUSDT:long",
       "strategy": "S16_Trend_08",
       "symbol": "SUIUSDT",
@@ -608,7 +594,7 @@
       "score": 1.1911
     },
     {
-      "rank": 44,
+      "rank": 43,
       "teamKey": "S24_Pullback_04@15m:XRPUSDT:long",
       "strategy": "S24_Pullback_04",
       "symbol": "XRPUSDT",
@@ -622,7 +608,7 @@
       "score": 1.1646
     },
     {
-      "rank": 45,
+      "rank": 44,
       "teamKey": "S15_Trend_07@1h:BTCUSDT:long",
       "strategy": "S15_Trend_07",
       "symbol": "BTCUSDT",
@@ -636,7 +622,7 @@
       "score": 1.1461
     },
     {
-      "rank": 46,
+      "rank": 45,
       "teamKey": "S24_Pullback_04@1h:BTCUSDT:long",
       "strategy": "S24_Pullback_04",
       "symbol": "BTCUSDT",
@@ -650,7 +636,7 @@
       "score": 1.1461
     },
     {
-      "rank": 47,
+      "rank": 46,
       "teamKey": "S84_Regime_04@1h:BTCUSDT:long",
       "strategy": "S84_Regime_04",
       "symbol": "BTCUSDT",
@@ -664,7 +650,7 @@
       "score": 1.1461
     },
     {
-      "rank": 48,
+      "rank": 47,
       "teamKey": "S24_Pullback_04@1h:SUIUSDT:long",
       "strategy": "S24_Pullback_04",
       "symbol": "SUIUSDT",
@@ -678,7 +664,7 @@
       "score": 1.1358
     },
     {
-      "rank": 49,
+      "rank": 48,
       "teamKey": "S84_Regime_04@1h:SUIUSDT:long",
       "strategy": "S84_Regime_04",
       "symbol": "SUIUSDT",
@@ -692,7 +678,7 @@
       "score": 1.1358
     },
     {
-      "rank": 50,
+      "rank": 49,
       "teamKey": "S54_MeanReversion_10@1h:ETHUSDT:long",
       "strategy": "S54_MeanReversion_10",
       "symbol": "ETHUSDT",
@@ -706,7 +692,7 @@
       "score": 1.1354
     },
     {
-      "rank": 51,
+      "rank": 50,
       "teamKey": "S73_VolumeCandle_05@1h:ETHUSDT:long",
       "strategy": "S73_VolumeCandle_05",
       "symbol": "ETHUSDT",
@@ -720,7 +706,7 @@
       "score": 1.1354
     },
     {
-      "rank": 52,
+      "rank": 51,
       "teamKey": "S80_VolumeCandle_12@1h:ETHUSDT:long",
       "strategy": "S80_VolumeCandle_12",
       "symbol": "ETHUSDT",
@@ -734,7 +720,7 @@
       "score": 1.1354
     },
     {
-      "rank": 53,
+      "rank": 52,
       "teamKey": "S53_MeanReversion_09@30m:XRPUSDT:short",
       "strategy": "S53_MeanReversion_09",
       "symbol": "XRPUSDT",
@@ -748,7 +734,7 @@
       "score": 1.1322
     },
     {
-      "rank": 54,
+      "rank": 53,
       "teamKey": "S26_Pullback_06@15m:XRPUSDT:long",
       "strategy": "S26_Pullback_06",
       "symbol": "XRPUSDT",
@@ -762,7 +748,7 @@
       "score": 1.127
     },
     {
-      "rank": 55,
+      "rank": 54,
       "teamKey": "S12_Trend_04@1h:BNBUSDT:long",
       "strategy": "S12_Trend_04",
       "symbol": "BNBUSDT",
@@ -776,7 +762,7 @@
       "score": 1.126
     },
     {
-      "rank": 56,
+      "rank": 55,
       "teamKey": "S15_Trend_07@30m:XRPUSDT:long",
       "strategy": "S15_Trend_07",
       "symbol": "XRPUSDT",
@@ -790,7 +776,7 @@
       "score": 1.1163
     },
     {
-      "rank": 57,
+      "rank": 56,
       "teamKey": "S73_VolumeCandle_05@30m:XRPUSDT:long",
       "strategy": "S73_VolumeCandle_05",
       "symbol": "XRPUSDT",
@@ -804,7 +790,7 @@
       "score": 1.1163
     },
     {
-      "rank": 58,
+      "rank": 57,
       "teamKey": "S87_Regime_07@30m:XRPUSDT:long",
       "strategy": "S87_Regime_07",
       "symbol": "XRPUSDT",
@@ -818,7 +804,7 @@
       "score": 1.1163
     },
     {
-      "rank": 59,
+      "rank": 58,
       "teamKey": "S44_Volatility_12@1h:BNBUSDT:long",
       "strategy": "S44_Volatility_12",
       "symbol": "BNBUSDT",
@@ -832,7 +818,7 @@
       "score": 0.9602
     },
     {
-      "rank": 60,
+      "rank": 59,
       "teamKey": "S79_VolumeCandle_11@1h:BNBUSDT:long",
       "strategy": "S79_VolumeCandle_11",
       "symbol": "BNBUSDT",
@@ -846,7 +832,7 @@
       "score": 0.9602
     },
     {
-      "rank": 61,
+      "rank": 60,
       "teamKey": "S31_Pullback_11@1h:BNBUSDT:long",
       "strategy": "S31_Pullback_11",
       "symbol": "BNBUSDT",
@@ -860,7 +846,7 @@
       "score": 0.9491
     },
     {
-      "rank": 62,
+      "rank": 61,
       "teamKey": "S70_VolumeCandle_02@1h:BNBUSDT:long",
       "strategy": "S70_VolumeCandle_02",
       "symbol": "BNBUSDT",
@@ -874,7 +860,7 @@
       "score": 0.9491
     },
     {
-      "rank": 63,
+      "rank": 62,
       "teamKey": "S3_RSI_Extreme@1h:SUIUSDT:short",
       "strategy": "S3_RSI_Extreme",
       "symbol": "SUIUSDT",
@@ -888,7 +874,7 @@
       "score": 0.9467
     },
     {
-      "rank": 64,
+      "rank": 63,
       "teamKey": "S17_Trend_09@1h:BNBUSDT:long",
       "strategy": "S17_Trend_09",
       "symbol": "BNBUSDT",
@@ -902,7 +888,7 @@
       "score": 0.9434
     },
     {
-      "rank": 65,
+      "rank": 64,
       "teamKey": "S4_Triple_EMA@1h:NEARUSDT:short",
       "strategy": "S4_Triple_EMA",
       "symbol": "NEARUSDT",
@@ -916,7 +902,7 @@
       "score": 0.9022
     },
     {
-      "rank": 66,
+      "rank": 65,
       "teamKey": "S2_VWAP_Bounce@1h:BTCUSDT:short",
       "strategy": "S2_VWAP_Bounce",
       "symbol": "BTCUSDT",
@@ -930,7 +916,7 @@
       "score": 0.862
     },
     {
-      "rank": 67,
+      "rank": 66,
       "teamKey": "S70_VolumeCandle_02@1h:SUIUSDT:long",
       "strategy": "S70_VolumeCandle_02",
       "symbol": "SUIUSDT",
@@ -944,7 +930,7 @@
       "score": 0.8045
     },
     {
-      "rank": 68,
+      "rank": 67,
       "teamKey": "S3_RSI_Extreme@1h:SOLUSDT:short",
       "strategy": "S3_RSI_Extreme",
       "symbol": "SOLUSDT",
@@ -958,7 +944,7 @@
       "score": 0.7864
     },
     {
-      "rank": 69,
+      "rank": 68,
       "teamKey": "S3_RSI_Extreme@1h:BTCUSDT:short",
       "strategy": "S3_RSI_Extreme",
       "symbol": "BTCUSDT",
@@ -972,7 +958,7 @@
       "score": 0.755
     },
     {
-      "rank": 70,
+      "rank": 69,
       "teamKey": "S3_RSI_Extreme@1h:ETHUSDT:short",
       "strategy": "S3_RSI_Extreme",
       "symbol": "ETHUSDT",
@@ -984,6 +970,20 @@
       "averagePnlPct": 0.2261,
       "profitFactor": 999.0,
       "score": 0.7496
+    },
+    {
+      "rank": 70,
+      "teamKey": "S85_Regime_05@1h:ONDOUSDT:long",
+      "strategy": "S85_Regime_05",
+      "symbol": "ONDOUSDT",
+      "timeframe": "1h",
+      "side": "long",
+      "trades": 6,
+      "winRate": 0.5,
+      "totalPnlPct": -1.1427,
+      "averagePnlPct": -0.1904,
+      "profitFactor": 0.7754,
+      "score": 0.7007
     },
     {
       "rank": 71,

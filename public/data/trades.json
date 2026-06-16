@@ -6496,5 +6496,24 @@
     "realizedPnl": 5.367464905037146,
     "realizedPnlPct": 5.367464905037145,
     "exitReason": "TP 도달 +5.26%"
+  },
+  {
+    "id": "bec9e12be7964ac2acbd28afd445d8a4",
+    "symbol": "ONDOUSDT",
+    "side": "long",
+    "status": "closed",
+    "entryTime": "2026-06-16T12:35:21+00:00",
+    "entryPrice": 0.386,
+    "source": "paper_trades_csv",
+    "quantity": 259.0673575129534,
+    "strategy": "S85_Regime_05",
+    "timeframe": "1h",
+    "takeProfit": 0.39063200000000003,
+    "stopLoss": 0.38214,
+    "exitTime": "2026-06-16T13:10:37+00:00",
+    "exitPrice": 0.3771,
+    "realizedPnl": -2.3056994818652865,
+    "realizedPnlPct": -2.3056994818652865,
+    "exitReason": "SL 도달 -1.00%"
   }
 ]

@@ -39,7 +39,7 @@ export function calculateMonitorCoverage(universe: MonitorUniverse): MonitorCove
     symbolCount: universe.symbols.length,
     strategyCount: universe.strategies.length,
     intervalCount: universe.intervals.length,
-    combinationCount: universe.strategies.reduce(
+    combinationCount: universe.combinations?.length ?? universe.strategies.reduce(
       (total, strategy) => total + strategy.symbols.length * strategy.intervals.length,
       0,
     ),

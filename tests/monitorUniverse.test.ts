@@ -2,12 +2,13 @@ import { mkdtemp, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { describe, expect, it } from "vitest";
+import type { MonitorUniverse } from "@/lib/types";
 import {
   calculateMonitorCoverage,
   readMonitorUniverseFile,
 } from "@/lib/monitorUniverse";
 
-const sampleUniverse = {
+const sampleUniverse: MonitorUniverse = {
   source: "quant_trading",
   updatedAt: "2026-06-15T00:00:00Z",
   symbols: ["BTCUSDT", "ETHUSDT", "XRPUSDT"],
@@ -32,6 +33,11 @@ const sampleUniverse = {
       },
     },
   ],
+  combinations: [
+    { strategy: "S1_EMA_Cross", symbol: "BTCUSDT", timeframe: "1h" },
+    { strategy: "S1_EMA_Cross", symbol: "ETHUSDT", timeframe: "5m" },
+    { strategy: "S8_Relative_Strength_Rotation", symbol: "XRPUSDT", timeframe: "1h" },
+  ],
 };
 
 describe("monitor universe", () => {
@@ -48,7 +54,7 @@ describe("monitor universe", () => {
       symbolCount: 3,
       strategyCount: 2,
       intervalCount: 3,
-      combinationCount: 12,
+      combinationCount: 3,
     });
   });
 });

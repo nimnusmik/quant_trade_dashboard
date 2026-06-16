@@ -69,8 +69,11 @@ export type SupabaseMonitorUniverseRow = {
 };
 
 function getSupabaseClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL;
+  const anonKey =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+    process.env.SUPABASE_ANON_KEY ??
+    process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!url || !anonKey) {
     return null;
@@ -82,7 +85,12 @@ function getSupabaseClient() {
 }
 
 export function isSupabaseConfigured(): boolean {
-  return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
+  return Boolean(
+    (process.env.NEXT_PUBLIC_SUPABASE_URL ?? process.env.SUPABASE_URL) &&
+      (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+        process.env.SUPABASE_ANON_KEY ??
+        process.env.SUPABASE_SERVICE_ROLE_KEY),
+  );
 }
 
 export async function loadTradesFromSupabase(): Promise<Trade[] | null> {
@@ -230,6 +238,11 @@ export function mapMonitorUniverseRows(rows: SupabaseMonitorUniverseRow[]): Moni
   const updatedAt = activeRows.map((row) => row.ts).sort().at(-1) ?? "";
   const source = activeRows.map((row) => asString(row.raw?.source)).find(Boolean) ?? "supabase";
   const byStrategy = new Map<string, MonitorStrategy>();
+  const combinations = activeRows.map((row) => ({
+    strategy: row.strategy,
+    symbol: row.symbol,
+    timeframe: row.timeframe,
+  }));
 
   for (const row of activeRows) {
     const raw = row.raw ?? {};
@@ -238,11 +251,15 @@ export function mapMonitorUniverseRows(rows: SupabaseMonitorUniverseRow[]): Moni
       label: asString(raw.label) ?? row.strategy,
       intervals: [],
       symbols: [],
+      symbolsByInterval: {},
       paramsByInterval: {},
     };
 
     if (!existing.symbols.includes(row.symbol)) existing.symbols.push(row.symbol);
     if (!existing.intervals.includes(row.timeframe)) existing.intervals.push(row.timeframe);
+    const symbolsByInterval = existing.symbolsByInterval ?? {};
+    symbolsByInterval[row.timeframe] = sortedUnique([...(symbolsByInterval[row.timeframe] ?? []), row.symbol]);
+    existing.symbolsByInterval = symbolsByInterval;
 
     const params = raw.paramsByInterval;
     if (isRecord(params)) {
@@ -265,6 +282,7 @@ export function mapMonitorUniverseRows(rows: SupabaseMonitorUniverseRow[]): Moni
       symbols: sortedUnique(strategy.symbols),
       intervals: sortTimeframes(sortedUnique(strategy.intervals)),
     })),
+    combinations,
   };
 }
 

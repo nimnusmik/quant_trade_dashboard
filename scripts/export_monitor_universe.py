@@ -105,7 +105,30 @@ def load_live_params(path: Path) -> dict[str, dict[str, dict[str, Any]]]:
     return timeframes if isinstance(timeframes, dict) else {}
 
 
+def load_env_file(path: Path) -> None:
+    """Load simple KEY=VALUE dotenv entries without adding a dependency.
+
+    Values from the parent process win, so CI or one-off exports can still override
+    the trading runtime .env deliberately.
+    """
+    if not path.exists():
+        return
+    for raw_line in path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if not key or key in os.environ:
+            continue
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {'\"', "'"}:
+            value = value[1:-1]
+        os.environ[key] = value
+
+
 def build_universe(trading_root: Path) -> dict[str, Any]:
+    load_env_file(trading_root / ".env")
     signal_monitor = trading_root / "monitor" / "signal_monitor.py"
     scheduler = trading_root / "monitor" / "scheduler.py"
     strategies_file = trading_root / "strategies.py"
@@ -121,14 +144,23 @@ def build_universe(trading_root: Path) -> dict[str, Any]:
     timeframe_allowlist = parse_strategy_timeframe_allowlist()
 
     strategies = []
+    combinations = []
     for key in active_keys:
         params_by_interval = {
             interval: params_by_strategy[key]
             for interval, params_by_strategy in live_params.items()
             if interval in intervals and isinstance(params_by_strategy, dict) and key in params_by_strategy
         }
+        symbols_by_interval: dict[str, list[str]] = {}
         if timeframe_allowlist:
             strategy_intervals = [interval for interval in intervals if (key, interval) in timeframe_allowlist]
+            for interval in strategy_intervals:
+                allowed_symbols = sorted(timeframe_allowlist.get((key, interval), set()))
+                symbols_by_interval[interval] = allowed_symbols
+                combinations.extend(
+                    {"strategy": key, "symbol": symbol, "timeframe": interval}
+                    for symbol in allowed_symbols
+                )
         else:
             strategy_intervals = [interval for interval in intervals if interval in params_by_interval]
         if not strategy_intervals:
@@ -137,20 +169,24 @@ def build_universe(trading_root: Path) -> dict[str, Any]:
             strategy_intervals = intervals
 
         if timeframe_allowlist:
-            symbols = sorted({
-                symbol
-                for interval in strategy_intervals
-                for symbol in timeframe_allowlist.get((key, interval), set())
-            })
+            symbols = sorted({symbol for values in symbols_by_interval.values() for symbol in values})
         else:
             symbols = sorted(allowlist.get(key, set(watch_symbols)))
-        strategies.append({
+            combinations.extend(
+                {"strategy": key, "symbol": symbol, "timeframe": interval}
+                for interval in strategy_intervals
+                for symbol in symbols
+            )
+        strategy_payload = {
             "key": key,
             "label": strategy_labels.get(key, key),
             "intervals": strategy_intervals,
             "symbols": symbols,
             "paramsByInterval": params_by_interval,
-        })
+        }
+        if symbols_by_interval:
+            strategy_payload["symbolsByInterval"] = symbols_by_interval
+        strategies.append(strategy_payload)
 
     return {
         "source": str(trading_root),
@@ -158,6 +194,10 @@ def build_universe(trading_root: Path) -> dict[str, Any]:
         "symbols": sorted(watch_symbols),
         "intervals": intervals,
         "strategies": strategies,
+        "combinations": sorted(
+            combinations,
+            key=lambda item: (item["timeframe"], item["strategy"], item["symbol"]),
+        ),
     }
 
 

@@ -2,6 +2,8 @@ import { AppShell } from "@/components/AppShell";
 import { TradeExplorer } from "@/components/TradeExplorer";
 import { loadDashboardTrades } from "@/lib/trades";
 
+export const dynamic = "force-dynamic";
+
 export default async function TradesPage() {
   const trades = await loadDashboardTrades();
 

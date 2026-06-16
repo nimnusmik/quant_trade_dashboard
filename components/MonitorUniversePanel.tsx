@@ -31,6 +31,9 @@ function formatParamValue(key: string, value: string | number | boolean | null):
 }
 
 function strategyTotalCombinations(strategy: MonitorStrategy): number {
+  if (strategy.symbolsByInterval) {
+    return Object.values(strategy.symbolsByInterval).reduce((total, symbols) => total + symbols.length, 0);
+  }
   return strategy.symbols.length * strategy.intervals.length;
 }
 
@@ -65,6 +68,22 @@ function StrategyCard({ strategy }: { strategy: MonitorStrategy }) {
           </span>
         ))}
       </div>
+
+      {strategy.symbolsByInterval ? (
+        <div className="mt-4 space-y-2 rounded-xl border border-slate-800 bg-slate-950/70 p-3">
+          <p className="text-xs uppercase tracking-wide text-slate-500">주기별 STRICT 진입 종목</p>
+          {strategy.intervals.map((interval) => (
+            <div key={interval} className="flex flex-wrap items-center gap-2 text-xs">
+              <span className="w-10 font-semibold text-cyan-200">{interval}</span>
+              {(strategy.symbolsByInterval?.[interval] ?? []).map((symbol) => (
+                <span key={`${interval}-${symbol}`} className="rounded-full border border-slate-700 bg-slate-900 px-2 py-0.5 text-slate-300">
+                  {symbol}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      ) : null}
 
       <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950/70 p-3">
         <p className="text-xs uppercase tracking-wide text-slate-500">

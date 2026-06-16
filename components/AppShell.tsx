@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DashboardAutoRefresh } from "@/components/DashboardAutoRefresh";
 
 const navItems = [
   { href: "/", label: "개요" },
@@ -19,17 +20,20 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <p className="text-sm font-medium text-cyan-300">Paper Trading 감시 현황</p>
             <h1 className="text-2xl font-semibold tracking-tight">퀀트 트레이딩 대시보드</h1>
           </div>
-          <nav className="flex flex-wrap gap-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-400 hover:text-cyan-200"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="flex flex-col items-start gap-3 md:items-end">
+            <DashboardAutoRefresh />
+            <nav className="flex flex-wrap gap-2 md:justify-end">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-400 hover:text-cyan-200"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
       </header>
       <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>

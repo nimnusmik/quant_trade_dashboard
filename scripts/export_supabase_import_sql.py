@@ -168,25 +168,37 @@ def monitor_rows(universe: dict[str, Any]) -> list[str]:
             "paramsByInterval": strategy.get("paramsByInterval") or {},
             "source": source,
         }
-        for symbol in strategy.get("symbols", []):
-            for timeframe in strategy.get("intervals", []):
-                rows.append(
-                    "(" + ", ".join(
-                        [
-                            q(updated_at),
-                            q(strategy.get("key") or "unknown"),
-                            q(symbol),
-                            q(timeframe),
-                            q("both"),
-                            q("runtime_monitor"),
-                            q("monitor_config"),
-                            "null",
-                            q(strategy.get("label") or strategy.get("key")),
-                            "true",
-                            sql_json(raw),
-                        ]
-                    ) + ")"
-                )
+        symbols_by_interval = strategy.get("symbolsByInterval") or {}
+        if isinstance(symbols_by_interval, dict) and symbols_by_interval:
+            pairs = [
+                (symbol, timeframe)
+                for timeframe in strategy.get("intervals", [])
+                for symbol in symbols_by_interval.get(timeframe, [])
+            ]
+        else:
+            pairs = [
+                (symbol, timeframe)
+                for symbol in strategy.get("symbols", [])
+                for timeframe in strategy.get("intervals", [])
+            ]
+        for symbol, timeframe in pairs:
+            rows.append(
+                "(" + ", ".join(
+                    [
+                        q(updated_at),
+                        q(strategy.get("key") or "unknown"),
+                        q(symbol),
+                        q(timeframe),
+                        q("both"),
+                        q("runtime_monitor"),
+                        q("monitor_config"),
+                        "null",
+                        q(strategy.get("label") or strategy.get("key")),
+                        "true",
+                        sql_json(raw),
+                    ]
+                ) + ")"
+            )
     return rows
 
 

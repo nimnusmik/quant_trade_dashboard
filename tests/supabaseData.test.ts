@@ -165,8 +165,13 @@ describe("Supabase data mapping", () => {
           label: "EMA 크로스 추세추종",
           intervals: ["1h"],
           symbols: ["BTCUSDT", "ETHUSDT"],
+          symbolsByInterval: { "1h": ["BTCUSDT", "ETHUSDT"] },
           paramsByInterval: { "1h": { tp_pct: 0.05 } },
         },
+      ],
+      combinations: [
+        { strategy: "S1_EMA_Cross", symbol: "BTCUSDT", timeframe: "1h" },
+        { strategy: "S1_EMA_Cross", symbol: "ETHUSDT", timeframe: "1h" },
       ],
     });
   });
