@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -27,7 +28,8 @@ def as_int(value: str | None) -> int:
 def as_float(value: str | None) -> float:
     if value is None or value == "":
         return 0.0
-    return float(value)
+    parsed = float(value)
+    return parsed if math.isfinite(parsed) else 0.0
 
 
 def read_paper_league(path: Path) -> list[dict[str, Any]]:

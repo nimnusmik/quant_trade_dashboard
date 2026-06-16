@@ -3,7 +3,7 @@
     "paperLeagueCsv": "/Users/sunminkim/Desktop/projects/quant_trading/reports/paper_strategy_timeframe_leaderboard.csv",
     "strictCandidatesCsv": "/Users/sunminkim/Desktop/projects/quant_trading/reports/s1_to_s100_multisymbol_multitimeframe_strict.csv"
   },
-  "updatedAt": "2026-06-16T05:50:13.653136+00:00",
+  "updatedAt": "2026-06-16T06:16:34.109179+00:00",
   "paperLeague": [
     {
       "rank": 1,
@@ -3487,7 +3487,7 @@
       "holdoutProfitFactor": 1.63,
       "recentTrades": 4,
       "recentReturnPct": 6.05,
-      "recentProfitFactor": Infinity,
+      "recentProfitFactor": 0.0,
       "minReturnPct": 0.0,
       "minProfitFactor": 0.0
     },
@@ -3754,10 +3754,10 @@
       "fullProfitFactor": 0.65,
       "holdoutTrades": 5,
       "holdoutReturnPct": 7.62,
-      "holdoutProfitFactor": Infinity,
+      "holdoutProfitFactor": 0.0,
       "recentTrades": 3,
       "recentReturnPct": 4.51,
-      "recentProfitFactor": Infinity,
+      "recentProfitFactor": 0.0,
       "minReturnPct": 0.0,
       "minProfitFactor": 0.0
     },
