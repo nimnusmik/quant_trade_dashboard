@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { getActiveChartSymbols, getSymbolTradeMarkers } from "@/lib/symbolCharts";
-import type { Trade } from "@/lib/types";
+import { getActiveChartSymbols, getOverviewChartSymbols, getSymbolRuntimeStrategies, getSymbolTradeMarkers } from "@/lib/symbolCharts";
+import type { MonitorUniverse, Trade } from "@/lib/types";
 
 const trades: Trade[] = [
   {
@@ -40,6 +40,29 @@ const trades: Trade[] = [
   },
 ];
 
+const universe: MonitorUniverse = {
+  source: "test",
+  updatedAt: "2026-06-16T00:00:00Z",
+  symbols: ["BTCUSDT", "ETHUSDT", "SOLUSDT", "XRPUSDT"],
+  intervals: ["15m", "1h"],
+  strategies: [
+    {
+      key: "S10_Trend_02",
+      label: "추세 02",
+      symbols: ["BTCUSDT", "SOLUSDT"],
+      intervals: ["1h"],
+      paramsByInterval: {},
+    },
+    {
+      key: "S53_MeanReversion_09",
+      label: "평균회귀 09",
+      symbols: ["XRPUSDT"],
+      intervals: ["15m", "30m"],
+      paramsByInterval: {},
+    },
+  ],
+};
+
 describe("symbol chart helpers", () => {
   it("prioritizes symbols with open trades for chart panels", () => {
     expect(getActiveChartSymbols(trades)).toEqual(["ETHUSDT", "XRPUSDT"]);
@@ -76,6 +99,20 @@ describe("symbol chart helpers", () => {
         exitPrice: 101_500,
         takeProfit: 101_500,
         stopLoss: 99_500,
+      },
+    ]);
+  });
+
+  it("uses runtime symbols for overview tabs while keeping open-position symbols first", () => {
+    expect(getOverviewChartSymbols(trades, universe.symbols)).toEqual(["ETHUSDT", "XRPUSDT", "BTCUSDT", "SOLUSDT"]);
+  });
+
+  it("maps active runtime strategies to the selected symbol", () => {
+    expect(getSymbolRuntimeStrategies(universe, "XRPUSDT")).toEqual([
+      {
+        key: "S53_MeanReversion_09",
+        label: "평균회귀 09",
+        intervals: ["15m", "30m"],
       },
     ]);
   });

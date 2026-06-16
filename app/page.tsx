@@ -1,6 +1,7 @@
 import { AppShell } from "@/components/AppShell";
 import { EquityChart } from "@/components/EquityChart";
 import { MetricCard } from "@/components/MetricCard";
+import { OverviewSymbolTabs } from "@/components/OverviewSymbolTabs";
 import { TradesTable } from "@/components/TradesTable";
 import { formatCurrency, formatPercent } from "@/lib/format";
 import {
@@ -10,6 +11,7 @@ import {
   getOpenTrades,
 } from "@/lib/metrics";
 import { calculateMonitorCoverage, loadMonitorUniverse } from "@/lib/monitorUniverse";
+import { buildOverviewSymbolChartModels } from "@/lib/symbolCharts";
 import { loadDashboardTrades } from "@/lib/trades";
 
 export default async function Home() {
@@ -18,6 +20,7 @@ export default async function Home() {
   const summary = calculateSummaryMetrics(trades);
   const coverage = calculateMonitorCoverage(universe);
   const equityCurve = calculateEquityCurve(trades);
+  const overviewCharts = await buildOverviewSymbolChartModels(trades, universe);
   const openTrades = getOpenTrades(trades);
   const recentClosedTrades = getClosedTrades(trades).slice(-5).toReversed();
 
@@ -47,6 +50,8 @@ export default async function Home() {
           <MetricCard label="신호 주기" value={universe.intervals.join(", ")} helper="예약 감시 주기" />
           <MetricCard label="신호 체크 조합" value={String(coverage.combinationCount)} helper="종목 × 전략 × 주기" />
         </section>
+
+        <OverviewSymbolTabs charts={overviewCharts} />
 
         <section className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
           <EquityChart points={equityCurve} />

@@ -1,4 +1,4 @@
-import type { PricePoint, SymbolChartModel, Trade, TradeMarker } from "@/lib/types";
+import type { MonitorUniverse, PricePoint, SymbolChartModel, SymbolRuntimeStrategy, Trade, TradeMarker } from "@/lib/types";
 
 const DEFAULT_INTERVAL = "1h";
 const DEFAULT_LIMIT = 96;
@@ -36,11 +36,53 @@ export function getSymbolTradeMarkers(trades: Trade[], symbol: string): TradeMar
 export async function buildSymbolChartModels(trades: Trade[]): Promise<SymbolChartModel[]> {
   const symbols = getActiveChartSymbols(trades);
 
+  return buildChartsForSymbols(trades, symbols);
+}
+
+export function getOverviewChartSymbols(trades: Trade[], runtimeSymbols: string[]): string[] {
+  const uniqueRuntimeSymbols = uniqueSorted(runtimeSymbols);
+  if (uniqueRuntimeSymbols.length === 0) {
+    return getActiveChartSymbols(trades);
+  }
+
+  const openSymbols = new Set(trades.filter((trade) => trade.status === "open").map((trade) => trade.symbol));
+  return uniqueRuntimeSymbols.toSorted((left, right) => {
+    const leftOpen = openSymbols.has(left) ? 0 : 1;
+    const rightOpen = openSymbols.has(right) ? 0 : 1;
+    return leftOpen - rightOpen || left.localeCompare(right);
+  });
+}
+
+export function getSymbolRuntimeStrategies(universe: MonitorUniverse, symbol: string): SymbolRuntimeStrategy[] {
+  return universe.strategies
+    .filter((strategy) => strategy.symbols.includes(symbol))
+    .map((strategy) => ({
+      key: strategy.key,
+      label: strategy.label,
+      intervals: strategy.intervals,
+    }))
+    .toSorted((left, right) => left.key.localeCompare(right.key));
+}
+
+export async function buildOverviewSymbolChartModels(
+  trades: Trade[],
+  universe: MonitorUniverse,
+): Promise<SymbolChartModel[]> {
+  const symbols = getOverviewChartSymbols(trades, universe.symbols);
+  return buildChartsForSymbols(trades, symbols, universe);
+}
+
+async function buildChartsForSymbols(
+  trades: Trade[],
+  symbols: string[],
+  universe?: MonitorUniverse,
+): Promise<SymbolChartModel[]> {
   return Promise.all(
     symbols.map(async (symbol) => {
       const symbolTrades = trades.filter((trade) => trade.symbol === symbol);
       const markers = getSymbolTradeMarkers(trades, symbol);
-      const interval = markers[0]?.timeframe ?? symbolTrades[0]?.timeframe ?? DEFAULT_INTERVAL;
+      const activeStrategies = universe ? getSymbolRuntimeStrategies(universe, symbol) : undefined;
+      const interval = markers[0]?.timeframe ?? activeStrategies?.[0]?.intervals[0] ?? symbolTrades[0]?.timeframe ?? DEFAULT_INTERVAL;
       const candles = await loadSymbolCandles(symbol, interval, symbolTrades);
 
       return {
@@ -48,6 +90,7 @@ export async function buildSymbolChartModels(trades: Trade[]): Promise<SymbolCha
         interval,
         candles,
         markers,
+        activeStrategies,
       };
     }),
   );

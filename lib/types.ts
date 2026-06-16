@@ -73,11 +73,18 @@ export type TradeMarker = {
   timeframe?: string;
 };
 
+export type SymbolRuntimeStrategy = {
+  key: string;
+  label: string;
+  intervals: string[];
+};
+
 export type SymbolChartModel = {
   symbol: string;
   interval: string;
   candles: PricePoint[];
   markers: TradeMarker[];
+  activeStrategies?: SymbolRuntimeStrategy[];
 };
 
 export type StrategyParams = Record<string, string | number | boolean | null>;
