@@ -44,8 +44,19 @@ def sql_bool(value: bool | None) -> str:
     return "true" if value else "false"
 
 
+def sanitize_json(value: Any) -> Any:
+    if isinstance(value, float):
+        return value if math.isfinite(value) else None
+    if isinstance(value, list):
+        return [sanitize_json(item) for item in value]
+    if isinstance(value, dict):
+        return {key: sanitize_json(item) for key, item in value.items()}
+    return value
+
+
 def sql_json(value: Any) -> str:
-    return sql_string(json.dumps(value, ensure_ascii=False, separators=(",", ":"))) + "::jsonb"
+    safe_value = sanitize_json(value)
+    return sql_string(json.dumps(safe_value, ensure_ascii=False, separators=(",", ":"))) + "::jsonb"
 
 
 def q(value: Any) -> str:
