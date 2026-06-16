@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { loadStrategyLeagueFromSupabase } from "@/lib/supabaseData";
 import type {
   DiagnosedPaperLeagueTeam,
   LeagueVerdict,
@@ -34,6 +35,15 @@ export async function readStrategyLeagueFile(filePath: string): Promise<Strategy
 }
 
 export async function loadStrategyLeagueData(): Promise<StrategyLeagueData> {
+  try {
+    const supabaseData = await loadStrategyLeagueFromSupabase();
+    if (supabaseData) {
+      return supabaseData;
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+
   const leaguePath = join(process.cwd(), "public", "data", "strategy-league.json");
   try {
     return await readStrategyLeagueFile(leaguePath);

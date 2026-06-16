@@ -1,0 +1,1254 @@
+{
+  "source": "/Users/sunminkim/Desktop/projects/quant_trading",
+  "updatedAt": "2026-06-16T05:50:13+00:00",
+  "symbols": [
+    "BNBUSDT",
+    "BTCUSDT",
+    "DOGEUSDT",
+    "ETHUSDT",
+    "LINKUSDT",
+    "NEARUSDT",
+    "ONDOUSDT",
+    "SOLUSDT",
+    "SUIUSDT",
+    "XRPUSDT"
+  ],
+  "intervals": [
+    "5m",
+    "15m",
+    "30m",
+    "1h"
+  ],
+  "strategies": [
+    {
+      "key": "S10_Trend_02",
+      "label": "S10_Trend_02",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S12_Trend_04",
+      "label": "S12_Trend_04",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "ONDOUSDT",
+        "SOLUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S14_Trend_06",
+      "label": "S14_Trend_06",
+      "intervals": [
+        "15m",
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S15_Trend_07",
+      "label": "S15_Trend_07",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S16_Trend_08",
+      "label": "S16_Trend_08",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "ETHUSDT",
+        "LINKUSDT",
+        "NEARUSDT",
+        "ONDOUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S17_Trend_09",
+      "label": "S17_Trend_09",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S18_Trend_10",
+      "label": "S18_Trend_10",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S19_Trend_11",
+      "label": "S19_Trend_11",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "SOLUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S1_EMA_Cross",
+      "label": "EMA 크로스 추세추종",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {
+        "1h": {
+          "cooldown": 5,
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "max_hold": 96,
+          "rsi_period": 14,
+          "sl_pct": 0.002,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        },
+        "30m": {
+          "cooldown": 5,
+          "ema_fast": 9,
+          "ema_slow": 21,
+          "max_hold": 96,
+          "rsi_period": 9,
+          "sl_pct": 0.02,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        },
+        "5m": {
+          "cooldown": 2,
+          "ema_fast": 21,
+          "ema_slow": 55,
+          "max_hold": 96,
+          "rsi_period": 14,
+          "sl_pct": 0.02,
+          "tp_pct": 0.03,
+          "vwap_tol": null
+        }
+      }
+    },
+    {
+      "key": "S20_Trend_12",
+      "label": "S20_Trend_12",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S21_Pullback_01",
+      "label": "S21_Pullback_01",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S22_Pullback_02",
+      "label": "S22_Pullback_02",
+      "intervals": [
+        "5m",
+        "15m",
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "LINKUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S23_Pullback_03",
+      "label": "S23_Pullback_03",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT",
+        "LINKUSDT",
+        "SUIUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S24_Pullback_04",
+      "label": "S24_Pullback_04",
+      "intervals": [
+        "15m",
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "SOLUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S25_Pullback_05",
+      "label": "S25_Pullback_05",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "ETHUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S26_Pullback_06",
+      "label": "S26_Pullback_06",
+      "intervals": [
+        "15m",
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S27_Pullback_07",
+      "label": "S27_Pullback_07",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ETHUSDT",
+        "ONDOUSDT",
+        "SOLUSDT",
+        "SUIUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S28_Pullback_08",
+      "label": "S28_Pullback_08",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT",
+        "ETHUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S29_Pullback_09",
+      "label": "S29_Pullback_09",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT",
+        "SOLUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S2_VWAP_Bounce",
+      "label": "VWAP 바운스 평균회귀",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ONDOUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {
+        "1h": {
+          "cooldown": 2,
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "max_hold": 12,
+          "rsi_period": 9,
+          "sl_pct": 0.002,
+          "tp_pct": 0.015,
+          "vwap_tol": null
+        },
+        "30m": {
+          "cooldown": 3,
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "max_hold": 48,
+          "rsi_period": 14,
+          "sl_pct": 0.002,
+          "tp_pct": 0.02,
+          "vwap_tol": null
+        },
+        "5m": {
+          "cooldown": 3,
+          "ema_fast": 21,
+          "ema_slow": 55,
+          "max_hold": 96,
+          "rsi_period": 9,
+          "sl_pct": 0.002,
+          "tp_pct": 0.02,
+          "vwap_tol": null
+        }
+      }
+    },
+    {
+      "key": "S30_Pullback_10",
+      "label": "S30_Pullback_10",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "ETHUSDT",
+        "ONDOUSDT",
+        "SUIUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S31_Pullback_11",
+      "label": "S31_Pullback_11",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S32_Pullback_12",
+      "label": "S32_Pullback_12",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "SOLUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S33_Volatility_01",
+      "label": "S33_Volatility_01",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "LINKUSDT",
+        "NEARUSDT",
+        "ONDOUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S34_Volatility_02",
+      "label": "S34_Volatility_02",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "BTCUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S36_Volatility_04",
+      "label": "S36_Volatility_04",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S38_Volatility_06",
+      "label": "S38_Volatility_06",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S39_Volatility_07",
+      "label": "S39_Volatility_07",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S3_RSI_Extreme",
+      "label": "RSI 극단 역추세",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "DOGEUSDT",
+        "LINKUSDT",
+        "ONDOUSDT",
+        "SOLUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {
+        "1h": {
+          "cooldown": 3,
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "max_hold": 12,
+          "rsi_period": 7,
+          "sl_pct": 0.002,
+          "tp_pct": 0.05,
+          "vwap_tol": 0.02
+        },
+        "30m": {
+          "cooldown": 5,
+          "ema_fast": 21,
+          "ema_slow": 55,
+          "max_hold": 96,
+          "rsi_period": 7,
+          "sl_pct": 0.005,
+          "tp_pct": 0.05,
+          "vwap_tol": 0.01
+        },
+        "5m": {
+          "cooldown": 3,
+          "ema_fast": 21,
+          "ema_slow": 55,
+          "max_hold": 48,
+          "rsi_period": 14,
+          "sl_pct": 0.02,
+          "tp_pct": 0.012,
+          "vwap_tol": 0.008
+        }
+      }
+    },
+    {
+      "key": "S40_Volatility_08",
+      "label": "S40_Volatility_08",
+      "intervals": [
+        "15m",
+        "1h"
+      ],
+      "symbols": [
+        "ONDOUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S41_Volatility_09",
+      "label": "S41_Volatility_09",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "DOGEUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S42_Volatility_10",
+      "label": "S42_Volatility_10",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S43_Volatility_11",
+      "label": "S43_Volatility_11",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S44_Volatility_12",
+      "label": "S44_Volatility_12",
+      "intervals": [
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S45_MeanReversion_01",
+      "label": "S45_MeanReversion_01",
+      "intervals": [
+        "5m",
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S47_MeanReversion_03",
+      "label": "S47_MeanReversion_03",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "DOGEUSDT",
+        "LINKUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S48_MeanReversion_04",
+      "label": "S48_MeanReversion_04",
+      "intervals": [
+        "15m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S49_MeanReversion_05",
+      "label": "S49_MeanReversion_05",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT",
+        "ETHUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S4_Triple_EMA",
+      "label": "3중 EMA 눌림매수",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT"
+      ],
+      "paramsByInterval": {
+        "1h": {
+          "cooldown": 5,
+          "ema_fast": 9,
+          "ema_slow": 21,
+          "max_hold": 24,
+          "rsi_period": 14,
+          "sl_pct": 0.01,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        },
+        "30m": {
+          "cooldown": 3,
+          "ema_fast": 21,
+          "ema_slow": 55,
+          "max_hold": 96,
+          "rsi_period": 7,
+          "sl_pct": 0.01,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        },
+        "5m": {
+          "cooldown": 3,
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "max_hold": 48,
+          "rsi_period": 9,
+          "sl_pct": 0.01,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        }
+      }
+    },
+    {
+      "key": "S50_MeanReversion_06",
+      "label": "S50_MeanReversion_06",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S51_MeanReversion_07",
+      "label": "S51_MeanReversion_07",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ETHUSDT",
+        "LINKUSDT",
+        "ONDOUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S52_MeanReversion_08",
+      "label": "S52_MeanReversion_08",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ONDOUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S53_MeanReversion_09",
+      "label": "S53_MeanReversion_09",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S54_MeanReversion_10",
+      "label": "S54_MeanReversion_10",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "ETHUSDT",
+        "LINKUSDT",
+        "ONDOUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S59_RelativeStrength_03",
+      "label": "S59_RelativeStrength_03",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S5_BB_Squeeze",
+      "label": "볼린저 스퀴즈",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {
+        "1h": {
+          "cooldown": 5,
+          "ema_fast": 9,
+          "ema_slow": 21,
+          "max_hold": 96,
+          "rsi_period": 14,
+          "sl_pct": 0.01,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        },
+        "30m": {
+          "cooldown": 2,
+          "ema_fast": 21,
+          "ema_slow": 55,
+          "max_hold": 24,
+          "rsi_period": 9,
+          "sl_pct": 0.01,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        },
+        "5m": {
+          "cooldown": 5,
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "max_hold": 48,
+          "rsi_period": 9,
+          "sl_pct": 0.002,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        }
+      }
+    },
+    {
+      "key": "S60_RelativeStrength_04",
+      "label": "S60_RelativeStrength_04",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT",
+        "ONDOUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S62_RelativeStrength_06",
+      "label": "S62_RelativeStrength_06",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S64_RelativeStrength_08",
+      "label": "S64_RelativeStrength_08",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "LINKUSDT",
+        "ONDOUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S65_RelativeStrength_09",
+      "label": "S65_RelativeStrength_09",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "DOGEUSDT",
+        "SOLUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S66_RelativeStrength_10",
+      "label": "S66_RelativeStrength_10",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "DOGEUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S67_RelativeStrength_11",
+      "label": "S67_RelativeStrength_11",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "SUIUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S6_MACD_Volume",
+      "label": "MACD 모멘텀 전환",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT",
+        "LINKUSDT",
+        "ONDOUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {
+        "1h": {
+          "cooldown": 3,
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "max_hold": 48,
+          "rsi_period": 14,
+          "sl_pct": 0.02,
+          "tp_pct": 0.05,
+          "vwap_tol": null
+        },
+        "30m": {
+          "cooldown": 2,
+          "ema_fast": 5,
+          "ema_slow": 13,
+          "max_hold": 24,
+          "rsi_period": 14,
+          "sl_pct": 0.02,
+          "tp_pct": 0.03,
+          "vwap_tol": null
+        },
+        "5m": {
+          "cooldown": 3,
+          "ema_fast": 9,
+          "ema_slow": 50,
+          "max_hold": 24,
+          "rsi_period": 7,
+          "sl_pct": 0.005,
+          "tp_pct": 0.012,
+          "vwap_tol": null
+        }
+      }
+    },
+    {
+      "key": "S70_VolumeCandle_02",
+      "label": "S70_VolumeCandle_02",
+      "intervals": [
+        "15m",
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S71_VolumeCandle_03",
+      "label": "S71_VolumeCandle_03",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S72_VolumeCandle_04",
+      "label": "S72_VolumeCandle_04",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "ONDOUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S73_VolumeCandle_05",
+      "label": "S73_VolumeCandle_05",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "ETHUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S75_VolumeCandle_07",
+      "label": "S75_VolumeCandle_07",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "SOLUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S76_VolumeCandle_08",
+      "label": "S76_VolumeCandle_08",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "ONDOUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S77_VolumeCandle_09",
+      "label": "S77_VolumeCandle_09",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S78_VolumeCandle_10",
+      "label": "S78_VolumeCandle_10",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "ONDOUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S79_VolumeCandle_11",
+      "label": "S79_VolumeCandle_11",
+      "intervals": [
+        "15m",
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S7_Retest_Breakout",
+      "label": "리테스트 돌파",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "DOGEUSDT",
+        "ETHUSDT",
+        "NEARUSDT",
+        "SUIUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {
+        "1h": {
+          "cooldown": 3,
+          "ema_fast": 9,
+          "ema_slow": 21,
+          "max_hold": 24,
+          "retest_bars": 3,
+          "rsi_period": 14,
+          "sl_pct": 0.005,
+          "tp_pct": 0.02,
+          "vol_mult": 1.0,
+          "vwap_tol": 0.01
+        }
+      }
+    },
+    {
+      "key": "S80_VolumeCandle_12",
+      "label": "S80_VolumeCandle_12",
+      "intervals": [
+        "30m",
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "ETHUSDT",
+        "ONDOUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S82_Regime_02",
+      "label": "S82_Regime_02",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "DOGEUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S83_Regime_03",
+      "label": "S83_Regime_03",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "DOGEUSDT",
+        "NEARUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S84_Regime_04",
+      "label": "S84_Regime_04",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "ONDOUSDT",
+        "SUIUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S85_Regime_05",
+      "label": "S85_Regime_05",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "ONDOUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S86_Regime_06",
+      "label": "S86_Regime_06",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S87_Regime_07",
+      "label": "S87_Regime_07",
+      "intervals": [
+        "30m"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S88_Regime_08",
+      "label": "S88_Regime_08",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "LINKUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S8_Relative_Strength_Rotation",
+      "label": "BTC 대비 상대강도 로테이션",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {
+        "1h": {
+          "btc_regime_threshold": 0.005,
+          "cooldown": 3,
+          "ema_fast": 9,
+          "ema_slow": 21,
+          "max_hold": 24,
+          "rel_long_threshold": 0.01,
+          "rel_short_threshold": -0.005,
+          "rs_window": 24,
+          "rsi_period": 14,
+          "sl_pct": 0.005,
+          "tp_pct": 0.02,
+          "vol_mult": 1.0
+        }
+      }
+    },
+    {
+      "key": "S90_Regime_10",
+      "label": "S90_Regime_10",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "ETHUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S92_Defensive_02",
+      "label": "S92_Defensive_02",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "BTCUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S94_Defensive_04",
+      "label": "S94_Defensive_04",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BTCUSDT",
+        "ONDOUSDT",
+        "SOLUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S95_Defensive_05",
+      "label": "S95_Defensive_05",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S96_Defensive_06",
+      "label": "S96_Defensive_06",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "ONDOUSDT",
+        "SOLUSDT",
+        "SUIUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S98_Defensive_08",
+      "label": "S98_Defensive_08",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "BNBUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "SOLUSDT",
+        "XRPUSDT"
+      ],
+      "paramsByInterval": {}
+    },
+    {
+      "key": "S99_Defensive_09",
+      "label": "S99_Defensive_09",
+      "intervals": [
+        "1h"
+      ],
+      "symbols": [
+        "DOGEUSDT",
+        "ONDOUSDT",
+        "SUIUSDT"
+      ],
+      "paramsByInterval": {}
+    }
+  ]
+}

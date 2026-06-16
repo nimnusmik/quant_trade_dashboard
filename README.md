@@ -17,13 +17,36 @@ A Next.js dashboard for monitoring paper-trading performance.
 ## Data flow
 
 ```text
-raw paper_trades.csv -> scripts/export_trades_json.py -> public/data/trades.json -> Next.js dashboard
-quant_trading monitor config -> scripts/export_monitor_universe.py -> public/data/monitor-universe.json -> Next.js dashboard
-quant_trading reports/*.csv -> scripts/export_strategy_league_json.py -> public/data/strategy-league.json -> Next.js dashboard
+raw paper_trades.csv -> scripts/export_trades_json.py -> public/data/trades.json
+quant_trading monitor config -> scripts/export_monitor_universe.py -> public/data/monitor-universe.json
+quant_trading reports/*.csv -> scripts/export_strategy_league_json.py -> public/data/strategy-league.json
+public/data/*.json -> scripts/export_supabase_import_sql.py -> Supabase SQL Editor
+Supabase tables -> Next.js dashboard, with public/data/*.json fallback
 Binance public klines -> /symbols chart panels
 ```
 
-The dashboard should read normalized JSON only. Source-specific ledger parsing belongs in the export script, not in React components.
+The dashboard should read normalized dashboard-shaped data only. Source-specific ledger parsing belongs in export scripts, not in React components.
+
+## Supabase deployment
+
+If these environment variables are set, the dashboard reads Supabase first and falls back to `public/data/*.json` when Supabase is unavailable:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+```
+
+Do not commit service-role keys. For a no-secret manual import, generate SQL and paste it into Supabase SQL Editor:
+
+```bash
+python3 scripts/export_supabase_import_sql.py
+```
+
+Generated file:
+
+```text
+supabase/import-current-dashboard-data.sql
+```
 
 ## Setup
 
@@ -90,7 +113,7 @@ Default league sources:
 
 ```text
 /Users/sunminkim/Desktop/projects/quant_trading/reports/paper_strategy_timeframe_leaderboard.csv
-/Users/sunminkim/Desktop/projects/quant_trading/reports/s1_to_s100_xrp_multitimeframe_strict.csv
+/Users/sunminkim/Desktop/projects/quant_trading/reports/s1_to_s100_multisymbol_multitimeframe_strict.csv
 ```
 
 Default league output path:

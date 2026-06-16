@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { loadMonitorUniverseFromSupabase } from "@/lib/supabaseData";
 import type { MonitorCoverage, MonitorUniverse } from "@/lib/types";
 
 export async function readMonitorUniverseFile(filePath: string): Promise<MonitorUniverse> {
@@ -14,6 +15,15 @@ export async function readMonitorUniverseFile(filePath: string): Promise<Monitor
 }
 
 export async function loadMonitorUniverse(): Promise<MonitorUniverse> {
+  try {
+    const supabaseUniverse = await loadMonitorUniverseFromSupabase();
+    if (supabaseUniverse) {
+      return supabaseUniverse;
+    }
+  } catch (error) {
+    console.warn(error);
+  }
+
   const universePath = join(process.cwd(), "public", "data", "monitor-universe.json");
   const samplePath = join(process.cwd(), "public", "data", "monitor-universe.sample.json");
 

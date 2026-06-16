@@ -53,7 +53,7 @@ def read_scheduler_default_intervals(path: Path) -> list[str]:
     end = text.find('"', start)
     raw_default = text[start:end]
     active_raw = os.getenv("ACTIVE_SIGNAL_INTERVALS", raw_default)
-    allowed = {"1m", "5m", "30m", "1h"}
+    allowed = {"1m", "5m", "15m", "30m", "1h"}
     return [item.strip() for item in active_raw.split(",") if item.strip() in allowed]
 
 
@@ -72,12 +72,29 @@ def parse_strategy_allowlist() -> dict[str, set[str]]:
     return parsed
 
 
+def parse_strategy_timeframe_allowlist() -> dict[tuple[str, str], set[str]]:
+    raw = os.getenv("STRATEGY_TIMEFRAME_SYMBOL_ALLOWLIST", "").strip()
+    parsed: dict[tuple[str, str], set[str]] = {}
+    if not raw:
+        return parsed
+    for chunk in raw.split(";"):
+        if not chunk.strip() or ":" not in chunk or "@" not in chunk:
+            continue
+        strategy_tf, symbols = chunk.split(":", 1)
+        strategy, timeframe = strategy_tf.split("@", 1)
+        allowed = {symbol.strip().upper() for symbol in symbols.split(",") if symbol.strip()}
+        if strategy.strip() and timeframe.strip() and allowed:
+            parsed[(strategy.strip(), timeframe.strip())] = allowed
+    return parsed
+
+
 def active_strategy_keys(all_keys: list[str]) -> list[str]:
     raw = os.getenv("ACTIVE_STRATEGIES", "").strip()
     if not raw:
         return all_keys
-    allowed = {item.strip() for item in raw.split(",") if item.strip()}
-    return [key for key in all_keys if key in allowed]
+    # Runtime may include generated S9~S100 keys added after the static STRATEGIES
+    # dict literal, so preserve explicit env keys instead of intersecting them away.
+    return [item.strip() for item in raw.split(",") if item.strip()]
 
 
 def load_live_params(path: Path) -> dict[str, dict[str, dict[str, Any]]]:
@@ -101,6 +118,7 @@ def build_universe(trading_root: Path) -> dict[str, Any]:
     intervals = read_scheduler_default_intervals(scheduler)
     live_params = load_live_params(live_params_file)
     allowlist = parse_strategy_allowlist()
+    timeframe_allowlist = parse_strategy_timeframe_allowlist()
 
     strategies = []
     for key in active_keys:
@@ -109,13 +127,23 @@ def build_universe(trading_root: Path) -> dict[str, Any]:
             for interval, params_by_strategy in live_params.items()
             if interval in intervals and isinstance(params_by_strategy, dict) and key in params_by_strategy
         }
-        strategy_intervals = [interval for interval in intervals if interval in params_by_interval]
+        if timeframe_allowlist:
+            strategy_intervals = [interval for interval in intervals if (key, interval) in timeframe_allowlist]
+        else:
+            strategy_intervals = [interval for interval in intervals if interval in params_by_interval]
         if not strategy_intervals:
             # Strategy exists in runtime registry but has no optimized params for the active interval.
             # Keep it visible rather than hiding monitored code paths.
             strategy_intervals = intervals
 
-        symbols = sorted(allowlist.get(key, set(watch_symbols)))
+        if timeframe_allowlist:
+            symbols = sorted({
+                symbol
+                for interval in strategy_intervals
+                for symbol in timeframe_allowlist.get((key, interval), set())
+            })
+        else:
+            symbols = sorted(allowlist.get(key, set(watch_symbols)))
         strategies.append({
             "key": key,
             "label": strategy_labels.get(key, key),

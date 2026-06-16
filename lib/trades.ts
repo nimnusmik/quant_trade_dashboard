@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { loadTradesFromSupabase } from "@/lib/supabaseData";
 import type { Trade } from "@/lib/types";
 
 export async function readTradesFile(filePath: string): Promise<Trade[]> {
@@ -16,6 +17,15 @@ export async function readTradesFile(filePath: string): Promise<Trade[]> {
 export async function loadDashboardTrades(): Promise<Trade[]> {
   const tradesPath = join(process.cwd(), "public", "data", "trades.json");
   const samplePath = join(process.cwd(), "public", "data", "trades.sample.json");
+
+  try {
+    const supabaseTrades = await loadTradesFromSupabase();
+    if (supabaseTrades) {
+      return supabaseTrades;
+    }
+  } catch (error) {
+    console.warn(error);
+  }
 
   try {
     return await readTradesFile(tradesPath);

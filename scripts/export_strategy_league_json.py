@@ -15,7 +15,7 @@ REPORTS_DIR = TRADING_ROOT / "reports"
 OUTPUT_DIR = DASHBOARD_ROOT / "public" / "data"
 
 PAPER_LEAGUE_CSV = REPORTS_DIR / "paper_strategy_timeframe_leaderboard.csv"
-STRICT_CANDIDATES_CSV = REPORTS_DIR / "s1_to_s100_xrp_multitimeframe_strict.csv"
+STRICT_CANDIDATES_CSV = REPORTS_DIR / "s1_to_s100_multisymbol_multitimeframe_strict.csv"
 
 
 def as_int(value: str | None) -> int:
