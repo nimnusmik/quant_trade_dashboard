@@ -27,7 +27,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-200 transition hover:border-cyan-400 hover:text-cyan-200"
+                  className="rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-200 transition-colors hover:border-cyan-400 hover:text-cyan-200"
                 >
                   {item.label}
                 </Link>

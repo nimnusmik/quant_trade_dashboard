@@ -61,10 +61,10 @@ function StrategyChips({ strategies }: { strategies: SymbolRuntimeStrategy[] | u
       {visible.map((strategy) => (
         <span
           key={strategy.key}
-          className="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 text-xs font-semibold text-indigo-100"
+          className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1 text-xs font-semibold text-cyan-100"
           title={strategy.label}
         >
-          {strategy.key} <span className="font-normal text-indigo-200/70">{strategy.intervals.join("/")}</span>
+          {strategy.key} <span className="font-normal text-cyan-200/70">{strategy.intervals.join("/")}</span>
         </span>
       ))}
       {extra > 0 ? (
@@ -111,7 +111,7 @@ function TabButton({
       onClick={onSelect}
       onKeyDown={onKeyDown}
       className={cn(
-        "min-w-[148px] rounded-2xl border px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
+        "min-w-[148px] rounded-2xl border px-4 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
         active
           ? "border-cyan-300/70 bg-cyan-300/10"
           : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]",
@@ -119,7 +119,7 @@ function TabButton({
     >
       <div className="flex items-center justify-between gap-2">
         <span className="font-semibold text-white">{chart.symbol}</span>
-        <span aria-hidden="true" className={cn("h-2 w-2 rounded-full", hasOpen ? "bg-emerald-400" : strategyCount > 0 ? "bg-cyan-300" : "bg-slate-600")} />
+        <span aria-hidden="true" className={cn("size-2 rounded-full", hasOpen ? "bg-emerald-400" : strategyCount > 0 ? "bg-cyan-300" : "bg-slate-600")} />
       </div>
       <div className="mt-2 flex items-end justify-between gap-3">
         <span className="text-xs text-slate-500">전략 {strategyCount}개</span>

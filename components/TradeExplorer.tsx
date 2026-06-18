@@ -30,7 +30,7 @@ function SelectField({
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-slate-100 outline-none transition focus:border-cyan-400"
+        className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-slate-100 outline-none transition-colors focus:border-cyan-400"
       >
         <option value="all">전체</option>
         {options.map((option) => (
@@ -85,7 +85,7 @@ export function TradeExplorer({ trades }: { trades: Trade[] }) {
               set주기("all");
               setSearch("");
             }}
-            className="rounded-xl border border-slate-700 px-3 py-2 text-sm text-slate-300 transition hover:border-cyan-400 hover:text-cyan-200"
+            className="rounded-xl border border-slate-700 px-3 py-2 text-sm text-slate-300 transition-colors hover:border-cyan-400 hover:text-cyan-200"
           >
             필터 초기화
           </button>
@@ -98,7 +98,7 @@ export function TradeExplorer({ trades }: { trades: Trade[] }) {
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="종목, 전략, 사유, ID"
-              className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-slate-100 outline-none transition placeholder:text-slate-600 focus:border-cyan-400"
+              className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-slate-100 outline-none transition-colors placeholder:text-slate-600 focus:border-cyan-400"
             />
           </label>
           <SelectField label="상태" value={status} options={["open", "closed"]} onChange={(value) => set상태(value as TradeStatus | "all")} />
