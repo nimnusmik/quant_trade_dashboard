@@ -1,4 +1,5 @@
 import type { DiagnosedPaperLeagueTeam, StrictCandidate, TimeframeLeagueSummary } from "@/lib/types";
+import { cn } from "@/lib/cn";
 
 function pct(value: number): string {
   return `${value.toFixed(2)}%`;
@@ -41,7 +42,7 @@ function TeamCard({ team }: { team: DiagnosedPaperLeagueTeam }) {
           <h3 className="text-balance mt-1 text-base font-semibold text-white">{team.strategy}</h3>
           <p className="mt-1 text-xs text-cyan-200">{team.teamKey}</p>
         </div>
-        <span className={`w-fit rounded-full border px-3 py-1 text-xs ${verdictClass(team.verdict)}`}>{team.verdict}</span>
+        <span className={cn("w-fit rounded-full border px-3 py-1 text-xs", verdictClass(team.verdict))}>{team.verdict}</span>
       </div>
       <div className="mt-4 grid grid-cols-2 gap-3 text-sm md:grid-cols-5">
         <Metric label="거래" value={`${team.trades}건`} />
@@ -63,7 +64,7 @@ function Metric({ label, value, className = "text-white" }: { label: string; val
   return (
     <div className="rounded-xl border border-slate-800 bg-slate-950/80 px-3 py-2">
       <p className="text-xs text-slate-500">{label}</p>
-      <p className={`mt-1 font-semibold ${className}`}>{value}</p>
+      <p className={cn("mt-1 font-semibold", className)}>{value}</p>
     </div>
   );
 }
@@ -79,7 +80,7 @@ function TimeframeSummary({ summaries }: { summaries: TimeframeLeagueSummary[] }
         {summaries.map((summary) => (
           <div key={summary.timeframe} className="rounded-2xl border border-slate-800 bg-slate-900 p-4">
             <p className="text-sm text-cyan-300">{summary.timeframe}</p>
-            <p className={`mt-2 text-2xl font-semibold ${pnlClass(summary.totalPnlPct)}`}>{pct(summary.totalPnlPct)}</p>
+            <p className={cn("mt-2 text-2xl font-semibold", pnlClass(summary.totalPnlPct))}>{pct(summary.totalPnlPct)}</p>
             <p className="mt-1 text-xs text-slate-500">팀 {summary.teams}개 · 거래 {summary.totalTrades}건 · 평균점수 {summary.averageScore.toFixed(2)}</p>
             {summary.bestTeam ? <p className="mt-3 text-xs leading-5 text-slate-300">대표: {summary.bestTeam.strategy} × {summary.bestTeam.symbol} × {sideLabel(summary.bestTeam.side)}</p> : null}
           </div>
@@ -122,9 +123,9 @@ function LeagueTable({ teams }: { teams: DiagnosedPaperLeagueTeam[] }) {
                 <td className="px-4 py-3 text-slate-300">{sideLabel(team.side)}</td>
                 <td className="px-4 py-3 text-slate-300">{team.trades}</td>
                 <td className="px-4 py-3 text-slate-300">{winRate(team.winRate)}</td>
-                <td className={`px-4 py-3 font-semibold ${pnlClass(team.totalPnlPct)}`}>{pct(team.totalPnlPct)}</td>
+                <td className={cn("px-4 py-3 font-semibold", pnlClass(team.totalPnlPct))}>{pct(team.totalPnlPct)}</td>
                 <td className="px-4 py-3 text-slate-300">{ratio(team.profitFactor)}</td>
-                <td className="px-4 py-3"><span className={`rounded-full border px-2.5 py-1 text-xs ${verdictClass(team.verdict)}`}>{team.verdict}</span></td>
+                <td className="px-4 py-3"><span className={cn("rounded-full border px-2.5 py-1 text-xs", verdictClass(team.verdict))}>{team.verdict}</span></td>
               </tr>
             ))}
           </tbody>
@@ -163,9 +164,9 @@ function StrictCandidateTable({ candidates }: { candidates: StrictCandidate[] })
                   <p className="text-xs text-slate-500">{candidate.label}</p>
                 </td>
                 <td className="px-4 py-3 text-slate-300">{candidate.symbol}</td>
-                <td className={`px-4 py-3 ${pnlClass(candidate.holdoutReturnPct)}`}>{pct(candidate.holdoutReturnPct)} · PF {ratio(candidate.holdoutProfitFactor)} · {candidate.holdoutTrades}건</td>
-                <td className={`px-4 py-3 ${pnlClass(candidate.recentReturnPct)}`}>{pct(candidate.recentReturnPct)} · PF {ratio(candidate.recentProfitFactor)} · {candidate.recentTrades}건</td>
-                <td className={`px-4 py-3 ${pnlClass(candidate.minReturnPct)}`}>{pct(candidate.minReturnPct)} · PF {ratio(candidate.minProfitFactor)}</td>
+                <td className={cn("px-4 py-3", pnlClass(candidate.holdoutReturnPct))}>{pct(candidate.holdoutReturnPct)} · PF {ratio(candidate.holdoutProfitFactor)} · {candidate.holdoutTrades}건</td>
+                <td className={cn("px-4 py-3", pnlClass(candidate.recentReturnPct))}>{pct(candidate.recentReturnPct)} · PF {ratio(candidate.recentProfitFactor)} · {candidate.recentTrades}건</td>
+                <td className={cn("px-4 py-3", pnlClass(candidate.minReturnPct))}>{pct(candidate.minReturnPct)} · PF {ratio(candidate.minProfitFactor)}</td>
                 <td className="px-4 py-3 text-xs leading-5 text-slate-400">실전 페이퍼 리그에서 같은 조합이 확인되기 전까지는 후보/관찰 단계입니다.</td>
               </tr>
             ))}

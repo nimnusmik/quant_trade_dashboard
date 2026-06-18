@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useRef, useState, type KeyboardEvent } from "react";
 import {
   CartesianGrid,
@@ -12,6 +13,7 @@ import {
 } from "recharts";
 import { formatCurrency, formatDateTime } from "@/lib/format";
 import type { PricePoint, SymbolChartModel, SymbolRuntimeStrategy, TradeMarker } from "@/lib/types";
+import { cn } from "@/lib/cn";
 
 type ChartPoint = PricePoint & {
   label: string;
@@ -108,19 +110,20 @@ function TabButton({
       ref={tabRef}
       onClick={onSelect}
       onKeyDown={onKeyDown}
-      className={`min-w-[148px] rounded-2xl border px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
+      className={cn(
+        "min-w-[148px] rounded-2xl border px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
         active
           ? "border-cyan-300/70 bg-cyan-300/10"
-          : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
-      }`}
+          : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]",
+      )}
     >
       <div className="flex items-center justify-between gap-2">
         <span className="font-semibold text-white">{chart.symbol}</span>
-        <span aria-hidden="true" className={`h-2 w-2 rounded-full ${hasOpen ? "bg-emerald-400" : strategyCount > 0 ? "bg-cyan-300" : "bg-slate-600"}`} />
+        <span aria-hidden="true" className={cn("h-2 w-2 rounded-full", hasOpen ? "bg-emerald-400" : strategyCount > 0 ? "bg-cyan-300" : "bg-slate-600")} />
       </div>
       <div className="mt-2 flex items-end justify-between gap-3">
         <span className="text-xs text-slate-500">전략 {strategyCount}개</span>
-        <span className={`text-xs font-semibold ${pnlColor(changePct)}`}>{changePct.toFixed(2)}%</span>
+        <span className={cn("text-xs font-semibold", pnlColor(changePct))}>{changePct.toFixed(2)}%</span>
       </div>
     </button>
   );
@@ -131,7 +134,7 @@ function MarkerPanel({ marker }: { marker: TradeMarker }) {
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
       <div className="flex items-center justify-between gap-3">
         <p className="font-semibold text-white">{marker.strategy ?? "전략 미기록"}</p>
-        <span className={`rounded-full px-2 py-1 text-xs font-semibold ${marker.side === "long" ? "bg-emerald-400/10 text-emerald-200" : "bg-orange-400/10 text-orange-200"}`}>
+        <span className={cn("rounded-full px-2 py-1 text-xs font-semibold", marker.side === "long" ? "bg-emerald-400/10 text-emerald-200" : "bg-orange-400/10 text-orange-200")}>
           {marker.side.toUpperCase()} · {marker.status === "open" ? "진행중" : "종료"}
         </span>
       </div>
@@ -165,7 +168,14 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
   if (!activeChart) {
     return (
       <section className="rounded-[28px] border border-white/10 bg-white/[0.03] p-6 text-slate-400">
-        표시할 종목 차트가 아직 없습니다.
+        <p className="text-pretty">표시할 종목 차트가 아직 없습니다.</p>
+        <Link
+          href="/monitor"
+          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-cyan-300 hover:text-cyan-200"
+        >
+          감시 현황 보기
+          <span aria-hidden="true">→</span>
+        </Link>
       </section>
     );
   }

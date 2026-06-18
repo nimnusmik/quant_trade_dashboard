@@ -1,5 +1,6 @@
 import { formatCurrency, formatPercent } from "@/lib/format";
 import type { StrategyPerformance, StrategySymbolPerformance, SymbolPerformance } from "@/lib/types";
+import { cn } from "@/lib/cn";
 
 function formatProfitFactor(value: number): string {
   if (!Number.isFinite(value)) {
@@ -30,10 +31,10 @@ function StrategyRow({ strategy, rank }: { strategy: StrategyPerformance; rank: 
       </td>
       <td className="px-4 py-4 align-top text-sm text-slate-300">{strategy.trades}</td>
       <td className="px-4 py-4 align-top text-sm text-slate-300">{formatPercent(strategy.winRate)}</td>
-      <td className={`px-4 py-4 align-top text-sm font-semibold ${pnlColor(strategy.totalRealizedPnl)}`}>
+      <td className={cn("px-4 py-4 align-top text-sm font-semibold", pnlColor(strategy.totalRealizedPnl))}>
         {formatCurrency(strategy.totalRealizedPnl)}
       </td>
-      <td className={`px-4 py-4 align-top text-sm ${pnlColor(strategy.averagePnl)}`}>
+      <td className={cn("px-4 py-4 align-top text-sm", pnlColor(strategy.averagePnl))}>
         {formatCurrency(strategy.averagePnl)}
       </td>
       <td className="px-4 py-4 align-top text-sm text-slate-300">{formatProfitFactor(strategy.profitFactor)}</td>
@@ -59,7 +60,7 @@ function StrategyDiagnosisCard({ strategy }: { strategy: StrategyPerformance }) 
             거래 {strategy.trades}건 · 승률 {formatPercent(strategy.winRate)} · 손익비 {formatProfitFactor(strategy.profitFactor)}
           </p>
         </div>
-        <div className={`text-lg font-semibold ${pnlColor(strategy.totalRealizedPnl)}`}>
+        <div className={cn("text-lg font-semibold", pnlColor(strategy.totalRealizedPnl))}>
           {formatCurrency(strategy.totalRealizedPnl)}
         </div>
       </div>
@@ -96,7 +97,7 @@ function SymbolPill({ symbol }: { symbol: SymbolPerformance }) {
     <div className="rounded-xl border border-slate-800 bg-slate-950/80 px-4 py-3">
       <div className="flex items-center justify-between gap-3">
         <span className="font-semibold text-white">{symbol.symbol}</span>
-        <span className={`text-sm font-semibold ${pnlColor(symbol.totalRealizedPnl)}`}>
+        <span className={cn("text-sm font-semibold", pnlColor(symbol.totalRealizedPnl))}>
           {formatCurrency(symbol.totalRealizedPnl)}
         </span>
       </div>
@@ -159,11 +160,11 @@ function StrategySymbolMatrix({ pairs }: { pairs: StrategySymbolPerformance[] })
                     <p className="font-semibold text-white">{pair.strategy}</p>
                     <p className="text-sm text-cyan-200">{pair.symbol}</p>
                   </div>
-                  <span className={`rounded-full border px-2.5 py-1 text-xs ${verdictColor(pair.verdict)}`}>
+                  <span className={cn("rounded-full border px-2.5 py-1 text-xs", verdictColor(pair.verdict))}>
                     {displayVerdict(pair.verdict)}
                   </span>
                 </div>
-                <p className={`mt-2 text-sm font-semibold ${pnlColor(pair.totalRealizedPnl)}`}>
+                <p className={cn("mt-2 text-sm font-semibold", pnlColor(pair.totalRealizedPnl))}>
                   {formatCurrency(pair.totalRealizedPnl)} · 거래 {pair.trades}건 · 승률 {formatPercent(pair.winRate)} · 손익비 {formatProfitFactor(pair.profitFactor)}
                 </p>
               </div>
@@ -181,11 +182,11 @@ function StrategySymbolMatrix({ pairs }: { pairs: StrategySymbolPerformance[] })
                     <p className="font-semibold text-white">{pair.strategy}</p>
                     <p className="text-sm text-cyan-200">{pair.symbol}</p>
                   </div>
-                  <span className={`rounded-full border px-2.5 py-1 text-xs ${verdictColor(pair.verdict)}`}>
+                  <span className={cn("rounded-full border px-2.5 py-1 text-xs", verdictColor(pair.verdict))}>
                     {displayVerdict(pair.verdict)}
                   </span>
                 </div>
-                <p className={`mt-2 text-sm font-semibold ${pnlColor(pair.totalRealizedPnl)}`}>
+                <p className={cn("mt-2 text-sm font-semibold", pnlColor(pair.totalRealizedPnl))}>
                   {formatCurrency(pair.totalRealizedPnl)} · 거래 {pair.trades}건 · 승률 {formatPercent(pair.winRate)} · 손익비 {formatProfitFactor(pair.profitFactor)}
                 </p>
               </div>
@@ -220,12 +221,12 @@ function StrategySymbolMatrix({ pairs }: { pairs: StrategySymbolPerformance[] })
                   <td className="px-4 py-3 text-sm font-semibold text-white">{pair.strategy}</td>
                   <td className="px-4 py-3 text-sm text-cyan-200">{pair.symbol}</td>
                   <td className="px-4 py-3 text-sm">
-                    <span className={`rounded-full border px-2.5 py-1 text-xs ${verdictColor(pair.verdict)}`}>{displayVerdict(pair.verdict)}</span>
+                    <span className={cn("rounded-full border px-2.5 py-1 text-xs", verdictColor(pair.verdict))}>{displayVerdict(pair.verdict)}</span>
                   </td>
                   <td className="px-4 py-3 text-sm text-slate-300">{pair.trades}</td>
                   <td className="px-4 py-3 text-sm text-slate-300">{formatPercent(pair.winRate)}</td>
-                  <td className={`px-4 py-3 text-sm font-semibold ${pnlColor(pair.totalRealizedPnl)}`}>{formatCurrency(pair.totalRealizedPnl)}</td>
-                  <td className={`px-4 py-3 text-sm ${pnlColor(pair.averagePnl)}`}>{formatCurrency(pair.averagePnl)}</td>
+                  <td className={cn("px-4 py-3 text-sm font-semibold", pnlColor(pair.totalRealizedPnl))}>{formatCurrency(pair.totalRealizedPnl)}</td>
+                  <td className={cn("px-4 py-3 text-sm", pnlColor(pair.averagePnl))}>{formatCurrency(pair.averagePnl)}</td>
                   <td className="px-4 py-3 text-sm text-slate-300">{formatProfitFactor(pair.profitFactor)}</td>
                   <td className="px-4 py-3 text-xs text-slate-500">{pair.sides.long}롱 / {pair.sides.short}숏</td>
                 </tr>
@@ -272,7 +273,7 @@ export function StrategyCompetitionPanel({
         </div>
         <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
           <p className="text-sm text-slate-500">총 실현손익</p>
-          <p className={`mt-2 text-3xl font-semibold ${pnlColor(totalPnl)}`}>{formatCurrency(totalPnl)}</p>
+          <p className={cn("mt-2 text-3xl font-semibold", pnlColor(totalPnl))}>{formatCurrency(totalPnl)}</p>
         </div>
         <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
           <p className="text-sm text-slate-500">수익 전략 수</p>

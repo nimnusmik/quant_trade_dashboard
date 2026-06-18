@@ -1,5 +1,6 @@
 import type { Trade } from "@/lib/types";
 import { formatCurrency, formatDateTime } from "@/lib/format";
+import { cn } from "@/lib/cn";
 
 export function TradesTable({ trades }: { trades: Trade[] }) {
   return (
@@ -33,7 +34,7 @@ export function TradesTable({ trades }: { trades: Trade[] }) {
                 <td className="px-4 py-3 text-right">
                   {trade.exitPrice === undefined ? "—" : formatCurrency(trade.exitPrice)}
                 </td>
-                <td className={`px-4 py-3 text-right font-semibold ${pnlClass}`}>
+                <td className={cn("px-4 py-3 text-right font-semibold", pnlClass)}>
                   {pnl === undefined ? "—" : formatCurrency(pnl)}
                 </td>
               </tr>
