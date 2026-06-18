@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   Area,
   AreaChart,
@@ -26,7 +27,14 @@ export function EquityChart({ points }: { points: EquityPoint[] }) {
   if (points.length === 0) {
     return (
       <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5 text-slate-400">
-        아직 종료된 거래가 없습니다.
+        <p className="text-pretty">아직 종료된 거래가 없습니다.</p>
+        <Link
+          href="/monitor"
+          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-cyan-300 hover:text-cyan-200"
+        >
+          감시 현황 보기
+          <span aria-hidden="true">→</span>
+        </Link>
       </div>
     );
   }

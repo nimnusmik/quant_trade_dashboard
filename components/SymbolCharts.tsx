@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   CartesianGrid,
   Line,
@@ -73,7 +74,14 @@ export function SymbolCharts({ charts }: { charts: SymbolChartModel[] }) {
   if (charts.length === 0) {
     return (
       <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5 text-sm text-slate-400">
-        No active symbol charts yet.
+        <p className="text-pretty">아직 활성 종목 차트가 없습니다.</p>
+        <Link
+          href="/monitor"
+          className="mt-3 inline-flex items-center gap-1 font-medium text-cyan-300 hover:text-cyan-200"
+        >
+          감시 현황 보기
+          <span aria-hidden="true">→</span>
+        </Link>
       </div>
     );
   }
