@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, type KeyboardEvent } from "react";
 import {
   CartesianGrid,
   Line,
@@ -74,14 +74,22 @@ function StrategyChips({ strategies }: { strategies: SymbolRuntimeStrategy[] | u
   );
 }
 
+const PANEL_ID = "overview-symbol-tabpanel";
+
 function TabButton({
   chart,
   active,
-  onClick,
+  panelId,
+  tabRef,
+  onSelect,
+  onKeyDown,
 }: {
   chart: SymbolChartModel;
   active: boolean;
-  onClick: () => void;
+  panelId: string;
+  tabRef: (node: HTMLButtonElement | null) => void;
+  onSelect: () => void;
+  onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void;
 }) {
   const latest = chart.candles.at(-1);
   const first = chart.candles.at(0);
@@ -92,8 +100,15 @@ function TabButton({
   return (
     <button
       type="button"
-      onClick={onClick}
-      className={`min-w-[148px] rounded-2xl border px-4 py-3 text-left transition ${
+      role="tab"
+      id={`tab-${chart.symbol}`}
+      aria-selected={active}
+      aria-controls={panelId}
+      tabIndex={active ? 0 : -1}
+      ref={tabRef}
+      onClick={onSelect}
+      onKeyDown={onKeyDown}
+      className={`min-w-[148px] rounded-2xl border px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${
         active
           ? "border-cyan-300/70 bg-cyan-300/10"
           : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
@@ -101,7 +116,7 @@ function TabButton({
     >
       <div className="flex items-center justify-between gap-2">
         <span className="font-semibold text-white">{chart.symbol}</span>
-        <span className={`h-2 w-2 rounded-full ${hasOpen ? "bg-emerald-400" : strategyCount > 0 ? "bg-cyan-300" : "bg-slate-600"}`} />
+        <span aria-hidden="true" className={`h-2 w-2 rounded-full ${hasOpen ? "bg-emerald-400" : strategyCount > 0 ? "bg-cyan-300" : "bg-slate-600"}`} />
       </div>
       <div className="mt-2 flex items-end justify-between gap-3">
         <span className="text-xs text-slate-500">전략 {strategyCount}개</span>
@@ -141,6 +156,7 @@ function MarkerPanel({ marker }: { marker: TradeMarker }) {
 
 export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
   const [activeSymbol, setActiveSymbol] = useState(charts[0]?.symbol ?? "");
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const activeChart = useMemo(
     () => charts.find((chart) => chart.symbol === activeSymbol) ?? charts[0],
     [activeSymbol, charts],
@@ -153,6 +169,33 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
       </section>
     );
   }
+
+  const onTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const count = charts.length;
+    if (count === 0) return;
+    let next = index;
+    switch (event.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        next = (index + 1) % count;
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        next = (index - 1 + count) % count;
+        break;
+      case "Home":
+        next = 0;
+        break;
+      case "End":
+        next = count - 1;
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    setActiveSymbol(charts[next].symbol);
+    tabRefs.current[next]?.focus();
+  };
 
   const chartPoints = toChartPoints(activeChart.candles);
   const latest = chartPoints.at(-1);
@@ -177,18 +220,34 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
         </div>
       </div>
 
-      <div className="mt-5 flex gap-3 overflow-x-auto pb-2">
-        {charts.map((chart) => (
+      <div
+        role="tablist"
+        aria-label="종목 선택"
+        aria-orientation="horizontal"
+        className="mt-5 flex gap-3 overflow-x-auto pb-2"
+      >
+        {charts.map((chart, index) => (
           <TabButton
             key={chart.symbol}
             chart={chart}
             active={chart.symbol === activeChart.symbol}
-            onClick={() => setActiveSymbol(chart.symbol)}
+            panelId={PANEL_ID}
+            tabRef={(node) => {
+              tabRefs.current[index] = node;
+            }}
+            onSelect={() => setActiveSymbol(chart.symbol)}
+            onKeyDown={(event) => onTabKeyDown(event, index)}
           />
         ))}
       </div>
 
-      <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_0.9fr]">
+      <div
+        id={PANEL_ID}
+        role="tabpanel"
+        aria-labelledby={`tab-${activeChart.symbol}`}
+        tabIndex={0}
+        className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_0.9fr] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+      >
         <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div>
