@@ -26,11 +26,11 @@ function SelectField({
 
   return (
     <label className="space-y-2 text-sm">
-      <span className="block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
+      <span className="block text-xs font-medium uppercase text-slate-500">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-slate-100 outline-none transition focus:border-cyan-400"
+        className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-slate-100 outline-none transition-colors focus:border-cyan-400"
       >
         <option value="all">전체</option>
         {options.map((option) => (
@@ -70,7 +70,7 @@ export function TradeExplorer({ trades }: { trades: Trade[] }) {
       <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-lg font-semibold text-white">거래 필터</h2>
+            <h2 className="text-balance text-lg font-semibold text-white">거래 필터</h2>
             <p className="text-sm text-slate-500">
               총 {trades.length}건 중 {filteredTrades.length}건 표시
             </p>
@@ -85,7 +85,7 @@ export function TradeExplorer({ trades }: { trades: Trade[] }) {
               set주기("all");
               setSearch("");
             }}
-            className="rounded-xl border border-slate-700 px-3 py-2 text-sm text-slate-300 transition hover:border-cyan-400 hover:text-cyan-200"
+            className="rounded-xl border border-slate-700 px-3 py-2 text-sm text-slate-300 transition-colors hover:border-cyan-400 hover:text-cyan-200"
           >
             필터 초기화
           </button>
@@ -93,12 +93,12 @@ export function TradeExplorer({ trades }: { trades: Trade[] }) {
 
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
           <label className="space-y-2 text-sm md:col-span-2 xl:col-span-2">
-            <span className="block text-xs font-medium uppercase tracking-wide text-slate-500">검색</span>
+            <span className="block text-xs font-medium uppercase text-slate-500">검색</span>
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
               placeholder="종목, 전략, 사유, ID"
-              className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-slate-100 outline-none transition placeholder:text-slate-600 focus:border-cyan-400"
+              className="w-full rounded-xl border border-slate-800 bg-slate-950 px-3 py-2 text-slate-100 outline-none transition-colors placeholder:text-slate-600 focus:border-cyan-400"
             />
           </label>
           <SelectField label="상태" value={status} options={["open", "closed"]} onChange={(value) => set상태(value as TradeStatus | "all")} />

@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { useMemo, useRef, useState, type KeyboardEvent } from "react";
 import {
   CartesianGrid,
   Line,
@@ -12,6 +13,7 @@ import {
 } from "recharts";
 import { formatCurrency, formatDateTime } from "@/lib/format";
 import type { PricePoint, SymbolChartModel, SymbolRuntimeStrategy, TradeMarker } from "@/lib/types";
+import { cn } from "@/lib/cn";
 
 type ChartPoint = PricePoint & {
   label: string;
@@ -59,10 +61,10 @@ function StrategyChips({ strategies }: { strategies: SymbolRuntimeStrategy[] | u
       {visible.map((strategy) => (
         <span
           key={strategy.key}
-          className="rounded-full border border-indigo-400/30 bg-indigo-400/10 px-2.5 py-1 text-xs font-semibold text-indigo-100"
+          className="rounded-full border border-cyan-400/30 bg-cyan-400/10 px-2.5 py-1 text-xs font-semibold text-cyan-100"
           title={strategy.label}
         >
-          {strategy.key} <span className="font-normal text-indigo-200/70">{strategy.intervals.join("/")}</span>
+          {strategy.key} <span className="font-normal text-cyan-200/70">{strategy.intervals.join("/")}</span>
         </span>
       ))}
       {extra > 0 ? (
@@ -74,14 +76,22 @@ function StrategyChips({ strategies }: { strategies: SymbolRuntimeStrategy[] | u
   );
 }
 
+const PANEL_ID = "overview-symbol-tabpanel";
+
 function TabButton({
   chart,
   active,
-  onClick,
+  panelId,
+  tabRef,
+  onSelect,
+  onKeyDown,
 }: {
   chart: SymbolChartModel;
   active: boolean;
-  onClick: () => void;
+  panelId: string;
+  tabRef: (node: HTMLButtonElement | null) => void;
+  onSelect: () => void;
+  onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void;
 }) {
   const latest = chart.candles.at(-1);
   const first = chart.candles.at(0);
@@ -92,20 +102,28 @@ function TabButton({
   return (
     <button
       type="button"
-      onClick={onClick}
-      className={`min-w-[148px] rounded-2xl border px-4 py-3 text-left transition ${
+      role="tab"
+      id={`tab-${chart.symbol}`}
+      aria-selected={active}
+      aria-controls={panelId}
+      tabIndex={active ? 0 : -1}
+      ref={tabRef}
+      onClick={onSelect}
+      onKeyDown={onKeyDown}
+      className={cn(
+        "min-w-[148px] rounded-2xl border px-4 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950",
         active
-          ? "border-cyan-300/70 bg-cyan-300/10 shadow-[0_0_28px_rgba(34,211,238,0.16)]"
-          : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
-      }`}
+          ? "border-cyan-300/70 bg-cyan-300/10"
+          : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]",
+      )}
     >
       <div className="flex items-center justify-between gap-2">
         <span className="font-semibold text-white">{chart.symbol}</span>
-        <span className={`h-2 w-2 rounded-full ${hasOpen ? "bg-emerald-400" : strategyCount > 0 ? "bg-cyan-300" : "bg-slate-600"}`} />
+        <span aria-hidden="true" className={cn("size-2 rounded-full", hasOpen ? "bg-emerald-400" : strategyCount > 0 ? "bg-cyan-300" : "bg-slate-600")} />
       </div>
       <div className="mt-2 flex items-end justify-between gap-3">
         <span className="text-xs text-slate-500">전략 {strategyCount}개</span>
-        <span className={`text-xs font-semibold ${pnlColor(changePct)}`}>{changePct.toFixed(2)}%</span>
+        <span className={cn("text-xs font-semibold", pnlColor(changePct))}>{changePct.toFixed(2)}%</span>
       </div>
     </button>
   );
@@ -116,7 +134,7 @@ function MarkerPanel({ marker }: { marker: TradeMarker }) {
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
       <div className="flex items-center justify-between gap-3">
         <p className="font-semibold text-white">{marker.strategy ?? "전략 미기록"}</p>
-        <span className={`rounded-full px-2 py-1 text-xs font-semibold ${marker.side === "long" ? "bg-emerald-400/10 text-emerald-200" : "bg-orange-400/10 text-orange-200"}`}>
+        <span className={cn("rounded-full px-2 py-1 text-xs font-semibold", marker.side === "long" ? "bg-emerald-400/10 text-emerald-200" : "bg-orange-400/10 text-orange-200")}>
           {marker.side.toUpperCase()} · {marker.status === "open" ? "진행중" : "종료"}
         </span>
       </div>
@@ -141,6 +159,7 @@ function MarkerPanel({ marker }: { marker: TradeMarker }) {
 
 export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
   const [activeSymbol, setActiveSymbol] = useState(charts[0]?.symbol ?? "");
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const activeChart = useMemo(
     () => charts.find((chart) => chart.symbol === activeSymbol) ?? charts[0],
     [activeSymbol, charts],
@@ -149,10 +168,44 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
   if (!activeChart) {
     return (
       <section className="rounded-[28px] border border-white/10 bg-white/[0.03] p-6 text-slate-400">
-        표시할 종목 차트가 아직 없습니다.
+        <p className="text-pretty">표시할 종목 차트가 아직 없습니다.</p>
+        <Link
+          href="/monitor"
+          className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-cyan-300 hover:text-cyan-200"
+        >
+          감시 현황 보기
+          <span aria-hidden="true">→</span>
+        </Link>
       </section>
     );
   }
+
+  const onTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    const count = charts.length;
+    if (count === 0) return;
+    let next = index;
+    switch (event.key) {
+      case "ArrowRight":
+      case "ArrowDown":
+        next = (index + 1) % count;
+        break;
+      case "ArrowLeft":
+      case "ArrowUp":
+        next = (index - 1 + count) % count;
+        break;
+      case "Home":
+        next = 0;
+        break;
+      case "End":
+        next = count - 1;
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    setActiveSymbol(charts[next].symbol);
+    tabRefs.current[next]?.focus();
+  };
 
   const chartPoints = toChartPoints(activeChart.candles);
   const latest = chartPoints.at(-1);
@@ -160,14 +213,14 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
   const headlineMarker = openMarkers[0] ?? activeChart.markers[0];
 
   return (
-    <section className="overflow-hidden rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.14),transparent_34%),rgba(15,23,42,0.72)] p-5 shadow-2xl shadow-black/30 lg:p-6">
+    <section className="overflow-hidden rounded-[28px] border border-white/10 bg-slate-900/70 p-5 shadow-2xl shadow-black/30 lg:p-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="text-sm font-medium text-cyan-300">실시간 운영 종목</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white lg:text-3xl">
+          <h2 className="text-balance mt-2 text-2xl font-semibold text-white lg:text-3xl">
             종목 탭으로 보는 전략 가동 차트
           </h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400 text-pretty">
             탭을 누르면 해당 종목의 가격 흐름, 현재 진입/익절/손절 기준선, 그리고 실제 운영 중인 전략 심볼을 바로 확인합니다.
           </p>
         </div>
@@ -177,23 +230,39 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
         </div>
       </div>
 
-      <div className="mt-5 flex gap-3 overflow-x-auto pb-2">
-        {charts.map((chart) => (
+      <div
+        role="tablist"
+        aria-label="종목 선택"
+        aria-orientation="horizontal"
+        className="mt-5 flex gap-3 overflow-x-auto pb-2"
+      >
+        {charts.map((chart, index) => (
           <TabButton
             key={chart.symbol}
             chart={chart}
             active={chart.symbol === activeChart.symbol}
-            onClick={() => setActiveSymbol(chart.symbol)}
+            panelId={PANEL_ID}
+            tabRef={(node) => {
+              tabRefs.current[index] = node;
+            }}
+            onSelect={() => setActiveSymbol(chart.symbol)}
+            onKeyDown={(event) => onTabKeyDown(event, index)}
           />
         ))}
       </div>
 
-      <div className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_0.9fr]">
+      <div
+        id={PANEL_ID}
+        role="tabpanel"
+        aria-labelledby={`tab-${activeChart.symbol}`}
+        tabIndex={0}
+        className="mt-5 grid gap-5 xl:grid-cols-[1.5fr_0.9fr] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/40 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+      >
         <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{activeChart.interval} candles</p>
-              <h3 className="mt-1 text-2xl font-semibold text-white">{activeChart.symbol}</h3>
+              <p className="text-xs uppercase text-slate-500">{activeChart.interval} candles</p>
+              <h3 className="text-balance mt-1 text-2xl font-semibold text-white">{activeChart.symbol}</h3>
             </div>
             {headlineMarker ? (
               <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold text-slate-200">
@@ -252,8 +321,8 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
           <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">LIVE STRATEGIES</p>
-                <h3 className="mt-1 text-lg font-semibold text-white">운영 전략 심볼</h3>
+                <p className="text-xs uppercase text-slate-500">LIVE STRATEGIES</p>
+                <h3 className="text-balance mt-1 text-lg font-semibold text-white">운영 전략 심볼</h3>
               </div>
               <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-sm font-semibold text-emerald-200">
                 {activeChart.activeStrategies?.length ?? 0}개

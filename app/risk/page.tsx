@@ -21,8 +21,8 @@ export default async function RiskPage() {
       <div className="space-y-8">
         <div>
           <p className="text-sm text-cyan-300">리스크</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">리스크 스냅샷</h2>
-          <p className="mt-2 text-slate-400">종료된 페이퍼 거래 기준 초기 리스크 지표입니다.</p>
+          <h2 className="text-balance mt-2 text-3xl font-semibold text-white">리스크 스냅샷</h2>
+          <p className="mt-2 text-pretty text-slate-400">종료된 페이퍼 거래 기준 초기 리스크 지표입니다.</p>
         </div>
 
         <section className="grid gap-4 md:grid-cols-3">
@@ -32,7 +32,7 @@ export default async function RiskPage() {
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-lg font-semibold text-white">손익순 종료 거래</h3>
+          <h3 className="text-balance text-lg font-semibold text-white">손익순 종료 거래</h3>
           <div className="overflow-x-auto">
             <TradesTable trades={sortedByPnl} />
           </div>

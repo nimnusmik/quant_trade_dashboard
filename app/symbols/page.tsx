@@ -17,15 +17,15 @@ export default async function SymbolsPage() {
       <div className="space-y-6">
         <div>
           <p className="text-sm text-cyan-300">종목 차트</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">종목별 성과</h2>
-          <p className="mt-2 text-slate-400">
+          <h2 className="text-balance mt-2 text-3xl font-semibold text-white">종목별 성과</h2>
+          <p className="mt-2 text-pretty text-slate-400">
             활성 종목 차트에서 현재 가격 흐름과 진입가, 익절가, 손절가 기준선을 함께 확인합니다.
           </p>
         </div>
         <SymbolCharts charts={charts} />
         <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
           <table className="w-full min-w-[720px] text-left text-sm">
-            <thead className="bg-slate-900 text-xs uppercase tracking-wide text-slate-500">
+            <thead className="bg-slate-900 text-xs uppercase text-slate-500">
               <tr>
                 <th className="px-4 py-3">종목</th>
                 <th className="px-4 py-3 text-right">종료</th>

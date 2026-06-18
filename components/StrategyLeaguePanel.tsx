@@ -1,4 +1,5 @@
 import type { DiagnosedPaperLeagueTeam, StrictCandidate, TimeframeLeagueSummary } from "@/lib/types";
+import { cn } from "@/lib/cn";
 
 function pct(value: number): string {
   return `${value.toFixed(2)}%`;
@@ -38,10 +39,10 @@ function TeamCard({ team }: { team: DiagnosedPaperLeagueTeam }) {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-xs text-slate-500">#{team.rank} · {team.timeframe} · {team.symbol} · {sideLabel(team.side)}</p>
-          <h3 className="mt-1 text-base font-semibold text-white">{team.strategy}</h3>
+          <h3 className="text-balance mt-1 text-base font-semibold text-white">{team.strategy}</h3>
           <p className="mt-1 text-xs text-cyan-200">{team.teamKey}</p>
         </div>
-        <span className={`w-fit rounded-full border px-3 py-1 text-xs ${verdictClass(team.verdict)}`}>{team.verdict}</span>
+        <span className={cn("w-fit rounded-full border px-3 py-1 text-xs", verdictClass(team.verdict))}>{team.verdict}</span>
       </div>
       <div className="mt-4 grid grid-cols-2 gap-3 text-sm md:grid-cols-5">
         <Metric label="거래" value={`${team.trades}건`} />
@@ -63,7 +64,7 @@ function Metric({ label, value, className = "text-white" }: { label: string; val
   return (
     <div className="rounded-xl border border-slate-800 bg-slate-950/80 px-3 py-2">
       <p className="text-xs text-slate-500">{label}</p>
-      <p className={`mt-1 font-semibold ${className}`}>{value}</p>
+      <p className={cn("mt-1 font-semibold", className)}>{value}</p>
     </div>
   );
 }
@@ -72,14 +73,14 @@ function TimeframeSummary({ summaries }: { summaries: TimeframeLeagueSummary[] }
   return (
     <section className="space-y-4">
       <div>
-        <h3 className="text-lg font-semibold text-white">분봉별 경쟁 구도</h3>
+        <h3 className="text-balance text-lg font-semibold text-white">분봉별 경쟁 구도</h3>
         <p className="text-sm text-slate-500">같은 전략이라도 1m/5m/15m/30m/1h는 완전히 다른 팀으로 판단합니다.</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         {summaries.map((summary) => (
           <div key={summary.timeframe} className="rounded-2xl border border-slate-800 bg-slate-900 p-4">
             <p className="text-sm text-cyan-300">{summary.timeframe}</p>
-            <p className={`mt-2 text-2xl font-semibold ${pnlClass(summary.totalPnlPct)}`}>{pct(summary.totalPnlPct)}</p>
+            <p className={cn("mt-2 text-2xl font-semibold", pnlClass(summary.totalPnlPct))}>{pct(summary.totalPnlPct)}</p>
             <p className="mt-1 text-xs text-slate-500">팀 {summary.teams}개 · 거래 {summary.totalTrades}건 · 평균점수 {summary.averageScore.toFixed(2)}</p>
             {summary.bestTeam ? <p className="mt-3 text-xs leading-5 text-slate-300">대표: {summary.bestTeam.strategy} × {summary.bestTeam.symbol} × {sideLabel(summary.bestTeam.side)}</p> : null}
           </div>
@@ -93,12 +94,12 @@ function LeagueTable({ teams }: { teams: DiagnosedPaperLeagueTeam[] }) {
   return (
     <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
       <div className="border-b border-slate-800 px-5 py-4">
-        <h3 className="text-lg font-semibold text-white">전체 실전 페이퍼 리그</h3>
+        <h3 className="text-balance text-lg font-semibold text-white">전체 실전 페이퍼 리그</h3>
         <p className="text-sm text-slate-500">단위는 반드시 전략 × 종목 × 분봉 × 방향입니다. 전략 단독 평균으로 뭉개지 않습니다.</p>
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full text-left text-sm">
-          <thead className="text-xs uppercase tracking-wide text-slate-500">
+          <thead className="text-xs uppercase text-slate-500">
             <tr>
               <th className="px-4 py-3">순위</th>
               <th className="px-4 py-3">팀</th>
@@ -122,9 +123,9 @@ function LeagueTable({ teams }: { teams: DiagnosedPaperLeagueTeam[] }) {
                 <td className="px-4 py-3 text-slate-300">{sideLabel(team.side)}</td>
                 <td className="px-4 py-3 text-slate-300">{team.trades}</td>
                 <td className="px-4 py-3 text-slate-300">{winRate(team.winRate)}</td>
-                <td className={`px-4 py-3 font-semibold ${pnlClass(team.totalPnlPct)}`}>{pct(team.totalPnlPct)}</td>
+                <td className={cn("px-4 py-3 font-semibold", pnlClass(team.totalPnlPct))}>{pct(team.totalPnlPct)}</td>
                 <td className="px-4 py-3 text-slate-300">{ratio(team.profitFactor)}</td>
-                <td className="px-4 py-3"><span className={`rounded-full border px-2.5 py-1 text-xs ${verdictClass(team.verdict)}`}>{team.verdict}</span></td>
+                <td className="px-4 py-3"><span className={cn("rounded-full border px-2.5 py-1 text-xs", verdictClass(team.verdict))}>{team.verdict}</span></td>
               </tr>
             ))}
           </tbody>
@@ -138,12 +139,12 @@ function StrictCandidateTable({ candidates }: { candidates: StrictCandidate[] })
   return (
     <section className="overflow-hidden rounded-2xl border border-amber-500/20 bg-slate-900">
       <div className="border-b border-slate-800 px-5 py-4">
-        <h3 className="text-lg font-semibold text-white">백테스트 STRICT 후보</h3>
+        <h3 className="text-balance text-lg font-semibold text-white">백테스트 STRICT 후보</h3>
         <p className="text-sm text-amber-200">S1~S100 후보군입니다. 백테스트 STRICT가 좋더라도 실전 페이퍼에서 아직 검증된 것은 아니므로, 위 실전 리그와 분리해서 판단합니다.</p>
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full text-left text-sm">
-          <thead className="text-xs uppercase tracking-wide text-slate-500">
+          <thead className="text-xs uppercase text-slate-500">
             <tr>
               <th className="px-4 py-3">분봉</th>
               <th className="px-4 py-3">전략</th>
@@ -163,9 +164,9 @@ function StrictCandidateTable({ candidates }: { candidates: StrictCandidate[] })
                   <p className="text-xs text-slate-500">{candidate.label}</p>
                 </td>
                 <td className="px-4 py-3 text-slate-300">{candidate.symbol}</td>
-                <td className={`px-4 py-3 ${pnlClass(candidate.holdoutReturnPct)}`}>{pct(candidate.holdoutReturnPct)} · PF {ratio(candidate.holdoutProfitFactor)} · {candidate.holdoutTrades}건</td>
-                <td className={`px-4 py-3 ${pnlClass(candidate.recentReturnPct)}`}>{pct(candidate.recentReturnPct)} · PF {ratio(candidate.recentProfitFactor)} · {candidate.recentTrades}건</td>
-                <td className={`px-4 py-3 ${pnlClass(candidate.minReturnPct)}`}>{pct(candidate.minReturnPct)} · PF {ratio(candidate.minProfitFactor)}</td>
+                <td className={cn("px-4 py-3", pnlClass(candidate.holdoutReturnPct))}>{pct(candidate.holdoutReturnPct)} · PF {ratio(candidate.holdoutProfitFactor)} · {candidate.holdoutTrades}건</td>
+                <td className={cn("px-4 py-3", pnlClass(candidate.recentReturnPct))}>{pct(candidate.recentReturnPct)} · PF {ratio(candidate.recentProfitFactor)} · {candidate.recentTrades}건</td>
+                <td className={cn("px-4 py-3", pnlClass(candidate.minReturnPct))}>{pct(candidate.minReturnPct)} · PF {ratio(candidate.minProfitFactor)}</td>
                 <td className="px-4 py-3 text-xs leading-5 text-slate-400">실전 페이퍼 리그에서 같은 조합이 확인되기 전까지는 후보/관찰 단계입니다.</td>
               </tr>
             ))}
@@ -195,8 +196,8 @@ export function StrategyLeaguePanel({
     <div className="space-y-8">
       <section>
         <p className="text-sm text-cyan-300">S1~S100 확장 리그</p>
-        <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">전략 × 종목 × 분봉 × 방향 리그보드</h2>
-        <p className="mt-2 max-w-4xl text-slate-400">선민님이 실제로 결정해야 하는 단위에 맞춰, S53@30m:XRPUSDT:숏과 S53@1h:XRPUSDT:숏을 서로 다른 팀으로 봅니다.</p>
+        <h2 className="text-balance mt-2 text-3xl font-semibold text-white">전략 × 종목 × 분봉 × 방향 리그보드</h2>
+        <p className="mt-2 max-w-4xl text-slate-400 text-pretty">선민님이 실제로 결정해야 하는 단위에 맞춰, S53@30m:XRPUSDT:숏과 S53@1h:XRPUSDT:숏을 서로 다른 팀으로 봅니다.</p>
         <p className="mt-2 text-xs text-slate-600">업데이트: {updatedAt || "데이터 없음"}</p>
       </section>
 
@@ -208,7 +209,7 @@ export function StrategyLeaguePanel({
 
       <section className="space-y-4">
         <div>
-          <h3 className="text-lg font-semibold text-white">상위 유지 후보</h3>
+          <h3 className="text-balance text-lg font-semibold text-white">상위 유지 후보</h3>
           <p className="text-sm text-slate-500">표본 수가 작은 팀은 수익이 커도 과대평가 경고를 붙였습니다.</p>
         </div>
         <div className="grid gap-4 xl:grid-cols-2">

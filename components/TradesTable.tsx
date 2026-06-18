@@ -1,11 +1,12 @@
 import type { Trade } from "@/lib/types";
 import { formatCurrency, formatDateTime } from "@/lib/format";
+import { cn } from "@/lib/cn";
 
 export function TradesTable({ trades }: { trades: Trade[] }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
       <table className="w-full min-w-[760px] text-left text-sm">
-        <thead className="bg-slate-900 text-xs uppercase tracking-wide text-slate-500">
+        <thead className="bg-slate-900 text-xs uppercase text-slate-500">
           <tr>
             <th className="px-4 py-3">시간</th>
             <th className="px-4 py-3">종목</th>
@@ -33,7 +34,7 @@ export function TradesTable({ trades }: { trades: Trade[] }) {
                 <td className="px-4 py-3 text-right">
                   {trade.exitPrice === undefined ? "—" : formatCurrency(trade.exitPrice)}
                 </td>
-                <td className={`px-4 py-3 text-right font-semibold ${pnlClass}`}>
+                <td className={cn("px-4 py-3 text-right font-semibold", pnlClass)}>
                   {pnl === undefined ? "—" : formatCurrency(pnl)}
                 </td>
               </tr>
