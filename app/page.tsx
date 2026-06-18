@@ -1,6 +1,6 @@
 import { AppShell } from "@/components/AppShell";
 import { EquityChart } from "@/components/EquityChart";
-import { MetricCard } from "@/components/MetricCard";
+import { GlowSparkline } from "@/components/GlowSparkline";
 import { OverviewSymbolTabs } from "@/components/OverviewSymbolTabs";
 import { TradesTable } from "@/components/TradesTable";
 import { formatCurrency, formatPercent } from "@/lib/format";
@@ -29,28 +29,62 @@ export default async function Home() {
   return (
     <AppShell>
       <div className="space-y-8">
-        <section>
-          <p className="text-sm text-cyan-300">개요</p>
-          <h2 className="text-balance mt-2 text-3xl font-semibold text-white">
-            트레이딩 상태 한눈에 보기
-          </h2>
-          <p className="mt-2 max-w-2xl text-slate-400 text-pretty">
-            실현 지표는 종료된 거래만 기준으로 계산합니다. 미실현 손익이 승률이나 실현손익을 왜곡하지 않도록 오픈 포지션은 따로 봅니다.
-          </p>
-        </section>
+        {/* 히어로 — 실현손익 빅넘버 + 글로우 차트 + 정밀 KPI (design-lab 합성안 F) */}
+        <section
+          className="relative overflow-hidden rounded-2xl border border-slate-800 p-6"
+          style={{ background: "radial-gradient(120% 80% at 0% 0%, rgba(52,211,153,0.14), transparent 55%), #0b1120" }}
+        >
+          <div className="flex flex-wrap items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-emerald-300">
+                실현손익 · 종료 거래 누적
+              </p>
+              <p
+                className="mt-1 text-5xl font-extrabold leading-none tabular-nums text-emerald-300"
+                style={{ textShadow: "0 0 26px rgba(52,211,153,0.45)" }}
+              >
+                {formatCurrency(summary.totalRealizedPnl)}
+              </p>
+              <p className="mt-2 max-w-xl text-pretty text-sm text-slate-400">
+                실현 지표는 종료된 거래만 기준입니다. 미실현 손익이 승률·실현손익을 왜곡하지 않도록 오픈 포지션은 따로 봅니다.
+              </p>
+            </div>
+            {/* 정밀 미니 KPI */}
+            <dl className="grid grid-cols-2 gap-x-6 gap-y-2 text-right tabular-nums">
+              {[
+                { l: "승률", v: formatPercent(summary.winRate) },
+                { l: "오픈 포지션", v: String(summary.openTrades) },
+                { l: "평균 손익", v: formatCurrency(summary.averagePnl) },
+                { l: "종료 거래", v: String(summary.closedTrades) },
+              ].map((m) => (
+                <div key={m.l}>
+                  <dt className="text-[10px] uppercase tracking-wide text-slate-500">{m.l}</dt>
+                  <dd className="text-sm font-semibold text-white">{m.v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
 
-        <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <MetricCard label="실현손익" value={formatCurrency(summary.totalRealizedPnl)} helper="종료 거래 기준" />
-          <MetricCard label="승률" value={formatPercent(summary.winRate)} helper={`${summary.closedTrades} 개 종료 거래`} />
-          <MetricCard label="오픈 포지션" value={String(summary.openTrades)} helper="미실현손익 제외" />
-          <MetricCard label="평균 손익" value={formatCurrency(summary.averagePnl)} helper="종료 거래 1건당" />
-        </section>
+          <div className="mt-5 h-20 w-full">
+            <GlowSparkline points={equityCurve.map((point) => point.equity)} className="h-full w-full" />
+          </div>
 
-        <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          <MetricCard label="감시 종목" value={String(coverage.symbolCount)} helper="현재 신호 감시 목록" />
-          <MetricCard label="가동 전략" value={String(coverage.strategyCount)} helper="활성 전략 목록" />
-          <MetricCard label="신호 주기" value={universe.intervals.join(", ")} helper="예약 감시 주기" />
-          <MetricCard label="신호 체크 조합" value={String(coverage.combinationCount)} helper="종목 × 전략 × 주기" />
+          {/* KPI 스트립 — 감시 범위 */}
+          <div className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-slate-800 bg-slate-800 sm:grid-cols-4">
+            {[
+              { l: "감시 종목", v: String(coverage.symbolCount) },
+              { l: "가동 전략", v: String(coverage.strategyCount) },
+              { l: "신호 주기", v: universe.intervals.join(" · ") },
+              { l: "신호 조합", v: String(coverage.combinationCount), accent: true },
+            ].map((m) => (
+              <div key={m.l} className="bg-slate-950/70 px-4 py-3">
+                <p className="text-[10px] uppercase tracking-wide text-slate-500">{m.l}</p>
+                <p className={`mt-0.5 truncate text-sm font-semibold tabular-nums ${m.accent ? "text-emerald-300" : "text-white"}`}>
+                  {m.v}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <OverviewSymbolTabs charts={overviewCharts} />
