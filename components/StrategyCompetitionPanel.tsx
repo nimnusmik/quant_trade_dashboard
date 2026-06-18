@@ -53,7 +53,7 @@ function StrategyDiagnosisCard({ strategy }: { strategy: StrategyPerformance }) 
     <article className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-xs uppercase tracking-wide text-cyan-300">{displayVerdict(strategy.diagnosis.verdict)}</p>
+          <p className="text-xs uppercase text-cyan-300">{displayVerdict(strategy.diagnosis.verdict)}</p>
           <h3 className="mt-1 text-lg font-semibold text-white">{strategy.strategy}</h3>
           <p className="mt-1 text-xs text-slate-500">
             거래 {strategy.trades}건 · 승률 {formatPercent(strategy.winRate)} · 손익비 {formatProfitFactor(strategy.profitFactor)}
@@ -84,7 +84,7 @@ function StrategyDiagnosisCard({ strategy }: { strategy: StrategyPerformance }) 
       </div>
 
       <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950/70 p-4">
-        <p className="text-xs uppercase tracking-wide text-slate-500">추천 조치</p>
+        <p className="text-xs uppercase text-slate-500">추천 조치</p>
         <p className="mt-2 text-sm leading-6 text-slate-300">{strategy.diagnosis.suggestedAction}</p>
       </div>
     </article>
@@ -201,7 +201,7 @@ function StrategySymbolMatrix({ pairs }: { pairs: StrategySymbolPerformance[] })
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full text-left">
-            <thead className="text-xs uppercase tracking-wide text-slate-500">
+            <thead className="text-xs uppercase text-slate-500">
               <tr>
                 <th className="px-4 py-3">전략</th>
                 <th className="px-4 py-3">종목</th>
@@ -256,7 +256,7 @@ export function StrategyCompetitionPanel({
     <div className="space-y-8">
       <section>
         <p className="text-sm text-cyan-300">전략 Competition</p>
-        <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">
+        <h2 className="mt-2 text-3xl font-semibold text-white">
           어떤 전략이 이기고 있나?
         </h2>
         <p className="mt-2 max-w-3xl text-slate-400">
@@ -292,7 +292,7 @@ export function StrategyCompetitionPanel({
         </div>
         <div className="overflow-x-auto">
           <table className="min-w-full text-left">
-            <thead className="text-xs uppercase tracking-wide text-slate-500">
+            <thead className="text-xs uppercase text-slate-500">
               <tr>
                 <th className="px-4 py-3">순위</th>
                 <th className="px-4 py-3">전략</th>

@@ -46,7 +46,7 @@ function StrategyCard({ strategy }: { strategy: MonitorStrategy }) {
     <article className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <p className="text-xs uppercase tracking-wide text-cyan-300">{strategy.key}</p>
+          <p className="text-xs uppercase text-cyan-300">{strategy.key}</p>
           <h3 className="mt-1 text-lg font-semibold text-white">{strategy.label}</h3>
           <p className="mt-2 text-sm text-slate-500">
             {strategy.symbols.length}개 종목 × {strategy.intervals.length}개 주기 = {strategyTotalCombinations(strategy)}회 체크
@@ -71,7 +71,7 @@ function StrategyCard({ strategy }: { strategy: MonitorStrategy }) {
 
       {strategy.symbolsByInterval ? (
         <div className="mt-4 space-y-2 rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-          <p className="text-xs uppercase tracking-wide text-slate-500">주기별 STRICT 진입 종목</p>
+          <p className="text-xs uppercase text-slate-500">주기별 STRICT 진입 종목</p>
           {strategy.intervals.map((interval) => (
             <div key={interval} className="flex flex-wrap items-center gap-2 text-xs">
               <span className="w-10 font-semibold text-cyan-200">{interval}</span>
@@ -86,7 +86,7 @@ function StrategyCard({ strategy }: { strategy: MonitorStrategy }) {
       ) : null}
 
       <div className="mt-4 rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-        <p className="text-xs uppercase tracking-wide text-slate-500">
+        <p className="text-xs uppercase text-slate-500">
           대표 파라미터 {primaryInterval ? `· ${primaryInterval}` : ""}
         </p>
         {importantParams.length > 0 ? (
@@ -113,7 +113,7 @@ export function MonitorUniversePanel({ universe }: { universe: MonitorUniverse }
     <div className="space-y-8">
       <section>
         <p className="text-sm text-cyan-300">감시 범위</p>
-        <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">
+        <h2 className="mt-2 text-3xl font-semibold text-white">
           가동 중인 전략과 종목
         </h2>
         <p className="mt-2 max-w-3xl text-slate-400">

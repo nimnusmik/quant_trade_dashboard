@@ -31,7 +31,7 @@ export default async function Home() {
       <div className="space-y-8">
         <section>
           <p className="text-sm text-cyan-300">개요</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">
+          <h2 className="mt-2 text-3xl font-semibold text-white">
             트레이딩 상태 한눈에 보기
           </h2>
           <p className="mt-2 max-w-2xl text-slate-400">

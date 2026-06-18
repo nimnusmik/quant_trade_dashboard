@@ -21,7 +21,7 @@ export default async function RiskPage() {
       <div className="space-y-8">
         <div>
           <p className="text-sm text-cyan-300">리스크</p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">리스크 스냅샷</h2>
+          <h2 className="mt-2 text-3xl font-semibold text-white">리스크 스냅샷</h2>
           <p className="mt-2 text-slate-400">종료된 페이퍼 거래 기준 초기 리스크 지표입니다.</p>
         </div>
 

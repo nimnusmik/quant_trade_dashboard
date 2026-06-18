@@ -43,7 +43,7 @@ export function EquityChart({ points }: { points: EquityPoint[] }) {
         </div>
         {latest ? (
           <div className="text-left sm:text-right">
-            <p className="text-xs uppercase tracking-wide text-slate-500">최근 누적손익</p>
+            <p className="text-xs uppercase text-slate-500">최근 누적손익</p>
             <p className="text-xl font-semibold text-cyan-200">{formatCurrency(latest.equity)}</p>
           </div>
         ) : null}

@@ -98,7 +98,7 @@ function LeagueTable({ teams }: { teams: DiagnosedPaperLeagueTeam[] }) {
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full text-left text-sm">
-          <thead className="text-xs uppercase tracking-wide text-slate-500">
+          <thead className="text-xs uppercase text-slate-500">
             <tr>
               <th className="px-4 py-3">순위</th>
               <th className="px-4 py-3">팀</th>
@@ -143,7 +143,7 @@ function StrictCandidateTable({ candidates }: { candidates: StrictCandidate[] })
       </div>
       <div className="overflow-x-auto">
         <table className="min-w-full text-left text-sm">
-          <thead className="text-xs uppercase tracking-wide text-slate-500">
+          <thead className="text-xs uppercase text-slate-500">
             <tr>
               <th className="px-4 py-3">분봉</th>
               <th className="px-4 py-3">전략</th>
@@ -195,7 +195,7 @@ export function StrategyLeaguePanel({
     <div className="space-y-8">
       <section>
         <p className="text-sm text-cyan-300">S1~S100 확장 리그</p>
-        <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">전략 × 종목 × 분봉 × 방향 리그보드</h2>
+        <h2 className="mt-2 text-3xl font-semibold text-white">전략 × 종목 × 분봉 × 방향 리그보드</h2>
         <p className="mt-2 max-w-4xl text-slate-400">선민님이 실제로 결정해야 하는 단위에 맞춰, S53@30m:XRPUSDT:숏과 S53@1h:XRPUSDT:숏을 서로 다른 팀으로 봅니다.</p>
         <p className="mt-2 text-xs text-slate-600">업데이트: {updatedAt || "데이터 없음"}</p>
       </section>

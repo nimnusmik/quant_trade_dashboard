@@ -26,7 +26,7 @@ function SelectField({
 
   return (
     <label className="space-y-2 text-sm">
-      <span className="block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
+      <span className="block text-xs font-medium uppercase text-slate-500">{label}</span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
@@ -93,7 +93,7 @@ export function TradeExplorer({ trades }: { trades: Trade[] }) {
 
         <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
           <label className="space-y-2 text-sm md:col-span-2 xl:col-span-2">
-            <span className="block text-xs font-medium uppercase tracking-wide text-slate-500">검색</span>
+            <span className="block text-xs font-medium uppercase text-slate-500">검색</span>
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}

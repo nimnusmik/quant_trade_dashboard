@@ -49,17 +49,17 @@ function MarkerSummary({ marker }: { marker: TradeMarker }) {
       </div>
       <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
         <div>
-          <p className="uppercase tracking-wide text-slate-500">진입</p>
+          <p className="uppercase text-slate-500">진입</p>
           <p className="mt-1 font-semibold text-cyan-200">{formatPrice(marker.entryPrice)}</p>
         </div>
         <div>
-          <p className="uppercase tracking-wide text-slate-500">익절</p>
+          <p className="uppercase text-slate-500">익절</p>
           <p className="mt-1 font-semibold text-emerald-300">
             {marker.takeProfit !== undefined ? formatPrice(marker.takeProfit) : "—"}
           </p>
         </div>
         <div>
-          <p className="uppercase tracking-wide text-slate-500">손절</p>
+          <p className="uppercase text-slate-500">손절</p>
           <p className="mt-1 font-semibold text-rose-300">
             {marker.stopLoss !== undefined ? formatPrice(marker.stopLoss) : "—"}
           </p>
@@ -88,7 +88,7 @@ export function SymbolCharts({ charts }: { charts: SymbolChartModel[] }) {
           <section key={chart.symbol} className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
             <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs uppercase tracking-wide text-cyan-300">실시간 종목 차트</p>
+                <p className="text-xs uppercase text-cyan-300">실시간 종목 차트</p>
                 <h3 className="mt-1 text-xl font-semibold text-white">{chart.symbol}</h3>
                 <p className="text-sm text-slate-500">
                   Binance {chart.interval} candles · 진입가 / 익절가 / 손절가 기준선
@@ -96,7 +96,7 @@ export function SymbolCharts({ charts }: { charts: SymbolChartModel[] }) {
               </div>
               {latest ? (
                 <div className="text-left sm:text-right">
-                  <p className="text-xs uppercase tracking-wide text-slate-500">최근 종가</p>
+                  <p className="text-xs uppercase text-slate-500">최근 종가</p>
                   <p className="text-xl font-semibold text-cyan-200">{formatPrice(latest.close)}</p>
                 </div>
               ) : null}

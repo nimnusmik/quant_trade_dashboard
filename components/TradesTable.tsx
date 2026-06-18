@@ -5,7 +5,7 @@ export function TradesTable({ trades }: { trades: Trade[] }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
       <table className="w-full min-w-[760px] text-left text-sm">
-        <thead className="bg-slate-900 text-xs uppercase tracking-wide text-slate-500">
+        <thead className="bg-slate-900 text-xs uppercase text-slate-500">
           <tr>
             <th className="px-4 py-3">시간</th>
             <th className="px-4 py-3">종목</th>

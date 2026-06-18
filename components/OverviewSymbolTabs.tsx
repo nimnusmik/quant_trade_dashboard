@@ -95,7 +95,7 @@ function TabButton({
       onClick={onClick}
       className={`min-w-[148px] rounded-2xl border px-4 py-3 text-left transition ${
         active
-          ? "border-cyan-300/70 bg-cyan-300/10 shadow-[0_0_28px_rgba(34,211,238,0.16)]"
+          ? "border-cyan-300/70 bg-cyan-300/10"
           : "border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
       }`}
     >
@@ -160,11 +160,11 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
   const headlineMarker = openMarkers[0] ?? activeChart.markers[0];
 
   return (
-    <section className="overflow-hidden rounded-[28px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.14),transparent_34%),rgba(15,23,42,0.72)] p-5 shadow-2xl shadow-black/30 lg:p-6">
+    <section className="overflow-hidden rounded-[28px] border border-white/10 bg-slate-900/70 p-5 shadow-2xl shadow-black/30 lg:p-6">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="text-sm font-medium text-cyan-300">실시간 운영 종목</p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white lg:text-3xl">
+          <h2 className="mt-2 text-2xl font-semibold text-white lg:text-3xl">
             종목 탭으로 보는 전략 가동 차트
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
@@ -192,7 +192,7 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
         <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-slate-500">{activeChart.interval} candles</p>
+              <p className="text-xs uppercase text-slate-500">{activeChart.interval} candles</p>
               <h3 className="mt-1 text-2xl font-semibold text-white">{activeChart.symbol}</h3>
             </div>
             {headlineMarker ? (
@@ -252,7 +252,7 @@ export function OverviewSymbolTabs({ charts }: { charts: SymbolChartModel[] }) {
           <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
             <div className="flex items-center justify-between gap-3">
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-slate-500">LIVE STRATEGIES</p>
+                <p className="text-xs uppercase text-slate-500">LIVE STRATEGIES</p>
                 <h3 className="mt-1 text-lg font-semibold text-white">운영 전략 심볼</h3>
               </div>
               <span className="rounded-full bg-emerald-400/10 px-3 py-1 text-sm font-semibold text-emerald-200">

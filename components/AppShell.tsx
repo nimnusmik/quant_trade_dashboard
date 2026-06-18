@@ -13,12 +13,12 @@ const navItems = [
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <div className="min-h-dvh bg-slate-950 text-slate-100 tabular-nums">
       <header className="border-b border-slate-800 bg-slate-950/90">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-sm font-medium text-cyan-300">Paper Trading 감시 현황</p>
-            <h1 className="text-2xl font-semibold tracking-tight">퀀트 트레이딩 대시보드</h1>
+            <h1 className="text-2xl font-semibold">퀀트 트레이딩 대시보드</h1>
           </div>
           <div className="flex flex-col items-start gap-3 md:items-end">
             <DashboardAutoRefresh />
