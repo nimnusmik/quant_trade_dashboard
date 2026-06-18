@@ -38,7 +38,7 @@ function TeamCard({ team }: { team: DiagnosedPaperLeagueTeam }) {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-xs text-slate-500">#{team.rank} · {team.timeframe} · {team.symbol} · {sideLabel(team.side)}</p>
-          <h3 className="mt-1 text-base font-semibold text-white">{team.strategy}</h3>
+          <h3 className="text-balance mt-1 text-base font-semibold text-white">{team.strategy}</h3>
           <p className="mt-1 text-xs text-cyan-200">{team.teamKey}</p>
         </div>
         <span className={`w-fit rounded-full border px-3 py-1 text-xs ${verdictClass(team.verdict)}`}>{team.verdict}</span>
@@ -72,7 +72,7 @@ function TimeframeSummary({ summaries }: { summaries: TimeframeLeagueSummary[] }
   return (
     <section className="space-y-4">
       <div>
-        <h3 className="text-lg font-semibold text-white">분봉별 경쟁 구도</h3>
+        <h3 className="text-balance text-lg font-semibold text-white">분봉별 경쟁 구도</h3>
         <p className="text-sm text-slate-500">같은 전략이라도 1m/5m/15m/30m/1h는 완전히 다른 팀으로 판단합니다.</p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
@@ -93,7 +93,7 @@ function LeagueTable({ teams }: { teams: DiagnosedPaperLeagueTeam[] }) {
   return (
     <section className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
       <div className="border-b border-slate-800 px-5 py-4">
-        <h3 className="text-lg font-semibold text-white">전체 실전 페이퍼 리그</h3>
+        <h3 className="text-balance text-lg font-semibold text-white">전체 실전 페이퍼 리그</h3>
         <p className="text-sm text-slate-500">단위는 반드시 전략 × 종목 × 분봉 × 방향입니다. 전략 단독 평균으로 뭉개지 않습니다.</p>
       </div>
       <div className="overflow-x-auto">
@@ -138,7 +138,7 @@ function StrictCandidateTable({ candidates }: { candidates: StrictCandidate[] })
   return (
     <section className="overflow-hidden rounded-2xl border border-amber-500/20 bg-slate-900">
       <div className="border-b border-slate-800 px-5 py-4">
-        <h3 className="text-lg font-semibold text-white">백테스트 STRICT 후보</h3>
+        <h3 className="text-balance text-lg font-semibold text-white">백테스트 STRICT 후보</h3>
         <p className="text-sm text-amber-200">S1~S100 후보군입니다. 백테스트 STRICT가 좋더라도 실전 페이퍼에서 아직 검증된 것은 아니므로, 위 실전 리그와 분리해서 판단합니다.</p>
       </div>
       <div className="overflow-x-auto">
@@ -195,8 +195,8 @@ export function StrategyLeaguePanel({
     <div className="space-y-8">
       <section>
         <p className="text-sm text-cyan-300">S1~S100 확장 리그</p>
-        <h2 className="mt-2 text-3xl font-semibold text-white">전략 × 종목 × 분봉 × 방향 리그보드</h2>
-        <p className="mt-2 max-w-4xl text-slate-400">선민님이 실제로 결정해야 하는 단위에 맞춰, S53@30m:XRPUSDT:숏과 S53@1h:XRPUSDT:숏을 서로 다른 팀으로 봅니다.</p>
+        <h2 className="text-balance mt-2 text-3xl font-semibold text-white">전략 × 종목 × 분봉 × 방향 리그보드</h2>
+        <p className="mt-2 max-w-4xl text-slate-400 text-pretty">선민님이 실제로 결정해야 하는 단위에 맞춰, S53@30m:XRPUSDT:숏과 S53@1h:XRPUSDT:숏을 서로 다른 팀으로 봅니다.</p>
         <p className="mt-2 text-xs text-slate-600">업데이트: {updatedAt || "데이터 없음"}</p>
       </section>
 
@@ -208,7 +208,7 @@ export function StrategyLeaguePanel({
 
       <section className="space-y-4">
         <div>
-          <h3 className="text-lg font-semibold text-white">상위 유지 후보</h3>
+          <h3 className="text-balance text-lg font-semibold text-white">상위 유지 후보</h3>
           <p className="text-sm text-slate-500">표본 수가 작은 팀은 수익이 커도 과대평가 경고를 붙였습니다.</p>
         </div>
         <div className="grid gap-4 xl:grid-cols-2">

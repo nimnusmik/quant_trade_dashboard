@@ -89,7 +89,7 @@ export function SymbolCharts({ charts }: { charts: SymbolChartModel[] }) {
             <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-xs uppercase text-cyan-300">실시간 종목 차트</p>
-                <h3 className="mt-1 text-xl font-semibold text-white">{chart.symbol}</h3>
+                <h3 className="text-balance mt-1 text-xl font-semibold text-white">{chart.symbol}</h3>
                 <p className="text-sm text-slate-500">
                   Binance {chart.interval} candles · 진입가 / 익절가 / 손절가 기준선
                 </p>

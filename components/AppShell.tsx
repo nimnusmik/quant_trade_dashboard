@@ -18,7 +18,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-sm font-medium text-cyan-300">Paper Trading 감시 현황</p>
-            <h1 className="text-2xl font-semibold">퀀트 트레이딩 대시보드</h1>
+            <h1 className="text-balance text-2xl font-semibold">퀀트 트레이딩 대시보드</h1>
           </div>
           <div className="flex flex-col items-start gap-3 md:items-end">
             <DashboardAutoRefresh />

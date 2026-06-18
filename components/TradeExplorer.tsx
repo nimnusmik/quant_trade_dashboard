@@ -70,7 +70,7 @@ export function TradeExplorer({ trades }: { trades: Trade[] }) {
       <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
         <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-lg font-semibold text-white">거래 필터</h2>
+            <h2 className="text-balance text-lg font-semibold text-white">거래 필터</h2>
             <p className="text-sm text-slate-500">
               총 {trades.length}건 중 {filteredTrades.length}건 표시
             </p>

@@ -47,7 +47,7 @@ function StrategyCard({ strategy }: { strategy: MonitorStrategy }) {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="text-xs uppercase text-cyan-300">{strategy.key}</p>
-          <h3 className="mt-1 text-lg font-semibold text-white">{strategy.label}</h3>
+          <h3 className="text-balance mt-1 text-lg font-semibold text-white">{strategy.label}</h3>
           <p className="mt-2 text-sm text-slate-500">
             {strategy.symbols.length}개 종목 × {strategy.intervals.length}개 주기 = {strategyTotalCombinations(strategy)}회 체크
           </p>
@@ -113,10 +113,10 @@ export function MonitorUniversePanel({ universe }: { universe: MonitorUniverse }
     <div className="space-y-8">
       <section>
         <p className="text-sm text-cyan-300">감시 범위</p>
-        <h2 className="mt-2 text-3xl font-semibold text-white">
+        <h2 className="text-balance mt-2 text-3xl font-semibold text-white">
           가동 중인 전략과 종목
         </h2>
-        <p className="mt-2 max-w-3xl text-slate-400">
+        <p className="mt-2 max-w-3xl text-slate-400 text-pretty">
           실시간 모니터가 훑는 전체 범위입니다. 종목, 타임프레임, 전략, 대표 TP/SL 파라미터를 한 화면에서 확인합니다.
         </p>
         <p className="mt-2 text-xs text-slate-600">출처: {universe.source} · 업데이트: {universe.updatedAt}</p>
@@ -144,7 +144,7 @@ export function MonitorUniversePanel({ universe }: { universe: MonitorUniverse }
       <section className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-white">전체 감시 종목</h3>
+            <h3 className="text-balance text-lg font-semibold text-white">전체 감시 종목</h3>
             <p className="text-sm text-slate-500">가격 확인과 신호 모니터가 보는 종목 목록</p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -166,7 +166,7 @@ export function MonitorUniversePanel({ universe }: { universe: MonitorUniverse }
 
       <section className="space-y-4">
         <div>
-          <h3 className="text-lg font-semibold text-white">전체 가동 전략</h3>
+          <h3 className="text-balance text-lg font-semibold text-white">전체 가동 전략</h3>
           <p className="text-sm text-slate-500">각 카드에서 활성 주기, 적용 종목, 대표 최적화 파라미터를 확인합니다.</p>
         </div>
         <div className="grid gap-4 xl:grid-cols-2">

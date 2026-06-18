@@ -31,10 +31,10 @@ export default async function Home() {
       <div className="space-y-8">
         <section>
           <p className="text-sm text-cyan-300">개요</p>
-          <h2 className="mt-2 text-3xl font-semibold text-white">
+          <h2 className="text-balance mt-2 text-3xl font-semibold text-white">
             트레이딩 상태 한눈에 보기
           </h2>
-          <p className="mt-2 max-w-2xl text-slate-400">
+          <p className="mt-2 max-w-2xl text-slate-400 text-pretty">
             실현 지표는 종료된 거래만 기준으로 계산합니다. 미실현 손익이 승률이나 실현손익을 왜곡하지 않도록 오픈 포지션은 따로 봅니다.
           </p>
         </section>
@@ -59,7 +59,7 @@ export default async function Home() {
           <EquityChart points={equityCurve} />
           <div className="space-y-4">
             <div>
-              <h2 className="text-lg font-semibold text-white">오픈 포지션</h2>
+              <h2 className="text-balance text-lg font-semibold text-white">오픈 포지션</h2>
               <p className="text-sm text-slate-500">현재 보유 중인 페이퍼 포지션</p>
             </div>
             <div className="overflow-x-auto">
@@ -70,7 +70,7 @@ export default async function Home() {
 
         <section className="space-y-4">
           <div>
-            <h2 className="text-lg font-semibold text-white">최근 종료 거래</h2>
+            <h2 className="text-balance text-lg font-semibold text-white">최근 종료 거래</h2>
             <p className="text-sm text-slate-500">최근 청산 기록</p>
           </div>
           <div className="overflow-x-auto">

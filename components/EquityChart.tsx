@@ -38,7 +38,7 @@ export function EquityChart({ points }: { points: EquityPoint[] }) {
     <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
       <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-lg font-semibold text-white">누적 손익 곡선</h2>
+          <h2 className="text-balance text-lg font-semibold text-white">누적 손익 곡선</h2>
           <p className="text-sm text-slate-500">종료 거래 기준 · {points.length} exits</p>
         </div>
         {latest ? (
